@@ -1,0 +1,45 @@
+
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<!-- <#list lists as demo>
+    ${demo.name}
+    <br>
+</#list> -->
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+				<h3>
+					列表
+				</h3>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>
+								用户名
+							</th>
+							<th>
+								状态
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<#list lists as demo>
+						    <tr class="success">
+								<td>
+									${demo.name}
+								</td>
+								<td>
+									修改
+								</td>
+							</tr>
+						</#list>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
