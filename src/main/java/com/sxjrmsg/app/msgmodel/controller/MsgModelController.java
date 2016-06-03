@@ -41,5 +41,31 @@ public class MsgModelController {
         modelMap.put("lists", list);
         return "msgmodel/list";
     }
+    
+    @RequestMapping(value = "toEdit")
+    public String edit(HttpServletRequest request,ModelMap modelMap){
+    	String id = request.getParameter("id");
+        MsgModel model = msgModelService.findOne(id);
+        modelMap.put("model", model);
+        return "msgmodel/edit";
+    }
+    
+    @RequestMapping(value = "update")
+    public String update(HttpServletRequest request){
+    	String id = request.getParameter("id");
+    	String content = request.getParameter("content");
+    	MsgModel model = new MsgModel();
+    	model.setContent(content);
+    	model.setId(id);
+    	msgModelService.update(model);
+        return "msgmodel/list";
+    }
+    
+    @RequestMapping(value = "delete")
+    public String delete(HttpServletRequest request){
+    	String id = request.getParameter("id");
+    	msgModelService.delete(id);
+        return "msgmodel/list";
+    }
 
 }

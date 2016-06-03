@@ -29,4 +29,20 @@ public class MsgModelServiceImpl implements MsgModelService {
 		return msgModelMapper.list();
 	}
 
+	@Override
+	public MsgModel findOne(String id) {
+		return msgModelMapper.findOne(id);
+	}
+
+	@Override
+	public void update(MsgModel msgmodel) {
+		msgModelMapper.update(msgmodel);
+	}
+
+	@Override
+	public void delete(String id) {
+		msgModelMapper.delete(id);
+		
+	}
+
 }

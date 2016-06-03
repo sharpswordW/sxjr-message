@@ -17,4 +17,24 @@
         content
         from msg_model  
     </select>
+    <select id="findOne" resultType="com.sxjrmsg.app.msgmodel.entity.MsgModel">  
+        select
+        id,
+        content
+        from msg_model
+        where id = #{id}  
+    </select> 
+    <update id="update" parameterType="com.sxjrmsg.app.msgmodel.entity.MsgModel">
+	 update msg_model
+		 <set>
+		  <if test="content!=null and content!='' ">
+		   msg_model.content = #{content},
+		  </if>
+		 </set>
+	 where msg_model.id = #{id};
+	</update>
+	<delete id="delete" parameterType="com.sxjrmsg.app.msgmodel.entity.MsgModel">
+		 delete from msg_model
+		 where id = #{id};
+	</delete>
 </mapper>

@@ -10,4 +10,7 @@ import com.sxjrmsg.app.msgmodel.entity.MsgModel;
 public interface MsgModelService{
     void save(MsgModel msgmodel);
     List<MsgModel> list();
+    MsgModel findOne(String id);
+    void update(MsgModel msgmodel);
+    void delete(String id);
 }

@@ -9,7 +9,8 @@
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span12">
-				<form name="msgForm" id="msgForm" action="save">
+				<form name="msgForm" id="msgForm" action="update">
+				<input type="hidden" name="id" id="id"/>
 					<fieldset>
 						 <legend>短信模板新增</legend> 
 						 <label>模板内容</label>
@@ -26,6 +27,10 @@
 	</div>
 </body>
 <script type="text/javascript">
+	$(function(){
+		$('#id').val("${model.id}");
+		$('#content').val("${model.content}");
+	})
 	$('#save').click(function(){
 		$('#msgForm').submit();
 	})
