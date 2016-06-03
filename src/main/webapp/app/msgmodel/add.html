@@ -3,12 +3,13 @@
 <head>
     <title>短信模板-新增</title>
     <link rel="stylesheet" href="../../common/css/bootstrap.min.css">
+    <script src="../../common/js/jquery.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span12">
-				<form>
+				<form name="msgForm" id="msgForm">
 					<fieldset>
 						 <legend>短信模板新增</legend> 
 						 <label>模板内容</label>
@@ -17,11 +18,37 @@
 						 	<option value="0">禁用</option>
 						 	<option value="1">启用</option>
 						 </select>
-						 <button type="submit" class="btn">提交</button>
+						 <button id="save" class="btn" name="submit" >提交</button>
 					</fieldset>
 				</form>
 			</div>
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	function submitform(){
+		console.log('bb');
+	}
+	$('#save1').click(function(){
+		console.log('cc');
+		$('#msgForm').submit();
+	})
+	$('#save').click(function(){
+		console.log('aa');
+		var content = $('#content').val();
+		console.log(window);
+		return;
+		$.ajax({
+		   type: "POST",
+		   url: "app/msgmodel/save",
+		   data: {
+			   "content":content
+		   },
+		   async : true,
+		   success: function(msg){
+		     alert( "success: " + msg );
+		   }
+		});
+	})
+</script>
 </html>
