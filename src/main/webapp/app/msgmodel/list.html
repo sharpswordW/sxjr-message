@@ -1,13 +1,9 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>列表</title>
 </head>
 <body>
-<!-- <#list lists as demo>
-    ${demo.name}
-    <br>
-</#list> -->
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span12">
@@ -18,18 +14,24 @@
 					<thead>
 						<tr>
 							<th>
-								用户名
+								序号
 							</th>
 							<th>
-								状态
+								内容
+							</th>
+							<th>
+								操作
 							</th>
 						</tr>
 					</thead>
 					<tbody>
-						<#list lists as demo>
+						<#list lists as msg>
 						    <tr class="success">
+						    	<td>
+									${msg.id}
+								</td>
 								<td>
-									${demo.name}
+									${msg.content}
 								</td>
 								<td>
 									修改

@@ -1,5 +1,7 @@
 package com.sxjrmsg.app.msgmodel.service;
 
+import java.util.List;
+
 import com.sxjrmsg.app.msgmodel.entity.MsgModel;
 
 /**
@@ -7,4 +9,5 @@ import com.sxjrmsg.app.msgmodel.entity.MsgModel;
  */
 public interface MsgModelService{
     void save(MsgModel msgmodel);
+    List<MsgModel> list();
 }

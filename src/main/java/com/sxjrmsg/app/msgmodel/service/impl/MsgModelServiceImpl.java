@@ -1,5 +1,7 @@
 package com.sxjrmsg.app.msgmodel.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,11 @@ public class MsgModelServiceImpl implements MsgModelService {
 	public void save(MsgModel msgmodel) {
 		msgModelMapper.save(msgmodel);
 		
+	}
+
+	@Override
+	public List<MsgModel> list() {
+		return msgModelMapper.list();
 	}
 
 }

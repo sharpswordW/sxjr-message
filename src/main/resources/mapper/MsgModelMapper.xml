@@ -11,4 +11,10 @@
         #{content}
         )  
     </insert>
+    <select id="list" resultType="com.sxjrmsg.app.msgmodel.entity.MsgModel">  
+        select
+        id,
+        content
+        from msg_model  
+    </select>
 </mapper>
