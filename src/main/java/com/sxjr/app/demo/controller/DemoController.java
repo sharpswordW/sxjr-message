@@ -1,4 +1,4 @@
-package com.sxjrmsg.app.demo.controller;
+package com.sxjr.app.demo.controller;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sxjrmsg.app.demo.entity.TbDemo;
-import com.sxjrmsg.app.demo.service.IDemoService;
+import com.sxjr.app.demo.entity.TbDemo;
+import com.sxjr.app.demo.service.IDemoService;
 
 /**
  * Created by wangrq on 2016/6/2.

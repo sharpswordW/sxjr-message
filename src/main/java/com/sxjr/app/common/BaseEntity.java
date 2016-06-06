@@ -1,4 +1,4 @@
-package com.sxjrmsg.app.common;
+package com.sxjr.app.common;
 
 import java.util.Date;
 

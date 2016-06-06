@@ -1,4 +1,4 @@
-package com.sxjrmsg.app.home.controller;
+package com.sxjr.app.home.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

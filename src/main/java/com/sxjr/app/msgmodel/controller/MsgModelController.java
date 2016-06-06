@@ -1,4 +1,4 @@
-package com.sxjrmsg.app.msgmodel.controller;
+package com.sxjr.app.msgmodel.controller;
 
 import java.util.Date;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sxjrmsg.app.msgmodel.entity.MsgModel;
-import com.sxjrmsg.app.msgmodel.service.MsgModelService;
+import com.sxjr.app.msgmodel.entity.MsgModel;
+import com.sxjr.app.msgmodel.service.MsgModelService;
 
 /**
  * Created by wangrq on 2016/6/2.

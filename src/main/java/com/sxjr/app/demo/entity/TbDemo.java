@@ -1,4 +1,4 @@
-package com.sxjrmsg.app.demo.entity;
+package com.sxjr.app.demo.entity;
 
 import javax.persistence.*;
 

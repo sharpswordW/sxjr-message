@@ -1,8 +1,8 @@
-package com.sxjrmsg.app.msgmodel.service;
+package com.sxjr.app.msgmodel.service;
 
 import java.util.List;
 
-import com.sxjrmsg.app.msgmodel.entity.MsgModel;
+import com.sxjr.app.msgmodel.entity.MsgModel;
 
 /**
  * Created by wangrq on 2016/6/2.

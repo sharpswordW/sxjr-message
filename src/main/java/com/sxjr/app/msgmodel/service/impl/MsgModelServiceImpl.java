@@ -1,13 +1,13 @@
-package com.sxjrmsg.app.msgmodel.service.impl;
+package com.sxjr.app.msgmodel.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sxjrmsg.app.msgmodel.entity.MsgModel;
-import com.sxjrmsg.app.msgmodel.mapper.MsgModelMapper;
-import com.sxjrmsg.app.msgmodel.service.MsgModelService;
+import com.sxjr.app.msgmodel.entity.MsgModel;
+import com.sxjr.app.msgmodel.mapper.MsgModelMapper;
+import com.sxjr.app.msgmodel.service.MsgModelService;
 
 /**
  * Created by shuhg on 2016/5/25.

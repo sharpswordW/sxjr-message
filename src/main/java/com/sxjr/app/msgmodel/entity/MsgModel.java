@@ -1,6 +1,6 @@
-package com.sxjrmsg.app.msgmodel.entity;
+package com.sxjr.app.msgmodel.entity;
 
-import com.sxjrmsg.app.common.BaseEntity;
+import com.sxjr.app.common.BaseEntity;
 
 public class MsgModel extends BaseEntity{
 	
