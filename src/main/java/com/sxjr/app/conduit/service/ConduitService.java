@@ -10,7 +10,7 @@ import com.sxjr.app.conduit.entity.Conduit;
 public interface ConduitService{
     void save(Conduit conduit);
     List<Conduit> list();
-//    Conduit findOne(String id);
-//    void update(Conduit conduit);
-//    void delete(String id);
+    Conduit findOne(String id);
+    void update(Conduit conduit);
+    void delete(String id);
 }

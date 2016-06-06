@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sxjrmsg.app.demo.mapper.TbDemoMapper">
-	<select id="list" resultType="com.sxjrmsg.app.demo.entity.TbDemo">  
+<mapper namespace="com.sxjr.app.demo.mapper.TbDemoMapper">
+	<select id="list" resultType="com.sxjr.app.demo.entity.TbDemo">  
         select
         id,
         name

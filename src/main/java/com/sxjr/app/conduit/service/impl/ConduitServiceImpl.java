@@ -26,23 +26,24 @@ public class ConduitServiceImpl implements ConduitService {
 	public List<Conduit> list() {
 		return conduitMapper.list();
 	}
-//
-//	@Override
-//	public Conduit findOne(String id) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public void update(Conduit conduit) {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public void delete(String id) {
-//		// TODO Auto-generated method stub
-//		
-//	}
+
+	@Override
+	public Conduit findOne(String id) {
+		// TODO Auto-generated method stub
+		return conduitMapper.findOne(id);
+	}
+
+	@Override
+	public void update(Conduit conduit) {
+		// TODO Auto-generated method stub.
+		conduitMapper.update(conduit);
+		
+	}
+
+	@Override
+	public void delete(String id) {
+		// TODO Auto-generated method stub
+		conduitMapper.delete(id);
+	}
 	
 }

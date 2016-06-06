@@ -55,5 +55,42 @@ public class ConduitController {
         modelMap.put("lists", list);
         return PAGE_LIST;
     }
+    
+    @RequestMapping(value = "toEdit")
+    public String edit(HttpServletRequest request,ModelMap modelMap){
+    	String id = request.getParameter("id");
+        Conduit model = conduitService.findOne(id);
+        modelMap.put("model", model);
+        return PAGE_EDIT;
+    }
+    
+    @RequestMapping(value = "update")
+    public String update(HttpServletRequest request,ModelMap modelMap){
+    	String id = request.getParameter("id");
+    	String content = request.getParameter("content");
+    	Conduit conduit = new Conduit();
+    	conduit.setId(request.getParameter("id"));
+    	conduit.setName(request.getParameter("name"));
+    	conduit.setConduitId(request.getParameter("conduitId"));
+    	conduit.setAccount(request.getParameter("name"));
+    	conduit.setPassword(request.getParameter("password"));
+    	conduit.setLongMessage(request.getParameter("longMessage"));
+    	conduit.setBulkMessage(request.getParameter("bulkMessage"));
+    	conduit.setPriority(request.getParameter("priority"));
+    	conduit.setCreateDate(new Date());
+    	conduitService.update(conduit);
+    	List list = conduitService.list();
+    	modelMap.put("lists", list);
+        return PAGE_LIST;
+    }
+    
+    @RequestMapping(value = "delete")
+    public String delete(HttpServletRequest request,ModelMap modelMap){
+    	String id = request.getParameter("id");
+    	conduitService.delete(id);
+    	List list = conduitService.list();
+    	modelMap.put("lists", list);
+        return PAGE_LIST;
+    }
 
 }
