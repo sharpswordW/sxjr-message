@@ -22,7 +22,7 @@ public class MsgModelController {
 	
 	private String PAGE_ADD = "msgmodel/add";
 	private String PAGE_LIST = "msgmodel/list";
-	private String PAGE_EDIT = "msgmodel/edit";
+	private String PAGE_EDIT = "msgmodel/edit1";
     @Autowired
     MsgModelService msgModelService;
     

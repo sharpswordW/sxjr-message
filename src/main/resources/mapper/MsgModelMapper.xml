@@ -26,7 +26,8 @@
     <select id="findOne" resultType="com.sxjrmsg.app.msgmodel.entity.MsgModel">  
         select
         id,
-        content
+        content,
+        enable
         from msg_model
         where id = #{id}  
     </select> 
