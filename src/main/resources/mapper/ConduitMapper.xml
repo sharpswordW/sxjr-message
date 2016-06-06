@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxjr.app.conduit.mapper.ConduitMapper">
+    <insert id="save" parameterType="com.sxjr.app.conduit.mapper.ConduitMapper" useGeneratedKeys="true" keyProperty="id">  
+        insert into conduit
+        (
+	        name,
+	        account,
+	        password,
+	        long_message,
+	        bulk_message,
+	        priority,
+	        create_date
+        ) 
+        values 
+        (
+	        #{name},
+	        #{account},
+	        #{password},
+	        #{longMessage},
+	        #{bulkMessage},
+	        #{priority},
+	        #{createDate}
+        )  
+    </insert>
+    <select id="list" resultType="com.sxjr.app.conduit.entity.Conduit">  
+        select
+        id,
+        name,
+        account,
+        password,
+        long_message as longMessage,
+        bulk_message as bulkMessage,
+        priority
+        from conduit  
+    </select>
+</mapper>
