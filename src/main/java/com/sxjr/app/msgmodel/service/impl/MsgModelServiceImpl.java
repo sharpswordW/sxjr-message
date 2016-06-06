@@ -10,7 +10,7 @@ import com.sxjr.app.msgmodel.mapper.MsgModelMapper;
 import com.sxjr.app.msgmodel.service.MsgModelService;
 
 /**
- * Created by shuhg on 2016/5/25.
+ * Created by wangrq on 2016/6/2.
  */
 @Service
 public class MsgModelServiceImpl implements MsgModelService {
