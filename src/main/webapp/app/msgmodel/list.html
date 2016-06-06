@@ -1,47 +1,96 @@
-
-<html>
-<head>
-    <title>列表</title>
-</head>
-<body>
-	<div class="container-fluid">
-		<div class="row-fluid">
-			<div class="span12">
-				<h3>
-					列表
-				</h3>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>
-								序号
-							</th>
-							<th>
-								内容
-							</th>
-							<th>
-								操作
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						<#list lists as msg>
-						    <tr class="success">
-						    	<td>
-									${msg.id}
-								</td>
-								<td>
-									${msg.content}
-								</td>
-								<td>
-									<a href="toEdit?id=${msg.id}">修改</a>&nbsp;&nbsp;&nbsp;<a href="delete?id=${msg.id}">删除</a>
-								</td>
-							</tr>
-						</#list>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Tables</title>
+        <!-- Import google fonts - Heading first/ text second -->
+        <link rel='stylesheet' type='text/css' 
+        <!-- Css files -->
+        <!-- Icons -->
+        <link href="../../common/css/icons.css" rel="stylesheet" />
+        <!-- jQueryUI -->
+        <link href="../../common/css/sprflat-theme/jquery.ui.all.css" rel="stylesheet" />
+        <!-- Bootstrap stylesheets (included template modifications) -->
+        <link href="../../common/css/bootstrap.css" rel="stylesheet" />
+        <!-- Plugins stylesheets (all plugin custom css) -->
+        <link href="../../common/css/plugins.css" rel="stylesheet" />
+        <!-- Main stylesheets (template main css file) -->
+        <link href="../../common/css/main.css" rel="stylesheet" />
+        <!-- Custom stylesheets ( Put your own changes here ) -->
+        <link href="../../common/css/custom.css" rel="stylesheet" />
+        <!-- Fav and touch icons -->
+    </head>
+    <body>
+        <!-- Start #header -->
+        <!-- End #header -->
+        <!-- Start #sidebar -->
+        <div id="sidebar">
+            <!-- Start .sidebar-inner -->
+            <!-- End .sidebar-inner -->
+        </div>
+        <!-- End #sidebar -->
+        <!-- Start #right-sidebar -->
+        <!-- End #right-sidebar -->
+        <!-- Start #content -->
+        <div id="content">
+            <!-- Start .content-wrapper -->
+            <div class="content-wrapper">
+                <!-- End .row -->
+                <div class="outlet">
+                    <!-- Start .outlet -->
+                    <!-- Page start here ( usual with .row ) -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- col-lg-12 start here -->
+                            <div class="panel panel-default plain toggle panelClose panelRefresh">
+                                <!-- Start .panel -->
+                                <div class="panel-heading white-bg">
+                                    <h4 class="panel-title">Data table</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table display" id="datatable">
+                                    	<thead>
+											<tr>
+												<th>
+													序号
+												</th>
+												<th>
+													内容
+												</th>
+												<th>
+													是否启用
+												</th>
+												<th>
+													操作
+												</th>
+											</tr>
+										</thead>
+                                        <tbody>
+                                        <#list lists as msg>
+                                            <tr class="odd gradeX">
+                                                <td>${msg.id}</td>
+                                                <td>${msg.content}</td>
+                                                <td>${msg.enable}</td>
+                                                <td><a href="toEdit?id=${msg.id}">修改</a>&nbsp;&nbsp;&nbsp;<a href="delete?id=${msg.id}">删除</a></td>
+                                            </tr>
+                                        </#list>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- End .panel -->
+                        </div>
+                        <!-- col-lg-12 end here -->
+                    </div>
+                    <!-- Page End here -->
+                </div>
+                <!-- End .outlet -->
+            </div>
+            <!-- End .content-wrapper -->
+            <div class="clearfix"></div>
+        </div>
+        <!-- End #content -->
+        <!-- Important javascript libs(put in all pages) -->
+        <script src="../../common/js/jquery-1.8.3.min.js"></script>
+    </body>
 </html>

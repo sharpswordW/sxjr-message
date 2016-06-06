@@ -1,5 +1,6 @@
 package com.sxjrmsg.app.msgmodel.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,28 +19,37 @@ import com.sxjrmsg.app.msgmodel.service.MsgModelService;
 @Controller
 @RequestMapping(value = "app/msgmodel")
 public class MsgModelController {
+	
+	private String PAGE_ADD = "msgmodel/add";
+	private String PAGE_LIST = "msgmodel/list";
+	private String PAGE_EDIT = "msgmodel/edit";
     @Autowired
     MsgModelService msgModelService;
     
     @RequestMapping(value = "toAdd")
     public String toAdd(){
-        return "msgmodel/add";
+        return PAGE_ADD;
     }
     
     @RequestMapping(value = "save")
-    public String save(HttpServletRequest request){
+    public String save(HttpServletRequest request,ModelMap modelMap){
     	String content = request.getParameter("content");
+    	String enable = request.getParameter("enable");
     	MsgModel model = new MsgModel();
     	model.setContent(content);
+    	model.setEnable(enable);
+    	model.setCreateDate(new Date());
     	msgModelService.save(model);
-        return "msgmodel/add";
+    	List list = msgModelService.list();
+    	modelMap.put("lists", list);
+        return PAGE_LIST;
     }
     
     @RequestMapping(value = "list")
     public String list(ModelMap modelMap){
         List<MsgModel> list = msgModelService.list();
         modelMap.put("lists", list);
-        return "msgmodel/list";
+        return PAGE_LIST;
     }
     
     @RequestMapping(value = "toEdit")
@@ -47,7 +57,7 @@ public class MsgModelController {
     	String id = request.getParameter("id");
         MsgModel model = msgModelService.findOne(id);
         modelMap.put("model", model);
-        return "msgmodel/edit";
+        return PAGE_EDIT;
     }
     
     @RequestMapping(value = "update")
@@ -60,7 +70,7 @@ public class MsgModelController {
     	msgModelService.update(model);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
-        return "msgmodel/list";
+        return PAGE_LIST;
     }
     
     @RequestMapping(value = "delete")
@@ -69,7 +79,7 @@ public class MsgModelController {
     	msgModelService.delete(id);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
-        return "msgmodel/list";
+        return PAGE_LIST;
     }
 
 }

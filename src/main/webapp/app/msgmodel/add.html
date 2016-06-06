@@ -1,33 +1,98 @@
-
-<html>
-<head>
-    <title>短信模板-新增</title>
-    <link rel="stylesheet" href="../../common/css/bootstrap.min.css">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Forms</title>
+        <!-- Css files -->
+        <!-- Icons -->
+        <link href="../../common/css/icons.css" rel="stylesheet" />
+        <!-- jQueryUI -->
+        <link href="../../common/css/sprflat-theme/jquery.ui.all.css" rel="stylesheet" />
+        <!-- Bootstrap stylesheets (included template modifications) -->
+        <link href="../../common/css/bootstrap.css" rel="stylesheet" />
+        <!-- Plugins stylesheets (all plugin custom css) -->
+        <link href="../../common/css/plugins.css" rel="stylesheet" />
+        <!-- Main stylesheets (template main css file) -->
+        <link href="../../common/css/main.css" rel="stylesheet" />
+        <!-- Custom stylesheets ( Put your own changes here ) -->
+        <link href="../../common/css/custom.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Start #header -->
+        <div id="header">
+            <div class="container-fluid">
+                <!-- Start #header-area -->
+                <!-- End #header-area -->
+            </div>
+            <!-- Start .header-inner -->
+        </div>
+        <!-- End #header -->
+        <!-- Start #sidebar -->
+        <div id="sidebar">
+            <!-- Start .sidebar-inner -->
+            <!-- End .sidebar-inner -->
+        </div>
+        <!-- End #sidebar -->
+        <!-- Start #right-sidebar -->
+        <!-- End #right-sidebar -->
+        <!-- Start #content -->
+        <div id="content">
+            <!-- Start .content-wrapper -->
+            <div class="content-wrapper">
+                <!-- End .row -->
+                <div class="outlet">
+                    <!-- Start .outlet -->
+                    <!-- Page start here ( usual with .row ) -->
+                    <div class="row">
+                        <!-- Start .row -->
+                        <div class="col-lg-12">
+                            <!-- Start col-lg-12 -->
+                            <div class="panel panel-default toggle">
+                                <!-- Start .panel -->
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Form fields</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form class="form-horizontal group-border hover-stripped" name="msgForm" id="msgForm" action="save">
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-md-2 col-sm-12 control-label">模板内容</label>
+                                            <div class="col-lg-10 col-md-10">
+                                                <textarea name="content" class="form-control" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-md-2 col-sm-12 control-label">是否启用</label>
+                                            <div class="col-lg-10 col-md-10">
+                                                <select class="form-control" name="enable">
+                                                    <option value="1">启用</option>
+                                                    <option value="0">禁用</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 text-center">
+		                                    <!-- col-lg-12 start here -->
+		                                    <button class="btn btn-success" id="save">保存</button>
+		                                </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- End .panel -->
+                        </div>
+                        <!-- End col-lg-12 -->
+                    </div>
+                </div>
+                <!-- End .outlet -->
+            </div>
+            <!-- End .content-wrapper -->
+            <div class="clearfix"></div>
+        </div>
+        <!-- End #content -->
+        <!-- Javascripts -->
+    </body>
     <script src="../../common/js/jquery.js"></script>
-</head>
-<body>
-	<div class="container-fluid">
-		<div class="row-fluid">
-			<div class="span12">
-				<form name="msgForm" id="msgForm" action="save">
-					<fieldset>
-						 <legend>短信模板新增</legend> 
-						 <label>模板内容</label>
-						 <textarea rows="5" id="content" name="content"></textarea> <br/>
-						 <select id="status">
-						 	<option value="0">禁用</option>
-						 	<option value="1">启用</option>
-						 </select>
-						 <button id="save" class="btn" name="submit" >提交</button>
-					</fieldset>
-				</form>
-			</div>
-		</div>
-	</div>
-</body>
-<script type="text/javascript">
-	$('#save').click(function(){
-		$('#msgForm').submit();
-	})
-</script>
+    <script type="text/javascript">
+		$('#save').click(function(){
+			$('#msgForm').submit();
+		})
+	</script>
 </html>

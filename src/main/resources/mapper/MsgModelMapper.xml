@@ -4,17 +4,23 @@
     <insert id="save" parameterType="com.sxjrmsg.app.msgmodel.entity.MsgModel" useGeneratedKeys="true" keyProperty="id">  
         insert into msg_model
         (
-        content
+        content,
+        enable,
+        create_date
         ) 
         values 
         (
-        #{content}
+        #{content},
+        #{enable},
+        #{createDate}
         )  
     </insert>
     <select id="list" resultType="com.sxjrmsg.app.msgmodel.entity.MsgModel">  
         select
         id,
-        content
+        content,
+        enable,
+        create_date as createDate
         from msg_model  
     </select>
     <select id="findOne" resultType="com.sxjrmsg.app.msgmodel.entity.MsgModel">  

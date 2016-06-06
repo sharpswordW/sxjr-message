@@ -7,6 +7,16 @@ public class MsgModel extends BaseEntity{
 	private String id;
 	
 	private String content;
+	
+	private String enable;
+
+	public String getEnable() {
+		return enable;
+	}
+
+	public void setEnable(String enable) {
+		this.enable = enable;
+	}
 
 	public String getId() {
 		return id;
