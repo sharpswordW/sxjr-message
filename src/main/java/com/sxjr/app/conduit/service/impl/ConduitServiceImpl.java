@@ -2,6 +2,7 @@ package com.sxjr.app.conduit.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sxjr.app.conduit.entity.Conduit;
@@ -13,7 +14,7 @@ import com.sxjr.app.conduit.service.ConduitService;
  */
 @Service
 public class ConduitServiceImpl implements ConduitService {
-	
+	@Autowired
 	private ConduitMapper conduitMapper;
 
 	@Override

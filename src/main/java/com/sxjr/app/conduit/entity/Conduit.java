@@ -9,6 +9,8 @@ public class Conduit extends BaseEntity{
 	
 	private String id;
 	
+	private String conduitId;
+	
 	private String name;
 	
 	private String account;
@@ -20,6 +22,14 @@ public class Conduit extends BaseEntity{
 	private String bulkMessage;
 	
 	private String priority;
+
+	public String getConduitId() {
+		return conduitId;
+	}
+
+	public void setConduitId(String conduitId) {
+		this.conduitId = conduitId;
+	}
 
 	public String getId() {
 		return id;

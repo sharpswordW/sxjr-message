@@ -36,6 +36,7 @@ public class ConduitController {
     public String save(HttpServletRequest request,ModelMap modelMap){
     	Conduit conduit = new Conduit();
     	conduit.setName(request.getParameter("name"));
+    	conduit.setConduitId(request.getParameter("conduitId"));
     	conduit.setAccount(request.getParameter("name"));
     	conduit.setPassword(request.getParameter("password"));
     	conduit.setLongMessage(request.getParameter("longMessage"));
