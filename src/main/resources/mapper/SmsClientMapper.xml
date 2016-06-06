@@ -16,4 +16,23 @@
     						  		 #{IPList}
     						  		)
     </insert>
+    <select id="list" resultType="com.sxjr.app.msgmanage.entity.SmClientInfo">
+    	SELECT id,
+    		   name,
+    		   assessToken,
+    		   assessSecret,
+    		   state,
+    		   IPList,
+    		   createDate,
+    		   updateDate
+		FROM tb_smsclient
+    </select>
+    <update id="update" parameterType="com.sxjr.app.msgmanage.entity.SmClientInfo">
+    	UPDATE tb_smsclient
+    		<set>
+    			<if test="name!=null">name=#{name},</if>
+    			<if test="status!=null">status=#{status}</if>
+    		</set>
+    		WHERE id=#{id}
+    </update>
 </mapper>
