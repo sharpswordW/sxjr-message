@@ -66,8 +66,6 @@ public class ConduitController {
     
     @RequestMapping(value = "update")
     public String update(HttpServletRequest request,ModelMap modelMap){
-    	String id = request.getParameter("id");
-    	String content = request.getParameter("content");
     	Conduit conduit = new Conduit();
     	conduit.setId(request.getParameter("id"));
     	conduit.setName(request.getParameter("name"));
