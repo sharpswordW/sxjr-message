@@ -37,6 +37,19 @@
         priority
         from tb_conduit  
     </select>
+    <select id="findOne" resultType="com.sxjr.app.conduit.entity.Conduit">  
+        select
+        id,
+        conduit_id as conduitId,
+        name,
+        account,
+        password,
+        long_message as longMessage,
+        bulk_message as bulkMessage,
+        priority
+        from tb_conduit
+        where id = #{id}  
+    </select>
     <update id="update" parameterType="com.sxjr.app.conduit.entity.Conduit">
 		 update tb_conduit
 			 <set>

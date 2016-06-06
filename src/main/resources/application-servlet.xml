@@ -13,7 +13,7 @@
        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd   
        http://www.springframework.org/schema/context  
        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-	<context:component-scan base-package="com.sxjrmsg.app" />
+	<context:component-scan base-package="com.sxjr.app" />
 	<context:property-placeholder location="classpath:conf_*.properties"/>
 	<mvc:annotation-driven />
 	<bean id="viewResolver"
@@ -57,7 +57,7 @@
                 <value>classpath:mapper/*.xml</value>
             </array>
         </property>
-        <property name="typeAliasesPackage" value="com.sxjrmsg.app.*.entity"/>
+        <property name="typeAliasesPackage" value="com.sxjr.app.*.entity"/>
         <property name="plugins">
             <array>
                 <bean class="com.github.pagehelper.PageHelper">
@@ -67,7 +67,7 @@
     </bean>
 
     <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.sxjrmsg.app.*.mapper"/>
+        <property name="basePackage" value="com.sxjr.app.*.mapper"/>
         <!-- 3.2.2版本新特性，markerInterface可以起到mappers配置的作用，详细情况需要看Marker接口类 -->
         <!-- <property name="markerInterface" value="com.sxjr.common.base.mapper.BaseMapper"/> -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/> 
