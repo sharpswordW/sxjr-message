@@ -1,6 +1,7 @@
 package com.sxjr.app.conduit.controller;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -8,12 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.alibaba.fastjson.JSON;
 import com.sxjr.app.conduit.entity.Conduit;
 import com.sxjr.app.conduit.service.ConduitService;
+import com.sxjr.common.util.RedisUtil;
 import com.sxjr.sso.vo.EmployeeVo;
 
 /**
@@ -27,8 +31,12 @@ public class ConduitController {
 	private String PAGE_LIST = "conduit/list";
 	private String PAGE_EDIT = "conduit/edit";
 	
+	private String redisKey = "conduit";
+	
     @Autowired
     ConduitService conduitService;
+    @Autowired
+    RedisUtil redisUtil;
     
     @RequestMapping(value = "toAdd")
     public String toAdd(ModelMap modelMap){
@@ -53,8 +61,13 @@ public class ConduitController {
     	conduit.setBulkMessage(request.getParameter("bulkMessage"));
     	conduit.setPriority(request.getParameter("priority"));
     	conduit.setCreateDate(new Date());
-    	conduit.setCreateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
+//    	conduit.setCreateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
+    	conduit.setCreateBy("wrq");
     	conduitService.save(conduit);
+    	String key = redisKey;
+    	String hashKey = request.getParameter("conduitId");
+    	String obj = JSON.toJSON(conduit).toString(); 
+    	redisUtil.setHash(key, hashKey, obj);
     	List<Conduit> list = conduitService.list();
     	modelMap.put("lists", list);
         return PAGE_LIST;
