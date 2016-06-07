@@ -41,6 +41,7 @@ public class SmsClientController {
 		return "msgmanage/addClient";
 	}
 	
+	@RequestMapping(value = "qrylist")
 	public String  qryClient(ModelMap modelMap) {
 		List<SmClientInfo> smClientInfos=smsManageService.list();
 		modelMap.put("list", smClientInfos);
