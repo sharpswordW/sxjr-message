@@ -1,5 +1,7 @@
 package com.sxjr.app.msgmanage.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,16 +27,26 @@ public class SmsClientController {
 	@RequestMapping(value = "save")
 	public String addClient(HttpServletRequest request,SmClientInfo smClientInfo,ModelMap modelMap) {
 		smClientInfo.setAssessToken(TicketUtil.UUID());
-		smClientInfo.setState("0");
+		smClientInfo.setStatus(smClientInfo.getStatus());
 		smClientInfo.setIPList(request.getRemoteAddr());
 		smClientInfo.setAssessSecret(TicketUtil.UUID());
 		modelMap.put("result", smsManageService.addClient(smClientInfo));
-		return "page/addClient";
+		List<SmClientInfo> smClientInfos=smsManageService.list();
+		modelMap.put("list", smClientInfos);
+		return "msgmanage/list";
 	}
 
 	@RequestMapping(value = "toAdd")
 	public String toAdd() {
 		return "msgmanage/addClient";
+	}
+	
+	public String  qryClient(ModelMap modelMap) {
+		List<SmClientInfo> smClientInfos=smsManageService.list();
+		modelMap.put("list", smClientInfos);
+		
+		return "msgmanage/list";
+		
 	}
 
 }

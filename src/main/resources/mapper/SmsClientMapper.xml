@@ -6,13 +6,13 @@
     	INSERT INTO tb_smsclient(name,
     								 assessToken,
     								 assessSecret,
-    								 state,
+    								 status,
     								 IPList
     								)
     						  values(#{name},
     						  		 #{assessToken},
     						  		 #{assessSecret},
-    						  		 #{state},
+    						  		 #{status},
     						  		 #{IPList}
     						  		)
     </insert>
@@ -21,7 +21,7 @@
     		   name,
     		   assessToken,
     		   assessSecret,
-    		   state,
+    		   status,
     		   IPList,
     		   createDate,
     		   updateDate
@@ -35,4 +35,7 @@
     		</set>
     		WHERE id=#{id}
     </update>
+    <delete id="delete" parameterType="com.sxjr.app.msgmanage.entity.SmClientInfo">
+    	DELETE FROM tb_smsclient WHERE id=#{id}
+    </delete>
 </mapper>

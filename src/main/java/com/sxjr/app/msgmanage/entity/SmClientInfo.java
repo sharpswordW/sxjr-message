@@ -26,7 +26,7 @@ public class SmClientInfo extends BaseEntity {
     /**
      * 状态
      */
-    private String state;
+    private String status;
     
     /**
      * 状态
@@ -65,12 +65,13 @@ public class SmClientInfo extends BaseEntity {
 		this.assessSecret = assessSecret;
 	}
 
-	public String getState() {
-		return state;
+
+	public String getStatus() {
+		return status;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getIPList() {
@@ -84,8 +85,8 @@ public class SmClientInfo extends BaseEntity {
 	@Override
 	public String toString() {
 		return "SmClientInfo [id=" + id + ", name=" + name + ", assessToken="
-				+ assessToken + ", assessSecret=" + assessSecret + ", state="
-				+ state + ", IPList=" + IPList + "]";
+				+ assessToken + ", assessSecret=" + assessSecret + ", status="
+				+ status + ", IPList=" + IPList + "]";
 	}
   
 }
