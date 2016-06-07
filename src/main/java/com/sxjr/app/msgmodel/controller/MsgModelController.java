@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.sxjr.app.msgmodel.entity.MsgModel;
 import com.sxjr.app.msgmodel.service.MsgModelService;
 import com.sxjr.app.sequence.service.SequenceService;
+import com.sxjr.sso.vo.EmployeeVo;
 
 /**
  * Created by wangrq on 2016/6/2.
@@ -49,6 +50,8 @@ public class MsgModelController {
     	model.setContent(content);
     	model.setEnable(enable);
     	model.setCreateDate(new Date());
+    	model.setUpdateDate(new Date());
+    	model.setCreateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
     	msgModelService.save(model);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
@@ -77,6 +80,8 @@ public class MsgModelController {
     	MsgModel model = new MsgModel();
     	model.setContent(content);
     	model.setId(id);
+    	model.setEnable(request.getParameter("enable"));
+    	model.setUpdateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
     	msgModelService.update(model);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
@@ -87,6 +92,22 @@ public class MsgModelController {
     public String delete(HttpServletRequest request,ModelMap modelMap){
     	String id = request.getParameter("id");
     	msgModelService.delete(id);
+    	List list = msgModelService.list();
+    	modelMap.put("lists", list);
+        return PAGE_LIST;
+    }
+    
+    @RequestMapping(value = "disable")
+    public String disable(HttpServletRequest request,ModelMap modelMap){
+    	String id = request.getParameter("id");
+    	MsgModel model = msgModelService.findOne(id);
+    	if("1".equals(model.getEnable())){
+    		model.setEnable("0");
+    	}else{
+    		model.setEnable("1");
+    	}
+    	model.setUpdateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
+    	msgModelService.update(model);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
         return PAGE_LIST;

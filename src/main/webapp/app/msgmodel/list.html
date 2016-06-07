@@ -34,13 +34,22 @@
                                     	<thead>
 											<tr>
 												<th>
-													序号
+													模板ID
 												</th>
 												<th>
-													内容
+													模板内容
 												</th>
 												<th>
-													是否启用
+													创建时间
+												</th>
+												<th>
+													最后更新时间
+												</th>
+												<th>
+													创建人
+												</th>
+												<th>
+													状态
 												</th>
 												<th>
 													操作
@@ -52,8 +61,27 @@
                                             <tr class="odd gradeX">
                                                 <td>${msg.id}</td>
                                                 <td>${msg.content}</td>
-                                                <td>${msg.enable}</td>
-                                                <td><a href="toEdit?id=${msg.id}">修改</a>&nbsp;&nbsp;&nbsp;<a href="delete?id=${msg.id}">删除</a></td>
+                                                <td>${msg.createDate?string("yyyy-MM-dd")}</td>
+                                                <td>${msg.updateDate?string("yyyy-MM-dd")}</td>
+                                                <td>${msg.createBy}</td>
+                                                <td>
+                                                	<#if msg.enable == '1'>
+                                                		启用
+                                                	</#if>
+                                                	<#if msg.enable == '0'>
+                                                		禁用
+                                                	</#if>
+                                                </td>
+                                                <td>
+                                                	<#if msg.enable == '1'>
+                                                		<a href="disable?id=${msg.id}">禁用</a>&nbsp;&nbsp;&nbsp;
+                                                	</#if>
+                                                	<#if msg.enable == '0'>
+                                                		<a href="disable?id=${msg.id}">启用</a>&nbsp;&nbsp;&nbsp;
+                                                	</#if>
+                                                	<a href="toEdit?id=${msg.id}">修改</a>&nbsp;&nbsp;&nbsp;
+                                                	<a href="delete?id=${msg.id}">删除</a>
+                                                </td>
                                             </tr>
                                         </#list>
                                         </tbody>
