@@ -1,9 +1,11 @@
 package com.sxjr.app.conduit.controller;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sxjr.app.conduit.entity.Conduit;
 import com.sxjr.app.conduit.service.ConduitService;
+import com.sxjr.sso.vo.EmployeeVo;
 
 /**
  * Created by wangrq on 2016/6/2.
@@ -28,12 +31,19 @@ public class ConduitController {
     ConduitService conduitService;
     
     @RequestMapping(value = "toAdd")
-    public String toAdd(){
-        return PAGE_ADD;
+    public String toAdd(ModelMap modelMap){
+    	modelMap.put("errorMsg", "yes");
+        return PAGE_ADD;	
     }
     
     @RequestMapping(value = "save")
     public String save(HttpServletRequest request,ModelMap modelMap){
+    	String conduitId = request.getParameter("conduitId");
+        Conduit model = conduitService.findByConduitId(conduitId);
+        if(model != null){
+        	modelMap.put("errorMsg", "no");
+        	return PAGE_ADD;
+        }
     	Conduit conduit = new Conduit();
     	conduit.setName(request.getParameter("name"));
     	conduit.setConduitId(request.getParameter("conduitId"));
@@ -43,6 +53,7 @@ public class ConduitController {
     	conduit.setBulkMessage(request.getParameter("bulkMessage"));
     	conduit.setPriority(request.getParameter("priority"));
     	conduit.setCreateDate(new Date());
+    	conduit.setCreateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
     	conduitService.save(conduit);
     	List<Conduit> list = conduitService.list();
     	modelMap.put("lists", list);
@@ -69,13 +80,14 @@ public class ConduitController {
     	Conduit conduit = new Conduit();
     	conduit.setId(request.getParameter("id"));
     	conduit.setName(request.getParameter("name"));
-    	conduit.setConduitId(request.getParameter("conduitId"));
+//    	conduit.setConduitId(request.getParameter("conduitId")); //通道ID不可以修改
     	conduit.setAccount(request.getParameter("name"));
     	conduit.setPassword(request.getParameter("password"));
     	conduit.setLongMessage(request.getParameter("longMessage"));
     	conduit.setBulkMessage(request.getParameter("bulkMessage"));
     	conduit.setPriority(request.getParameter("priority"));
-    	conduit.setCreateDate(new Date());
+    	conduit.setUpdateDate(new Date());
+    	conduit.setUpdateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
     	conduitService.update(conduit);
     	List list = conduitService.list();
     	modelMap.put("lists", list);
@@ -89,6 +101,16 @@ public class ConduitController {
     	List list = conduitService.list();
     	modelMap.put("lists", list);
         return PAGE_LIST;
+    }
+    
+    @RequestMapping(value = "checkConduit")
+    public void checkConduit(HttpServletRequest request,HttpServletResponse response) throws IOException{
+    	String conduitId = request.getParameter("conduitId");
+        Conduit model = conduitService.findByConduitId(conduitId);
+        response.setCharacterEncoding("utf-8");
+//        response.setContentType("application/json");
+        response.getWriter().write("{\"data\":success}");
+        response.getWriter().flush();
     }
 
 }

@@ -42,5 +42,11 @@ public class ConduitServiceImpl implements ConduitService {
 	public void delete(String id) {
 		conduitMapper.delete(id);
 	}
+
+	@Override
+	public Conduit findByConduitId(String conduitId) {
+		// TODO Auto-generated method stub
+		return conduitMapper.findByConduitId(conduitId);
+	}
 	
 }
