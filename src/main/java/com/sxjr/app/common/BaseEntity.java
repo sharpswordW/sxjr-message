@@ -44,4 +44,5 @@ public class BaseEntity {
 		this.updateBy = updateBy;
 	}
 
+
 }

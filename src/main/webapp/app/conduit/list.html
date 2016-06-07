@@ -27,7 +27,7 @@
                             <div class="panel panel-default plain toggle panelClose panelRefresh">
                                 <!-- Start .panel -->
                                 <div class="panel-heading white-bg">
-                                    <h4 class="panel-title">Data table</h4>
+                                    <button class="btn btn-success" id="add">新增</button>
                                 </div>
                                 <div class="panel-body">
                                     <table class="table display" id="datatable">
@@ -93,5 +93,10 @@
         </div>
         <!-- End #content -->
         <script src="../../common/js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+			$('#add').click(function(){
+				document.location.href = "toAdd";
+			})
+		</script>
     </body>
 </html>

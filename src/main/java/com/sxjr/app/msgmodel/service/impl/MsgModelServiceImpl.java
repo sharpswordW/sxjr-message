@@ -45,4 +45,9 @@ public class MsgModelServiceImpl implements MsgModelService {
 		
 	}
 
+	@Override
+	public void disable(MsgModel msgmodel) {
+		msgModelMapper.update(msgmodel);
+	}
+
 }

@@ -4,15 +4,21 @@
     <insert id="save" parameterType="com.sxjr.app.msgmodel.entity.MsgModel" useGeneratedKeys="true" keyProperty="id">  
         insert into msg_model
         (
+        model_id,
         content,
         enable,
-        create_date
+        create_date,
+        create_by,
+        update_date
         ) 
         values 
         (
+        #{modelId},
         #{content},
         #{enable},
-        #{createDate}
+        #{createDate},
+        #{createBy},
+        #{updateDate}
         )  
     </insert>
     <select id="list" resultType="com.sxjr.app.msgmodel.entity.MsgModel">  
@@ -20,12 +26,15 @@
         id,
         content,
         enable,
-        create_date as createDate
+        create_date as createDate,
+        update_date as updateDate,
+        create_by as createBy
         from msg_model  
     </select>
     <select id="findOne" resultType="com.sxjr.app.msgmodel.entity.MsgModel">  
         select
         id,
+        model_id as modelId,
         content,
         enable
         from msg_model
@@ -36,6 +45,15 @@
 		 <set>
 		  <if test="content!=null and content!='' ">
 		   msg_model.content = #{content},
+		  </if>
+		  <if test="enable!=null and enable!='' ">
+		   msg_model.enable = #{enable},
+		  </if>
+		  <if test="updateBy!=null and updateBy!='' ">
+		   msg_model.update_by = #{updateBy},
+		  </if>
+		  <if test="updateDate!=null and updateDate!='' ">
+		   msg_model.update_date = #{updateDate},
 		  </if>
 		 </set>
 	 where msg_model.id = #{id};

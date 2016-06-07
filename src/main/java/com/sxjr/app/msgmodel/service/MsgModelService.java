@@ -13,4 +13,5 @@ public interface MsgModelService{
     MsgModel findOne(String id);
     void update(MsgModel msgmodel);
     void delete(String id);
+    void disable(MsgModel msgmodel);
 }

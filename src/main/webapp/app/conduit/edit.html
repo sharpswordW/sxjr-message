@@ -8,6 +8,11 @@
         <link href="../../common/css/bootstrap.css" rel="stylesheet" />
         <!-- Main stylesheets (template main css file) -->
         <link href="../../common/css/main.css" rel="stylesheet" />
+        <style>
+			.error{
+				color:red;
+			}
+		</style>
     </head>
     <body>
         <!-- Start #content -->
@@ -27,53 +32,54 @@
                                     <h3 class="panel-title">Form fields</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <form class="form-horizontal group-border hover-stripped" name="msgForm" id="msgForm" action="update">
+                                    <form class="form-horizontal group-border hover-stripped" name="conduitForm" id="conduitForm" action="update">
                                     	<input type="hidden" name="id" id="id" />
                                         <div class="form-group">
                                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">通道名称</label>
                                             <div class="col-lg-10 col-md-10">
-                                            	<input type="text" class="form-control" name="name" id="name"/>
+                                            	<input type="text" class="form-control" name="name" id="name" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">通道ID</label>
                                             <div class="col-lg-10 col-md-10">
-                                            	<input type="text" class="form-control" name="conduitId" id="conduitId"/>
+                                            	<input type="text" class="form-control" name="conduitId" id="conduitId" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">用户名</label>
                                             <div class="col-lg-10 col-md-10">
-                                            	<input type="text" class="form-control" name="account" id="account"/>
+                                            	<input type="text" class="form-control" name="account" id="account" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">密码</label>
                                             <div class="col-lg-10 col-md-10">
-                                            	<input type="text" class="form-control" name="password" id="password"/>
+                                            	<input type="text" class="form-control" name="password" id="password" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">长短信</label>
                                             <div class="col-lg-10 col-md-10">
-                                            	<input type="text" class="form-control" name="longMessage" id="longMessage"/>
+                                            	<input type="text" class="form-control" name="longMessage" id="longMessage" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">批量短信</label>
                                             <div class="col-lg-10 col-md-10">
-                                            	<input type="text" class="form-control" name="bulkMessage" id="bulkMessage"/>
+                                            	<input type="text" class="form-control" name="bulkMessage" id="bulkMessage" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">权重</label>
                                             <div class="col-lg-10 col-md-10">
-                                            	<input type="text" class="form-control" name="priority" id="priority"/>
+                                            	<input type="text" class="form-control" name="priority" id="priority" required/>
                                             </div>
                                         </div>
                                         <div class="col-lg-12 text-center">
 		                                    <!-- col-lg-12 start here -->
 		                                    <button class="btn btn-success" id="save">保存</button>
+		                                    <button class="btn btn-success" id="cancel">取消</button>
 		                                </div>
                                     </form>
                                 </div>
@@ -92,6 +98,8 @@
         <!-- Javascripts -->
     </body>
     <script src="../../common/js/jquery.js"></script>
+    <script src="../../common/plugins/forms/validation/jquery.validate.js"></script>
+    <script src="../../common/plugins/forms/validation/localization/messages_zh.js"></script>
     <script type="text/javascript">
 	    $(function(){
 			$('#id').val("${model.id}");
@@ -104,7 +112,11 @@
 			$('#priority').val("${model.priority}");
 		})
 		$('#save').click(function(){
-			$('#msgForm').submit();
+			$("#conduitForm").validate();
+			$('#conduitForm').submit();
+		})
+		$('#cancel').click(function(){
+			document.location.href = "list";
 		})
 	</script>
 </html>
