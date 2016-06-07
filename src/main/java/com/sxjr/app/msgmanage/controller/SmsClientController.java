@@ -31,7 +31,6 @@ public class SmsClientController {
 	public String addClient(HttpServletRequest request,
 			SmClientInfo smClientInfo, ModelMap modelMap) {
 		smClientInfo.setAssessToken(TicketUtil.UUID());
-		smClientInfo.setIPList(request.getRemoteAddr());
 		smClientInfo.setAssessSecret(TicketUtil.UUID());
 		if (smClientInfo.getName() == null || smClientInfo.getStatus() == null) {
 			modelMap.put("result", "0");

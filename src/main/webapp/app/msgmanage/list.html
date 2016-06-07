@@ -43,9 +43,11 @@
 													Access Key Secret
 												</th>
 												<th>
+													IP白名单
+												</th>
+												<th>
 													状态
 												</th>
-												
 												<th>
 													操作
 												</th>
@@ -57,6 +59,7 @@
                                                 <td>${clientInfo.name}</td>
                                                 <td>${clientInfo.assessToken}</td>
                                                 <td>${clientInfo.assessSecret}</td>
+                                                <td>${clientInfo.IPList}</td>
                                                 <td>
 	                                                <#if clientInfo.status="0">
 														禁止
@@ -70,7 +73,9 @@
                                             </tr>
                                         </#list>
                                         </tbody>
+                                        
                                     </table>
+                                     <div style=" text-align:center;"> <a href="toAdd"><button class="btn btn-success" id="add">新增</button></a> </div>
                                 </div>
                             </div>
                             <!-- End .panel -->
@@ -87,4 +92,5 @@
         <!-- End #content -->
         <script src="../../common/js/jquery-1.8.3.min.js"></script>
     </body>
+   
 </html>
