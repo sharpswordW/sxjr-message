@@ -6,9 +6,19 @@ public class MsgModel extends BaseEntity{
 	
 	private String id;
 	
+	private String modelId;
+	
 	private String content;
 	
 	private String enable;
+
+	public String getModelId() {
+		return modelId;
+	}
+
+	public void setModelId(String modelId) {
+		this.modelId = modelId;
+	}
 
 	public String getEnable() {
 		return enable;

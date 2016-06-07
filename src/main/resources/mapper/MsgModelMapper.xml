@@ -4,12 +4,14 @@
     <insert id="save" parameterType="com.sxjr.app.msgmodel.entity.MsgModel" useGeneratedKeys="true" keyProperty="id">  
         insert into msg_model
         (
+        model_id,
         content,
         enable,
         create_date
         ) 
         values 
         (
+        #{modelId},
         #{content},
         #{enable},
         #{createDate}

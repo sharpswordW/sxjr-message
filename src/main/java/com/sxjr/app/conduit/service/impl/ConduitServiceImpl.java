@@ -29,20 +29,17 @@ public class ConduitServiceImpl implements ConduitService {
 
 	@Override
 	public Conduit findOne(String id) {
-		// TODO Auto-generated method stub
 		return conduitMapper.findOne(id);
 	}
 
 	@Override
 	public void update(Conduit conduit) {
-		// TODO Auto-generated method stub.
 		conduitMapper.update(conduit);
 		
 	}
 
 	@Override
 	public void delete(String id) {
-		// TODO Auto-generated method stub
 		conduitMapper.delete(id);
 	}
 	
