@@ -32,17 +32,19 @@
                                     <h3 class="panel-title">增加短信客户端</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <form class="form-horizontal group-border hover-stripped" name="conduitForm" id="conduitForm" action="save">
+                                    <form class="form-horizontal group-border hover-stripped" name="conduitForm" id="conduitForm" action="update">
                                         <div class="form-group">
                                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">用户名</label>
                                             <div class="col-lg-10 col-md-10">
-                                            	<input type="text" class="form-control" name="name" required/>
+                                            	<input id="name" type="text" class="form-control" name="name"  required/>
+                                            	<input id="id" class="form-control" name="id" type="hidden" />
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">状态</label>
                                             <div class="col-lg-10 col-md-10">
-                                            	<input id="status" class="form-control" name="status" type="hidden" value="1"/>
+                                            	<input id="status" class="form-control" name="status" type= "hidden"/>
+                                            	
                                             	<select id="select" onchange="t(this)" class="form-control">
 						 							<option status="1">启用</option>
 						 							<option status="0">禁用</option>
@@ -79,15 +81,19 @@
 			$("#conduitForm").validate();
 			$('#conduitForm').submit();
 		})
-		
-function t(obj)
-	{
-	if(obj.value=="禁用")
-	{
-	document.getElementById("status").value = "0"
-	}
-	else
-	document.getElementById("status").value = "1"
-	}
+		$(function(){
+			$('#id').val("${smClientInfo.id}");
+			$('#name').val("${smClientInfo.name}");
+			$('#status').val("${smClientInfo.status}");
+		})
+		function t(obj)
+			{
+			if(obj.value=="禁用")
+			{
+			document.getElementById("status").value = "0"
+			}
+			else
+			document.getElementById("status").value = "1"
+			}
 	</script>
 </html>

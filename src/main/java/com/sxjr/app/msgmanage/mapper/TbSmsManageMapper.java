@@ -8,7 +8,7 @@ public interface TbSmsManageMapper {
 
 	 int save(SmClientInfo smClientInfo);
 	 List<SmClientInfo> list();
-	 SmClientInfo findOne(String id);
+	 SmClientInfo selectbyid(String id);
 	    void update(SmClientInfo smClientInfo);
 	    void delete(String id);
 }

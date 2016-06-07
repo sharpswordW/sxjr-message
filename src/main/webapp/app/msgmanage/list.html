@@ -1,51 +1,90 @@
-
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-<!-- <#list lists as demo>
-    ${demo.name}
-    <br>
-</#list> -->
-	<div class="container-fluid">
-		<div class="row-fluid">
-			<div class="span12">
-				<h3>
-					列表
-				</h3>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>
-								用户名
-							</th>
-							<th>
-								状态
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						<#list lists as clientInfo>
-						    <tr class="success">
-								<td>
-									${clientInfo.name}
-								</td>
-								<td>
-									<#if clientInfo.status="0">
-										启用
-									<#elseif clientInfo.status="1">
-										禁止
-									<#esle>
-										无状态
-									</#if>
-								</td>
-							</tr>
-						</#list>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Tables</title>
+        <!-- Import google fonts - Heading first/ text second -->
+        <link rel='stylesheet' type='text/css' />
+        <!-- Css files -->
+        <!-- Bootstrap stylesheets (included template modifications) -->
+        <link href="../../common/css/bootstrap.css" rel="stylesheet" />
+        <!-- Main stylesheets (template main css file) -->
+        <link href="../../common/css/main.css" rel="stylesheet" />
+        <!-- Fav and touch icons -->
+    </head>
+    <body>
+        <!-- Start #content -->
+        <div id="content">
+            <!-- Start .content-wrapper -->
+            <div class="content-wrapper">
+                <!-- End .row -->
+                <div class="outlet">
+                    <!-- Start .outlet -->
+                    <!-- Page start here ( usual with .row ) -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- col-lg-12 start here -->
+                            <div class="panel panel-default plain toggle panelClose panelRefresh">
+                                <!-- Start .panel -->
+                                <div class="panel-heading white-bg">
+                                    <h4 class="panel-title">客户端列表</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table display" id="datatable">
+                                    	<thead>
+											<tr>
+												<th>
+													客户端名称
+												</th>
+												<th>
+													Access Key ID
+												</th>
+												<th>
+													Access Key Secret
+												</th>
+												<th>
+													状态
+												</th>
+												
+												<th>
+													操作
+												</th>
+											</tr>
+										</thead>
+                                        <tbody>
+                                        <#list lists as clientInfo>
+                                            <tr class="odd gradeX">
+                                                <td>${clientInfo.name}</td>
+                                                <td>${clientInfo.assessToken}</td>
+                                                <td>${clientInfo.assessSecret}</td>
+                                                <td>
+	                                                <#if clientInfo.status="0">
+														禁止
+													<#elseif clientInfo.status="1">
+														启用
+													<#else>
+														无状态
+													</#if>
+												</td>
+                                                <td><a href="edit?id=${clientInfo.id}">修改</a>&nbsp;&nbsp;&nbsp;<a href="delete?id=${clientInfo.id}">删除</a></td>
+                                            </tr>
+                                        </#list>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- End .panel -->
+                        </div>
+                        <!-- col-lg-12 end here -->
+                    </div>
+                    <!-- Page End here -->
+                </div>
+                <!-- End .outlet -->
+            </div>
+            <!-- End .content-wrapper -->
+            <div class="clearfix"></div>
+        </div>
+        <!-- End #content -->
+        <script src="../../common/js/jquery-1.8.3.min.js"></script>
+    </body>
 </html>

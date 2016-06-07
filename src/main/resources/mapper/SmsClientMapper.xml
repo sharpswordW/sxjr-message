@@ -27,6 +27,17 @@
     		   updateDate
 		FROM tb_smsclient
     </select>
+     <select id="selectbyid" resultType="com.sxjr.app.msgmanage.entity.SmClientInfo">
+    	SELECT id,
+    		   name,
+    		   assessToken,
+    		   assessSecret,
+    		   status,
+    		   IPList,
+    		   createDate,
+    		   updateDate
+		FROM tb_smsclient WHERE id=#{id}
+    </select>
     <update id="update" parameterType="com.sxjr.app.msgmanage.entity.SmClientInfo">
     	UPDATE tb_smsclient
     		<set>

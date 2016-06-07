@@ -22,23 +22,23 @@ public class SmsManageServiceImpl implements SmsManageService {
 	}
 	@Override
 	public List<SmClientInfo> list() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return tbSmsManageMapper.list();
 	}
 	@Override
 	public SmClientInfo findOne(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return tbSmsManageMapper.selectbyid(id);
 	}
 	
 	@Override
 	public void delete(String id) {
-		// TODO Auto-generated method stub
+		tbSmsManageMapper.delete(id);
 		
 	}
 	@Override
 	public void update(SmClientInfo smClientInfo) {
-		// TODO Auto-generated method stub
+		tbSmsManageMapper.update(smClientInfo);
 		
 	}
 
