@@ -101,5 +101,14 @@
     <bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">  
         <property name="connectionFactory"   ref="connectionFactory" />  
     </bean>
-
+    <bean id="properties"  class="org.springframework.beans.factory.config.PropertiesFactoryBean">  
+        <property name="locations">  
+            <list>  
+                <value>classpath:sysConfig.properties</value>  
+            </list>  
+        </property>  
+    </bean>  
+    <bean id="parseProperties" class="com.sxjr.app.common.ParseProperties">  
+        <property name="properties" ref="properties" />  
+    </bean> 
 </beans>
