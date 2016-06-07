@@ -34,6 +34,11 @@
                                 <div class="panel-body">
                                     <form class="form-horizontal group-border hover-stripped" name="conduitForm" id="conduitForm" action="save">
                                         <div class="form-group">
+                                            <#if errorMsg == 'no'>
+                                           		<span style="color:red">通道ID已经存在!</span>
+                                           	</#if>
+                                        </div>
+                                        <div class="form-group">
                                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">通道名称</label>
                                             <div class="col-lg-10 col-md-10">
                                             	<input type="text" class="form-control" name="name" required/>
