@@ -11,14 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sxjr.app.msgmanage.entity.SmClientInfo;
 import com.sxjr.app.msgmanage.service.SmsManageService;
+import com.sxjr.app.msgmodel.entity.MsgModel;
 import com.sxjr.app.until.TicketUtil;
+import com.sxjr.sso.vo.EmployeeVo;
 
 /**
-* ÀàµÄÃèÊö
-* @author outh
-* @Time 2016-06-06
-*
-*/
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * 
+ * @author outh
+ * @Time 2016-06-06
+ *
+ */
 @Controller
 @RequestMapping(value = "app/sms")
 public class SmsClientController {
@@ -26,21 +29,24 @@ public class SmsClientController {
 	@Autowired
 	private SmsManageService smsManageService;
 	/**
-     * Ôö¼Ó¿Í»§¶ËÒ³Ãæ
-     */
+	 * å¢åŠ å®¢æˆ·ç«¯é¡µé¢
+	 */
 	private String PAGE_ADD = "msgmanage/addClient";
 	/**
-     * ¿Í»§¶ËÁĞ±í
-     */
+	 * å®¢æˆ·ç«¯åˆ—è¡¨
+	 */
 	private String PAGE_LIST = "msgmanage/list";
 	/**
-     * ±à¼­¿Í»§¶ËĞÅÏ¢
-     */
+	 *ç¼–è¾‘å®¢æˆ·ç«¯ä¿¡æ¯
+	 */
 	private String PAGE_EDIT = "msgmanage/edit";
+
 	/**
-	 * ±£´æ¿Í»§¶ËĞÅÏ¢
-	 *@param request smClientInfo
-	 *@return PAGE_LIST
+	 * ä¿å­˜å®¢æˆ·ç«¯ä¿¡æ¯
+	 *
+	 * @param request
+	 *            smClientInfo
+	 * @return PAGE_LIST
 	 * 
 	 */
 	@RequestMapping(value = "save")
@@ -60,7 +66,7 @@ public class SmsClientController {
 		return PAGE_LIST;
 	}
 	/**
-	 * Ôö¼Ó¿Í»§¶ËĞÅÏ¢
+	 * å¢åŠ å®¢æˆ·ç«¯ä¿¡æ¯
 	 *@param
 	 *@return PAGE_ADD
 	 * 
@@ -70,7 +76,7 @@ public class SmsClientController {
 		return PAGE_ADD;
 	}
 	/**
-	 * »ñÈ¡¿Í»§¶ËĞÅÏ¢
+	 * è·å–å®¢æˆ·ç«¯ä¿¡æ¯
 	 *@param 
 	 *@return PAGE_LIST
 	 * 
@@ -84,7 +90,7 @@ public class SmsClientController {
 
 	}
 	/**
-	 * É¾³ı¿Í»§¶ËĞÅÏ¢
+	 * åˆ é™¤å®¢æˆ·ç«¯ä¿¡æ¯
 	 *@param request
 	 *@return PAGE_LIST
 	 * 
@@ -101,30 +107,52 @@ public class SmsClientController {
 		return PAGE_LIST;
 	}
 	/**
-	 * ±à¼­¿Í»§¶ËĞÅÏ¢
+	 * ç¼–è¾‘å®¢æˆ·ç«¯ä¿¡æ¯
 	 *@param request smClientInfo
 	 *@return PAGE_EDIT
 	 * 
 	 */
 	@RequestMapping(value = "edit")
-	public String editClient(HttpServletRequest request,SmClientInfo smClientInfo, ModelMap modelMap) {
+	public String editClient(HttpServletRequest request,
+			SmClientInfo smClientInfo, ModelMap modelMap) {
 		String id = request.getParameter("id");
-		smClientInfo=smsManageService.findOne(id);
+		smClientInfo = smsManageService.findOne(id);
 		modelMap.put("smClientInfo", smClientInfo);
 		return PAGE_EDIT;
 	}
+
 	/**
-	 * ¸üĞÂ¿Í»§¶ËĞÅÏ¢
+	 * æ›´æ–°å®¢æˆ·ç«¯ä¿¡æ¯
 	 *@param request smClientInfo
 	 *@return PAGE_LIST
 	 * 
 	 */
 	@RequestMapping(value = "update")
-	public String updateClient(HttpServletRequest request,SmClientInfo smClientInfo, ModelMap modelMap) {
+	public String updateClient(HttpServletRequest request,
+			SmClientInfo smClientInfo, ModelMap modelMap) {
 		smsManageService.update(smClientInfo);
 		List<SmClientInfo> smClientInfos = smsManageService.list();
 		modelMap.put("lists", smClientInfos);
 		return PAGE_LIST;
 	}
-
+	/**
+	 * æ›´æ–°å®¢æˆ·ç«¯çŠ¶æ€
+	 *@param request smClientInfo
+	 *@return PAGE_LIST
+	 * 
+	 */
+	@RequestMapping(value = "disable")
+	public String disable(HttpServletRequest request, ModelMap modelMap) {
+		String id = request.getParameter("id");
+		SmClientInfo smClientInfo = smsManageService.findOne(id);
+		if ("1".equals(smClientInfo.getStatus())) {
+			smClientInfo.setStatus("0");
+		} else {
+			smClientInfo.setStatus("1");
+		}
+		smsManageService.update(smClientInfo);
+		List list = smsManageService.list();
+		modelMap.put("lists", list);
+		return PAGE_LIST;
+	}
 }

@@ -13,17 +13,16 @@ public class QrySmsClient implements IQrySmsClient{
 	@Autowired
 	private static RedisUtil redisUtil;
 	/**
-     * ¿Í»§¶Ë×´Ì¬£¬1±íÊ¾ÆôÓÃ£¬0±íÊ¾½ûÓÃ
+     * å®¢æˆ·ç«¯çŠ¶æ€ï¼Œ1è¡¨ç¤ºå¯ç”¨ï¼Œ0è¡¨ç¤ºç¦ç”¨
      */
 	private static final String STATUS="1";
 	/**
-     * ´æÈëredisÖĞµÄkeyÇ°×º
+     * å­˜å…¥redisä¸­çš„keyå‰ç¼€
      */
 	private static final String CLIENT_KEY = "smClient.info.";
-
 	/**
-	 * ÅĞ¶Ï¿Í»§¶ËĞÅÏ¢keyÊÇ·ñ´æÔÚ²¢ÇÒÅĞ¶Ï½ÓÈëÂëscreteIDÊÇ·ñÕıÈ·ºÍ¿Í»§¶ËSTATUSÊÇ·ñÊÇ¿ÉÓÃ×´Ì¬
-	 *@param key ¿Í»§¶Ë½ÓÈëÕËºÅ screteID ½ÓÈëÆ¾Ö¤
+	 * åˆ¤æ–­å®¢æˆ·ç«¯ä¿¡æ¯keyæ˜¯å¦å­˜åœ¨å¹¶ä¸”åˆ¤æ–­æ¥å…¥ç screteIDæ˜¯å¦æ­£ç¡®å’Œå®¢æˆ·ç«¯STATUSæ˜¯å¦æ˜¯å¯ç”¨çŠ¶æ€
+	 *@param key å®¢æˆ·ç«¯æ¥å…¥è´¦å· screteID æ¥å…¥å‡­è¯
 	 *@return 
 	 * 
 	 */

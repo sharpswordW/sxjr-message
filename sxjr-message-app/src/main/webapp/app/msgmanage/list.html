@@ -28,7 +28,7 @@
                             <div class="panel panel-default plain toggle panelClose panelRefresh">
                                 <!-- Start .panel -->
                                 <div class="panel-heading white-bg">
-                                    <h4 class="panel-title">客户端列表</h4>
+                                    <button class="btn btn-success" id="add">新增</button>
                                 </div>
                                 <div class="panel-body">
                                     <table class="table display" id="datatable">
@@ -70,13 +70,19 @@
 														无状态
 													</#if>
 												</td>
-                                                <td><a href="edit?id=${clientInfo.id}">修改</a>&nbsp;&nbsp;&nbsp;<a href="delete?id=${clientInfo.id}">删除</a></td>
+                                                <td>
+                                                	<#if clientInfo.status == '1'>
+                                                		<a href="disable?id=${clientInfo.id}">禁用</a>&nbsp;&nbsp;&nbsp;
+                                                	</#if>
+                                                	<#if clientInfo.status == '0'>
+                                                		<a href="disable?id=${clientInfo.id}">启用</a>&nbsp;&nbsp;&nbsp;
+                                                	</#if>
+                                                <a href="edit?id=${clientInfo.id}">修改</a>&nbsp;&nbsp;&nbsp;<a href="delete?id=${clientInfo.id}">删除</a></td>
                                             </tr>
                                         </#list>
                                         </tbody>
                                         
                                     </table>
-                                     <div style=" text-align:center;"> <a href="toAdd"><button class="btn btn-success" id="add">新增</button></a> </div>
                                 </div>
                             </div>
                             <!-- End .panel -->
