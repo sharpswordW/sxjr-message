@@ -76,9 +76,21 @@
                                                 <td>${conduit.longMessage}</td>
                                                 <td>${conduit.bulkMessage}</td>
                                                 <td>${conduit.priority}</td>
-                                                <td>${conduit.status}</td>
                                                 <td>
-                                                <a href="disable?id=${conduit.id}">禁用</a>&nbsp;&nbsp;&nbsp;
+                                                	<#if conduit.status == '1'>
+                                                		启用
+                                                	</#if>
+                                                	<#if conduit.status == '0'>
+                                                		禁用
+                                                	</#if>
+                                                </td>
+                                                <td>
+                                               	<#if conduit.status == '1'>
+                                               		<a href="disable?id=${conduit.id}&status=0">禁用</a>&nbsp;&nbsp;&nbsp;
+                                               	</#if>
+                                               	<#if conduit.status == '0'>
+                                               		<a href="disable?id=${conduit.id}&status=1">启用</a>&nbsp;&nbsp;&nbsp;
+                                               	</#if>
                                                 <a href="toEdit?id=${conduit.id}">修改</a>&nbsp;&nbsp;&nbsp;
                                                 <a href="delete?id=${conduit.id}">删除</a>
                                                 </td>
