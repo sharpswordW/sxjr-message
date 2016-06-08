@@ -15,6 +15,7 @@
 		</style>
     </head>
     <body>
+    	<div id="nav"></div>
         <!-- Start #content -->
         <div id="content">
             <!-- Start .content-wrapper -->
@@ -86,14 +87,17 @@
 			$('#conduitForm').submit();
 		})
 		
-function t(obj)
-	{
-	if(obj.value=="禁用")
-	{
-	document.getElementById("status").value = "0"
-	}
-	else
-	document.getElementById("status").value = "1"
-	}
+
+		function t(obj) {
+			if (obj.value == "禁用") {
+				document.getElementById("status").value = "0"
+			} else{
+				document.getElementById("status").value = "1"
+			}
+		}
+		
+		$(function(){
+			$('#nav').load("../../common/navigator.html");
+		})
 	</script>
 </html>

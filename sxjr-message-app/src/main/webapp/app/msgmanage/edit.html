@@ -15,6 +15,7 @@
 		</style>
     </head>
     <body>
+    	<div id="nav"></div>
         <!-- Start #content -->
         <div id="content">
             <!-- Start .content-wrapper -->
@@ -88,19 +89,20 @@
 			$('#conduitForm').submit();
 		})
 		$(function(){
+			$('#nav').load("../../common/navigator.html");
 			$('#id').val("${smClientInfo.id}");
 			$('#name').val("${smClientInfo.name}");
 			$('#status').val("${smClientInfo.status}");
 			$('#ip').val("${smClientInfo.IPList}")
 		})
 		function t(obj)
-			{
-			if(obj.value=="禁用")
-			{
-			document.getElementById("status").value = "0"
-			}
-			else
-			document.getElementById("status").value = "1"
-			}
+		{
+		if(obj.value=="禁用")
+		{
+		document.getElementById("status").value = "0"
+		}
+		else
+		document.getElementById("status").value = "1"
+		}
 	</script>
 </html>
