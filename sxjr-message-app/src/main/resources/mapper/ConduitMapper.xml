@@ -12,7 +12,8 @@
 	        bulk_message,
 	        priority,
 	        create_date,
-	        create_by
+	        create_by,
+	        status
         ) 
         values 
         (
@@ -24,7 +25,8 @@
 	        #{bulkMessage},
 	        #{priority},
 	        #{createDate},
-	        #{createBy}
+	        #{createBy},
+	        #{status}
         )  
     </insert>
     <select id="list" resultType="com.sxjr.app.conduit.entity.Conduit">  
@@ -36,7 +38,8 @@
         password,
         long_message as longMessage,
         bulk_message as bulkMessage,
-        priority
+        priority,
+        status
         from tb_conduit  
     </select>
     <select id="findOne" resultType="com.sxjr.app.conduit.entity.Conduit">  
@@ -93,4 +96,13 @@
         from tb_conduit
         where conduit_id = #{conduitId}  
     </select>
+    <update id="updateStatusById" parameterType="com.sxjr.app.conduit.entity.Conduit">
+		 update tb_conduit
+			 <set>
+			  <if test="status!=null and status!='' ">
+			   tb_conduit.status = #{status},
+			  </if>
+			 </set>
+		 where tb_conduit.id = #{id};
+	</update>
 </mapper>

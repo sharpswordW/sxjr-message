@@ -58,6 +58,9 @@
 													权重
 												</th>
 												<th>
+													状态
+												</th>
+												<th>
 													操作
 												</th>
 											</tr>
@@ -73,7 +76,12 @@
                                                 <td>${conduit.longMessage}</td>
                                                 <td>${conduit.bulkMessage}</td>
                                                 <td>${conduit.priority}</td>
-                                                <td><a href="toEdit?id=${conduit.id}">修改</a>&nbsp;&nbsp;&nbsp;<a href="delete?id=${conduit.id}">删除</a></td>
+                                                <td>${conduit.status}</td>
+                                                <td>
+                                                <a href="disable?id=${conduit.id}">禁用</a>&nbsp;&nbsp;&nbsp;
+                                                <a href="toEdit?id=${conduit.id}">修改</a>&nbsp;&nbsp;&nbsp;
+                                                <a href="delete?id=${conduit.id}">删除</a>
+                                                </td>
                                             </tr>
                                         </#list>
                                         </tbody>

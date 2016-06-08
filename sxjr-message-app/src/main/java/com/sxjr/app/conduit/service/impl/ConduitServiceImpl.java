@@ -45,8 +45,15 @@ public class ConduitServiceImpl implements ConduitService {
 
 	@Override
 	public Conduit findByConduitId(String conduitId) {
-		// TODO Auto-generated method stub
 		return conduitMapper.findByConduitId(conduitId);
+	}
+
+	@Override
+	public void updateStatusById(String id,String status) {
+		Conduit conduit = new Conduit();
+		conduit.setId(id);
+		conduit.setStatus(status);
+		conduitMapper.updateStatusById(conduit);
 	}
 	
 }

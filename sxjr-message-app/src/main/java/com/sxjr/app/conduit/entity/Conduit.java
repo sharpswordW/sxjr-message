@@ -22,6 +22,16 @@ public class Conduit extends BaseEntity{
 	private String bulkMessage;
 	
 	private String priority;
+	
+	private String status;
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public String getConduitId() {
 		return conduitId;
