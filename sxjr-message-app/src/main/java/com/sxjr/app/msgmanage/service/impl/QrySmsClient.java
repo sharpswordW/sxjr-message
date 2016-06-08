@@ -12,9 +12,22 @@ public class QrySmsClient implements IQrySmsClient{
 
 	@Autowired
 	private static RedisUtil redisUtil;
+	/**
+     * 客户端状态，1表示启用，0表示禁用
+     */
 	private static final String STATUS="1";
+	/**
+     * 存入redis中的key前缀
+     */
 	private static final String CLIENT_KEY = "smClient.info.";
-	
+
+	/**
+	 * 判断客户端信息key是否存在并且判断接入码screteID是否正确和客户端STATUS是否是可用状态
+	 *@param key 客户端接入账号 screteID 接入凭证
+	 *@return 
+	 * 
+	 */
+	@Override
 	public boolean isExists(String key, String screteID) {
 		 Object result = redisUtil.get(CLIENT_KEY+key);
 		 if(result != null ){
