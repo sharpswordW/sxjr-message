@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sxjr.app.msgmodel.entity.MsgModel;
+import com.sxjr.app.msgmodel.entity.SmsTemplate;
 import com.sxjr.app.msgmodel.mapper.MsgModelMapper;
 import com.sxjr.app.msgmodel.service.MsgModelService;
 
@@ -19,23 +19,23 @@ public class MsgModelServiceImpl implements MsgModelService {
     private MsgModelMapper msgModelMapper;
 
 	@Override
-	public void save(MsgModel msgmodel) {
+	public void save(SmsTemplate msgmodel) {
 		msgModelMapper.save(msgmodel);
 		
 	}
 
 	@Override
-	public List<MsgModel> list() {
+	public List<SmsTemplate> list() {
 		return msgModelMapper.list();
 	}
 
 	@Override
-	public MsgModel findOne(String id) {
+	public SmsTemplate findOne(String id) {
 		return msgModelMapper.findOne(id);
 	}
 
 	@Override
-	public void update(MsgModel msgmodel) {
+	public void update(SmsTemplate msgmodel) {
 		msgModelMapper.update(msgmodel);
 	}
 
@@ -46,7 +46,7 @@ public class MsgModelServiceImpl implements MsgModelService {
 	}
 
 	@Override
-	public void disable(MsgModel msgmodel) {
+	public void disable(SmsTemplate msgmodel) {
 		msgModelMapper.update(msgmodel);
 	}
 

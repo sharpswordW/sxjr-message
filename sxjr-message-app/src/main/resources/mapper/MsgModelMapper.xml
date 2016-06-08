@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxjr.app.msgmodel.mapper.MsgModelMapper">
-    <insert id="save" parameterType="com.sxjr.app.msgmodel.entity.MsgModel" useGeneratedKeys="true" keyProperty="id">  
+    <insert id="save" parameterType="com.sxjr.app.msgmodel.entity.SmsTemplate" useGeneratedKeys="true" keyProperty="id">  
         insert into msg_model
         (
         model_id,
@@ -21,45 +21,41 @@
         #{updateDate}
         )  
     </insert>
-    <select id="list" resultType="com.sxjr.app.msgmodel.entity.MsgModel">  
+    <select id="list" resultType="com.sxjr.app.msgmodel.entity.SmsTemplate">  
         select
         id,
         content,
-        enable,
-        create_date as createDate,
-        update_date as updateDate,
-        create_by as createBy
-        from msg_model  
+        state,
+        createDate,
+        updateDate,
+        createBy
+        from sms_template  
     </select>
-    <select id="findOne" resultType="com.sxjr.app.msgmodel.entity.MsgModel">  
+    <select id="findOne" resultType="com.sxjr.app.msgmodel.entity.SmsTemplate">  
         select
         id,
-        model_id as modelId,
         content,
-        enable
-        from msg_model
+        state
+        from sms_template
         where id = #{id}  
     </select> 
-    <update id="update" parameterType="com.sxjr.app.msgmodel.entity.MsgModel">
-	 update msg_model
+    <update id="update" parameterType="com.sxjr.app.msgmodel.entity.SmsTemplate">
+	 update sms_template
 		 <set>
 		  <if test="content!=null and content!='' ">
-		   msg_model.content = #{content},
+		   sms_template.content = #{content},
 		  </if>
-		  <if test="enable!=null and enable!='' ">
-		   msg_model.enable = #{enable},
-		  </if>
-		  <if test="updateBy!=null and updateBy!='' ">
-		   msg_model.update_by = #{updateBy},
+		  <if test="state!=null and state!='' ">
+		   sms_template.state = #{state},
 		  </if>
 		  <if test="updateDate!=null and updateDate!='' ">
-		   msg_model.update_date = #{updateDate},
+		   sms_template.updateDate = #{updateDate},
 		  </if>
 		 </set>
-	 where msg_model.id = #{id};
+	 where sms_template.id = #{id};
 	</update>
-	<delete id="delete" parameterType="com.sxjr.app.msgmodel.entity.MsgModel">
-		 delete from msg_model
+	<delete id="delete" parameterType="com.sxjr.app.msgmodel.entity.SmsTemplate">
+		 delete from sms_template
 		 where id = #{id};
 	</delete>
 </mapper>
