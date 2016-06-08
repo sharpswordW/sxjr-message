@@ -11,10 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sxjr.app.msgmanage.entity.SmClientInfo;
 import com.sxjr.app.msgmanage.service.SmsManageService;
+import com.sxjr.app.msgmodel.entity.MsgModel;
 import com.sxjr.app.until.TicketUtil;
+import com.sxjr.sso.vo.EmployeeVo;
 
 /**
- * Created by outh on 2016/6/2.
+ * �������
+ * 
+ * @author outh
+ * @Time 2016-06-06
+ *
  */
 @Controller
 @RequestMapping(value = "app/sms")
@@ -22,11 +28,27 @@ public class SmsClientController {
 
 	@Autowired
 	private SmsManageService smsManageService;
-
+	/**
+	 * 增加客户端页面
+	 */
 	private String PAGE_ADD = "msgmanage/addClient";
+	/**
+	 * 客户端列表
+	 */
 	private String PAGE_LIST = "msgmanage/list";
+	/**
+	 *编辑客户端信息
+	 */
 	private String PAGE_EDIT = "msgmanage/edit";
 
+	/**
+	 * 保存客户端信息
+	 *
+	 * @param request
+	 *            smClientInfo
+	 * @return PAGE_LIST
+	 * 
+	 */
 	@RequestMapping(value = "save")
 	public String addClient(HttpServletRequest request,
 			SmClientInfo smClientInfo, ModelMap modelMap) {
@@ -43,12 +65,22 @@ public class SmsClientController {
 		modelMap.put("lists", smClientInfos);
 		return PAGE_LIST;
 	}
-
+	/**
+	 * 增加客户端信息
+	 *@param
+	 *@return PAGE_ADD
+	 * 
+	 */
 	@RequestMapping(value = "toAdd")
 	public String toAdd() {
 		return PAGE_ADD;
 	}
-
+	/**
+	 * 获取客户端信息
+	 *@param 
+	 *@return PAGE_LIST
+	 * 
+	 */
 	@RequestMapping(value = "qrylist")
 	public String qryClient(ModelMap modelMap) {
 		List<SmClientInfo> smClientInfos = smsManageService.list();
@@ -57,30 +89,70 @@ public class SmsClientController {
 		return PAGE_LIST;
 
 	}
-
+	/**
+	 * 删除客户端信息
+	 *@param request
+	 *@return PAGE_LIST
+	 * 
+	 */
 	@RequestMapping(value = "delete")
 	public String deleteClient(HttpServletRequest request, ModelMap modelMap) {
 		String id = request.getParameter("id");
-		smsManageService.delete(id);
+		SmClientInfo smClientInfo=smsManageService.findOne(id);
+		if (smClientInfo != null ) {
+			smsManageService.delete(smClientInfo);
+		}
 		List<SmClientInfo> smClientInfos = smsManageService.list();
 		modelMap.put("lists", smClientInfos);
 		return PAGE_LIST;
 	}
-	
+	/**
+	 * 编辑客户端信息
+	 *@param request smClientInfo
+	 *@return PAGE_EDIT
+	 * 
+	 */
 	@RequestMapping(value = "edit")
-	public String editClient(HttpServletRequest request,SmClientInfo smClientInfo, ModelMap modelMap) {
+	public String editClient(HttpServletRequest request,
+			SmClientInfo smClientInfo, ModelMap modelMap) {
 		String id = request.getParameter("id");
-		smClientInfo=smsManageService.findOne(id);
+		smClientInfo = smsManageService.findOne(id);
 		modelMap.put("smClientInfo", smClientInfo);
 		return PAGE_EDIT;
 	}
-	
+
+	/**
+	 * 更新客户端信息
+	 *@param request smClientInfo
+	 *@return PAGE_LIST
+	 * 
+	 */
 	@RequestMapping(value = "update")
-	public String updateClient(HttpServletRequest request,SmClientInfo smClientInfo, ModelMap modelMap) {
+	public String updateClient(HttpServletRequest request,
+			SmClientInfo smClientInfo, ModelMap modelMap) {
 		smsManageService.update(smClientInfo);
 		List<SmClientInfo> smClientInfos = smsManageService.list();
 		modelMap.put("lists", smClientInfos);
 		return PAGE_LIST;
 	}
-
+	/**
+	 * 更新客户端状态
+	 *@param request smClientInfo
+	 *@return PAGE_LIST
+	 * 
+	 */
+	@RequestMapping(value = "disable")
+	public String disable(HttpServletRequest request, ModelMap modelMap) {
+		String id = request.getParameter("id");
+		SmClientInfo smClientInfo = smsManageService.findOne(id);
+		if ("1".equals(smClientInfo.getStatus())) {
+			smClientInfo.setStatus("0");
+		} else {
+			smClientInfo.setStatus("1");
+		}
+		smsManageService.update(smClientInfo);
+		List list = smsManageService.list();
+		modelMap.put("lists", list);
+		return PAGE_LIST;
+	}
 }

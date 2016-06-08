@@ -7,7 +7,7 @@ import com.sxjr.app.common.BaseEntity;
 public class SmClientInfo extends BaseEntity {
 
 	 /**
-     * 员工ID
+     * ID
      */
     private String id;
     /**

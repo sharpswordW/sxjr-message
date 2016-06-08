@@ -10,5 +10,5 @@ public interface SmsManageService {
 	List<SmClientInfo> list();
 	SmClientInfo findOne(String id);
     void update(SmClientInfo smClientInfo);
-    void delete(String id);
+    void delete(SmClientInfo smClientInfo);
 }

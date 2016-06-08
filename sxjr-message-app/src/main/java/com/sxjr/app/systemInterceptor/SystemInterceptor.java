@@ -16,7 +16,7 @@ import com.sxjr.sso.service.IEmployeeService;
 import com.sxjr.sso.vo.EmployeeVo;
 
 /**
- * 
+ * 系统拦截器，所有请求必须用登录
  * @author outh
  * @date 2016-06-03
  */
@@ -47,21 +47,6 @@ public class SystemInterceptor extends HandlerInterceptorAdapter {
 		}
 
 	}
-	public String  getProperties() {
-		InputStream ins=SystemInterceptor.class.getResourceAsStream("../config/config.properties");  
-        // 生成properties对象  
-        Properties p = new Properties();  
-        try {  
-            p.load(ins);  
-        } catch (Exception e) {  
-            e.printStackTrace();  
-        }  
-        // 输出properties文件的内容  
-        System.out.println("name:" + p.getProperty("name"));  
-        System.out.println("password:" + p.getProperty("password")); 
-		
-		return null;
-		
-	}
+	
 
 }
