@@ -15,6 +15,7 @@
 		</style>
     </head>
     <body>
+    	<div id="nav"></div>
         <!-- Start #content -->
         <div id="content">
             <!-- Start .content-wrapper -->
@@ -102,6 +103,7 @@
     <script src="../../common/plugins/forms/validation/localization/messages_zh.js"></script>
     <script type="text/javascript">
 	    $(function(){
+			$('#nav').load("../../common/navigator.html");
 			$('#id').val("${model.id}");
 			$('#name').val("${model.name}");
 			$('#conduitId').val("${model.conduitId}");

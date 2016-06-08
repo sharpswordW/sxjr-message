@@ -126,5 +126,15 @@ public class ConduitController {
         response.getWriter().write("{\"data\":success}");
         response.getWriter().flush();
     }
+    
+    @RequestMapping(value = "disable")
+    public String disable(HttpServletRequest request,ModelMap modelMap){
+    	String id = request.getParameter("id");
+    	String status = request.getParameter("status");
+    	conduitService.updateStatusById(id, status);
+    	List list = conduitService.list();
+    	modelMap.put("lists", list);
+        return PAGE_LIST;
+    }
 
 }
