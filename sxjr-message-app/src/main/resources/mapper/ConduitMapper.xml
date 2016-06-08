@@ -29,7 +29,7 @@
 	        #{status}
         )  
     </insert>
-    <select id="list" resultType="com.sxjr.app.conduit.entity.Conduit">  
+    <select id="list" resultType="org.sxjr.message.inerface.model.Conduit">  
         select
         id,
         conduit_id as conduitId,
@@ -42,7 +42,7 @@
         status
         from tb_conduit  
     </select>
-    <select id="findOne" resultType="com.sxjr.app.conduit.entity.Conduit">  
+    <select id="findOne" resultType="org.sxjr.message.inerface.model.Conduit">  
         select
         id,
         conduit_id as conduitId,
@@ -55,7 +55,7 @@
         from tb_conduit
         where id = #{id}  
     </select>
-    <update id="update" parameterType="com.sxjr.app.conduit.entity.Conduit">
+    <update id="update" parameterType="org.sxjr.message.inerface.model.Conduit">
 		 update tb_conduit
 			 <set>
 			  <if test="name!=null and name!='' ">
@@ -85,18 +85,18 @@
 			 </set>
 		 where tb_conduit.id = #{id};
 	</update>
-	<delete id="delete" parameterType="com.sxjr.app.conduit.entity.Conduit">
+	<delete id="delete" parameterType="org.sxjr.message.inerface.model.Conduit">
 		 delete from tb_conduit
 		 where id = #{id};
 	</delete>
-	<select id="findByConduitId" resultType="com.sxjr.app.conduit.entity.Conduit">  
+	<select id="findByConduitId" resultType="org.sxjr.message.inerface.model.Conduit">  
         select
         id,
         conduit_id as conduitId
         from tb_conduit
         where conduit_id = #{conduitId}  
     </select>
-    <update id="updateStatusById" parameterType="com.sxjr.app.conduit.entity.Conduit">
+    <update id="updateStatusById" parameterType="org.sxjr.message.inerface.model.Conduit">
 		 update tb_conduit
 			 <set>
 			  <if test="status!=null and status!='' ">
