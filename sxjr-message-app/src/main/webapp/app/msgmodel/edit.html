@@ -39,7 +39,7 @@
                                     	<div class="form-group">
                                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">模板ID</label>
                                             <div class="col-lg-10 col-md-10">
-                                                <span id="modelId">${model.modelId}</span>
+                                                <span id="modelId">${model.id}</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -51,7 +51,7 @@
                                         <div class="form-group">
                                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">是否启用</label>
                                             <div class="col-lg-10 col-md-10">
-                                                <select class="form-control" name="enable" id="enable">
+                                                <select class="form-control" name="state" id="state">
                                                     <option value="1">启用</option>
                                                     <option value="0">禁用</option>
                                                 </select>
@@ -86,7 +86,7 @@
 			$('#nav').load("../../common/navigator.html");
 			$('#id').val("${model.id}");
 			$('#modelcontent').val("${model.content}");
-			$("#enable option[value='${model.enable}']").attr("selected",true);
+			$("#state option[value='${model.state}']").attr("selected",true);
 		})
 		$('#save').click(function(){
 			$("#msgForm").validate();
