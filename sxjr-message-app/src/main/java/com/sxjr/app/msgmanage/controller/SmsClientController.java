@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sxjr.app.msgmanage.entity.SmClientInfo;
 import com.sxjr.app.msgmanage.service.SmsManageService;
-import com.sxjr.app.msgmodel.entity.MsgModel;
 import com.sxjr.app.until.TicketUtil;
 import com.sxjr.sso.vo.EmployeeVo;
 
@@ -54,7 +53,7 @@ public class SmsClientController {
 			SmClientInfo smClientInfo, ModelMap modelMap) {
 		smClientInfo.setAssessToken(TicketUtil.UUID());
 		smClientInfo.setAssessSecret(TicketUtil.UUID());
-		if (smClientInfo.getName() == null || smClientInfo.getStatus() == null) {
+		if (smClientInfo.getName() == null) {
 			modelMap.put("result", "0");
 			List<SmClientInfo> smClientInfos = smsManageService.list();
 			modelMap.put("lists", smClientInfos);
@@ -145,10 +144,10 @@ public class SmsClientController {
 	public String disable(HttpServletRequest request, ModelMap modelMap) {
 		String id = request.getParameter("id");
 		SmClientInfo smClientInfo = smsManageService.findOne(id);
-		if ("1".equals(smClientInfo.getStatus())) {
-			smClientInfo.setStatus("0");
+		if (smClientInfo.isState()) {
+			smClientInfo.setState(false);
 		} else {
-			smClientInfo.setStatus("1");
+			smClientInfo.setState(true);
 		}
 		smsManageService.update(smClientInfo);
 		List list = smsManageService.list();

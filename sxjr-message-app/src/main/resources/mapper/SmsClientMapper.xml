@@ -3,17 +3,17 @@
 <mapper namespace="com.sxjr.app.msgmanage.mapper.TbSmsManageMapper">
 	
     <insert id="save" parameterType="com.sxjr.app.msgmanage.entity.SmClientInfo" useGeneratedKeys="true" keyProperty="id">
-    	INSERT INTO tb_smsclient(name,
+    	INSERT INTO sms_client(name,
     								 assessToken,
     								 assessSecret,
-    								 status,
-    								 IPList
+    								 state,
+    								 ipList
     								)
     						  values(#{name},
     						  		 #{assessToken},
     						  		 #{assessSecret},
-    						  		 #{status},
-    						  		 #{IPList}
+    						  		 #{state},
+    						  		 #{ipList}
     						  		)
     </insert>
     <select id="list" resultType="com.sxjr.app.msgmanage.entity.SmClientInfo">
@@ -21,32 +21,33 @@
     		   name,
     		   assessToken,
     		   assessSecret,
-    		   status,
-    		   IPList,
+    		   state,
+    		   ipList,
     		   createDate,
     		   updateDate
-		FROM tb_smsclient
+		FROM sms_client
     </select>
      <select id="selectbyid" resultType="com.sxjr.app.msgmanage.entity.SmClientInfo">
     	SELECT id,
     		   name,
     		   assessToken,
     		   assessSecret,
-    		   status,
-    		   IPList,
+    		   state,
+    		   ipList,
     		   createDate,
     		   updateDate
-		FROM tb_smsclient WHERE id=#{id}
+		FROM sms_client WHERE id=#{id}
     </select>
     <update id="update" parameterType="com.sxjr.app.msgmanage.entity.SmClientInfo">
-    	UPDATE tb_smsclient
+    	UPDATE sms_client
     		<set>
     			<if test="name!=null">name=#{name},</if>
-    			<if test="status!=null">status=#{status}</if>
+    			<if test="state!=null">state=#{state},</if>
+    			<if test="ipList!=null">ipList=#{ipList}</if>
     		</set>
     		WHERE id=#{id}
     </update>
     <delete id="delete" parameterType="com.sxjr.app.msgmanage.entity.SmClientInfo">
-    	DELETE FROM tb_smsclient WHERE id=#{id}
+    	DELETE FROM sms_client WHERE id=#{id}
     </delete>
 </mapper>
