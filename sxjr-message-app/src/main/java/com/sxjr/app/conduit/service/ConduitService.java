@@ -14,4 +14,5 @@ public interface ConduitService{
     void update(Conduit conduit);
     void delete(String id);
     Conduit findByConduitId(String conduitId);
+    void updateStatusById(String id,String status);
 }
