@@ -28,7 +28,7 @@
                             <div class="panel panel-default plain toggle panelClose panelRefresh">
                                 <!-- Start .panel -->
                                 <div class="panel-heading white-bg">
-                                    <button class="btn btn-success" id="add">新增</button>
+                                <a href="toAdd"><button class="btn btn-success" id="add">新增</button></a>
                                 </div>
                                 <div class="panel-body">
                                     <table class="table display" id="datatable">
@@ -60,21 +60,21 @@
                                                 <td>${clientInfo.name}</td>
                                                 <td>${clientInfo.assessToken}</td>
                                                 <td>${clientInfo.assessSecret}</td>
-                                                <td>${clientInfo.IPList}</td>
+                                                <td>${clientInfo.ipList!""}</td>
                                                 <td>
-	                                                <#if clientInfo.status="0">
+	                                                <#if clientInfo.state= false>
 														禁止
-													<#elseif clientInfo.status="1">
+													<#elseif clientInfo.state= true>
 														启用
 													<#else>
 														无状态
 													</#if>
 												</td>
                                                 <td>
-                                                	<#if clientInfo.status == '1'>
+                                                	<#if clientInfo.state == true>
                                                 		<a href="disable?id=${clientInfo.id}">禁用</a>&nbsp;&nbsp;&nbsp;
                                                 	</#if>
-                                                	<#if clientInfo.status == '0'>
+                                                	<#if clientInfo.state == false>
                                                 		<a href="disable?id=${clientInfo.id}">启用</a>&nbsp;&nbsp;&nbsp;
                                                 	</#if>
                                                 <a href="edit?id=${clientInfo.id}">修改</a>&nbsp;&nbsp;&nbsp;<a href="delete?id=${clientInfo.id}">删除</a></td>

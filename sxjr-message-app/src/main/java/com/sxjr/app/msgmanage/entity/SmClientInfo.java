@@ -26,12 +26,12 @@ public class SmClientInfo extends BaseEntity {
     /**
      * 状态
      */
-    private String status;
+    private boolean state;
     
     /**
      * 状态
      */
-    private String IPList;
+    private String ipList;
 
 	public String getId() {
 		return id;
@@ -65,28 +65,30 @@ public class SmClientInfo extends BaseEntity {
 		this.assessSecret = assessSecret;
 	}
 
-
-	public String getStatus() {
-		return status;
+	public boolean isState() {
+		return state;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setState(boolean state) {
+		this.state = state;
 	}
 
-	public String getIPList() {
-		return IPList;
+	public String getIpList() {
+		return ipList;
 	}
 
-	public void setIPList(String iPList) {
-		IPList = iPList;
+	public void setIpList(String ipList) {
+		this.ipList = ipList;
 	}
 
 	@Override
 	public String toString() {
 		return "SmClientInfo [id=" + id + ", name=" + name + ", assessToken="
-				+ assessToken + ", assessSecret=" + assessSecret + ", status="
-				+ status + ", IPList=" + IPList + "]";
+				+ assessToken + ", assessSecret=" + assessSecret + ", state="
+				+ state + ", ipList=" + ipList + "]";
 	}
+
+
+
   
 }

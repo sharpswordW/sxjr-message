@@ -15,7 +15,7 @@ public class QrySmsClient implements IQrySmsClient{
 	/**
      * 客户端状态，1表示启用，0表示禁用
      */
-	private static final String STATUS="1";
+	private static final boolean STATUS=true;
 	/**
      * 存入redis中的key前缀
      */
@@ -31,7 +31,7 @@ public class QrySmsClient implements IQrySmsClient{
 		 Object result = redisUtil.get(CLIENT_KEY+key);
 		 if(result != null ){
 	            SmClientInfo smClientInfo= JSON.parseObject(result.toString(),SmClientInfo.class);
-	            if (screteID.equals(smClientInfo.getAssessSecret()) && STATUS.equals(smClientInfo.getStatus())) {
+	            if (screteID.equals(smClientInfo.getAssessSecret()) && smClientInfo.isState()) {
 					return true;
 				}
 	        }
