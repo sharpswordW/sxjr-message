@@ -13,6 +13,7 @@
         <!-- Fav and touch icons -->
     </head>
     <body>
+    	<div id="nav"></div>
         <!-- Start #content -->
         <div id="content">
             <!-- Start .content-wrapper -->
@@ -105,6 +106,9 @@
         <script type="text/javascript">
 			$('#add').click(function(){
 				document.location.href = "toAdd";
+			})
+			$(function(){
+				$('#nav').load("../../common/navigator.html");
 			})
 		</script>
     </body>

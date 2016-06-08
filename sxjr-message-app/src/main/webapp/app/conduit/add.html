@@ -15,6 +15,7 @@
 		</style>
     </head>
     <body>
+    	<div id="nav"></div>
         <!-- Start #content -->
         <div id="content">
             <!-- Start .content-wrapper -->
@@ -111,6 +112,9 @@
 		})
 		$('#cancel').click(function(){
 			document.location.href = "list";
+		})
+		$(function(){
+			$('#nav').load("../../common/navigator.html");
 		})
 	</script>
 </html>
