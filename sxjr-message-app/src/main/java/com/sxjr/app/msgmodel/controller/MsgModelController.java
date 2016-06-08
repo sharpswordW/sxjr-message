@@ -1,6 +1,5 @@
 package com.sxjr.app.msgmodel.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sxjr.app.msgmodel.entity.MsgModel;
+import com.sxjr.app.msgmodel.entity.SmsTemplate;
 import com.sxjr.app.msgmodel.service.MsgModelService;
 import com.sxjr.app.sequence.service.SequenceService;
 import com.sxjr.sso.vo.EmployeeVo;
@@ -35,32 +35,30 @@ public class MsgModelController {
     public String toAdd(ModelMap modelMap){
     	String modelId = sequenceService.getSequence("msg_model");
     	MsgModel model = new MsgModel();
-    	model.setModelId(modelId);
     	modelMap.put("model", model);
         return PAGE_ADD;
     }
     
-    @RequestMapping(value = "save")
-    public String save(HttpServletRequest request,ModelMap modelMap){
-    	String modelId = request.getParameter("modelId");
-    	String content = request.getParameter("content");
-    	String enable = request.getParameter("enable");
-    	MsgModel model = new MsgModel();
-    	model.setModelId(modelId);
-    	model.setContent(content);
-    	model.setEnable(enable);
-    	model.setCreateDate(new Date());
-    	model.setUpdateDate(new Date());
-    	model.setCreateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
-    	msgModelService.save(model);
-    	List list = msgModelService.list();
-    	modelMap.put("lists", list);
-        return PAGE_LIST;
-    }
+//    @RequestMapping(value = "save")
+//    public String save(HttpServletRequest request,ModelMap modelMap){
+//    	String modelId = request.getParameter("modelId");
+//    	String content = request.getParameter("content");
+//    	String enable = request.getParameter("enable");
+//    	MsgModel model = new MsgModel();
+//    	model.setContent(content);
+//    	model.setEnable(enable);
+//    	model.setCreateDate(new Date());
+//    	model.setUpdateDate(new Date());
+//    	model.setCreateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
+//    	msgModelService.save(model);
+//    	List list = msgModelService.list();
+//    	modelMap.put("lists", list);
+//        return PAGE_LIST;
+//    }
     
     @RequestMapping(value = "list")
     public String list(ModelMap modelMap){
-        List<MsgModel> list = msgModelService.list();
+        List<SmsTemplate> list = msgModelService.list();
         modelMap.put("lists", list);
         return PAGE_LIST;
     }
@@ -68,7 +66,7 @@ public class MsgModelController {
     @RequestMapping(value = "toEdit")
     public String edit(HttpServletRequest request,ModelMap modelMap){
     	String id = request.getParameter("id");
-        MsgModel model = msgModelService.findOne(id);
+    	SmsTemplate model = msgModelService.findOne(id);
         modelMap.put("model", model);
         return PAGE_EDIT;
     }
@@ -77,11 +75,10 @@ public class MsgModelController {
     public String update(HttpServletRequest request,ModelMap modelMap){
     	String id = request.getParameter("id");
     	String content = request.getParameter("content");
-    	MsgModel model = new MsgModel();
+    	SmsTemplate model = new SmsTemplate();
     	model.setContent(content);
     	model.setId(id);
-    	model.setEnable(request.getParameter("enable"));
-    	model.setUpdateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
+//    	model.setUpdateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
     	msgModelService.update(model);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
@@ -100,13 +97,13 @@ public class MsgModelController {
     @RequestMapping(value = "disable")
     public String disable(HttpServletRequest request,ModelMap modelMap){
     	String id = request.getParameter("id");
-    	MsgModel model = msgModelService.findOne(id);
-    	if("1".equals(model.getEnable())){
-    		model.setEnable("0");
+    	SmsTemplate model = msgModelService.findOne(id);
+    	if("1".equals(model.getState())){
+    		model.setState("0");
     	}else{
-    		model.setEnable("1");
+    		model.setState("1");
     	}
-    	model.setUpdateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
+//    	model.setUpdateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
     	msgModelService.update(model);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
