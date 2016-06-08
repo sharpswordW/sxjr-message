@@ -14,7 +14,9 @@
        http://www.springframework.org/schema/context  
        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<context:component-scan base-package="com.sxjr.app" />
+	   <import resource="dubbo.xml"/>
 	<context:property-placeholder location="classpath:conf_*.properties"/>
+	  
 	<mvc:annotation-driven />
 	<mvc:interceptors>
     <mvc:interceptor>
@@ -117,4 +119,5 @@
     <bean id="parseProperties" class="com.sxjr.app.common.ParseProperties">  
         <property name="properties" ref="properties" />  
     </bean> 
+   
 </beans>
