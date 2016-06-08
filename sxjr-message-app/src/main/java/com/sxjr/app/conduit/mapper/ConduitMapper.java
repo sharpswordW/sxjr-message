@@ -2,7 +2,7 @@ package com.sxjr.app.conduit.mapper;
 
 import java.util.List;
 
-import com.sxjr.app.conduit.entity.Conduit;
+import org.sxjr.message.inerface.model.Conduit;
 
 /**
  * Created by wangrq on 2016/6/6.

@@ -15,7 +15,6 @@ public class QrySmsClient implements IQrySmsClient{
 	private static final String STATUS="1";
 	private static final String CLIENT_KEY = "smClient.info.";
 	
-	@Override
 	public boolean isExists(String key, String screteID) {
 		 Object result = redisUtil.get(CLIENT_KEY+key);
 		 if(result != null ){
