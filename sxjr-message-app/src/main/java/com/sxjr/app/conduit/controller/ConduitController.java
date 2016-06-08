@@ -60,7 +60,6 @@ public class ConduitController {
     	conduit.setPriority(request.getParameter("priority"));
     	conduit.setCreateDate(new Date());
     	conduit.setCreateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
-//    	conduit.setCreateBy("wrq");
     	conduit.setStatus("1");
     	conduitService.save(conduit);
     	String key = redisKey;
