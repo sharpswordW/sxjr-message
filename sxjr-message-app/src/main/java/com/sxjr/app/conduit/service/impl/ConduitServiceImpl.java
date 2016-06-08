@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.sxjr.message.inerface.model.Conduit;
+import org.sxjr.message.inerface.service.ConduitService;
 
-import com.sxjr.app.conduit.entity.Conduit;
 import com.sxjr.app.conduit.mapper.ConduitMapper;
-import com.sxjr.app.conduit.service.ConduitService;
 
 /**
  * Created by wangrq on 2016/6/2.

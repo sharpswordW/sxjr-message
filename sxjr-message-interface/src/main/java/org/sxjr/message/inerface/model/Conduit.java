@@ -1,6 +1,4 @@
-package com.sxjr.app.conduit.entity;
-
-import com.sxjr.app.common.BaseEntity;
+package org.sxjr.message.inerface.model;
 
 /**
  * Created by wangrq on 2016/6/6.
