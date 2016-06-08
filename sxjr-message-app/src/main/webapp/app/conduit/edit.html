@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>通道修改</title>
+        <!-- Css files -->
+        <!-- Bootstrap stylesheets (included template modifications) -->
+        <link href="../../common/css/bootstrap.css" rel="stylesheet" />
+        <!-- Main stylesheets (template main css file) -->
+        <link href="../../common/css/main.css" rel="stylesheet" />
+        <style>
+			.error{
+				color:red;
+			}
+		</style>
+    </head>
+    <body>
+        <!-- Start #content -->
+        <div id="content">
+            <!-- Start .content-wrapper -->
+            <div class="content-wrapper">
+                <!-- End .row -->
+                <div class="outlet">
+                    <!-- Page start here ( usual with .row ) -->
+                    <div class="row">
+                        <!-- Start .row -->
+                        <div class="col-lg-12">
+                            <!-- Start col-lg-12 -->
+                            <div class="panel panel-default toggle">
+                                <!-- Start .panel -->
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">通道修改</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form class="form-horizontal group-border hover-stripped" name="conduitForm" id="conduitForm" action="update">
+                                    	<input type="hidden" name="id" id="id" />
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-md-2 col-sm-12 control-label">通道名称</label>
+                                            <div class="col-lg-10 col-md-10">
+                                            	<input type="text" class="form-control" name="name" id="name" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-md-2 col-sm-12 control-label">通道ID</label>
+                                            <div class="col-lg-10 col-md-10">
+                                            	<span id="modelId">${model.conduitId}</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-md-2 col-sm-12 control-label">用户名</label>
+                                            <div class="col-lg-10 col-md-10">
+                                            	<input type="text" class="form-control" name="account" id="account" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-md-2 col-sm-12 control-label">密码</label>
+                                            <div class="col-lg-10 col-md-10">
+                                            	<input type="text" class="form-control" name="password" id="password" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-md-2 col-sm-12 control-label">长短信</label>
+                                            <div class="col-lg-10 col-md-10">
+                                            	<input type="text" class="form-control" name="longMessage" id="longMessage" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-md-2 col-sm-12 control-label">批量短信</label>
+                                            <div class="col-lg-10 col-md-10">
+                                            	<input type="text" class="form-control" name="bulkMessage" id="bulkMessage" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-md-2 col-sm-12 control-label">权重</label>
+                                            <div class="col-lg-10 col-md-10">
+                                            	<input type="text" class="form-control" name="priority" id="priority" required/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 text-center">
+		                                    <!-- col-lg-12 start here -->
+		                                    <button class="btn btn-success" id="save">保存</button>
+		                                    <button class="btn btn-success" id="cancel">取消</button>
+		                                </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- End .panel -->
+                        </div>
+                        <!-- End col-lg-12 -->
+                    </div>
+                </div>
+                <!-- End .outlet -->
+            </div>
+            <!-- End .content-wrapper -->
+            <div class="clearfix"></div>
+        </div>
+        <!-- End #content -->
+        <!-- Javascripts -->
+    </body>
+    <script src="../../common/js/jquery.js"></script>
+    <script src="../../common/plugins/forms/validation/jquery.validate.js"></script>
+    <script src="../../common/plugins/forms/validation/localization/messages_zh.js"></script>
+    <script type="text/javascript">
+	    $(function(){
+			$('#id').val("${model.id}");
+			$('#name').val("${model.name}");
+			$('#conduitId').val("${model.conduitId}");
+			$('#account').val("${model.account}");
+			$('#password').val("${model.password}");
+			$('#longMessage').val("${model.longMessage}");
+			$('#bulkMessage').val("${model.bulkMessage}");
+			$('#priority').val("${model.priority}");
+		})
+		$('#save').click(function(){
+			$("#conduitForm").validate();
+			$('#conduitForm').submit();
+		})
+		$('#cancel').click(function(){
+			document.location.href = "list";
+		})
+	</script>
+</html>

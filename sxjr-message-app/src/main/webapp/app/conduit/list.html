@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Tables</title>
+        <!-- Import google fonts - Heading first/ text second -->
+        <link rel='stylesheet' type='text/css' 
+        <!-- Css files -->
+        <!-- Bootstrap stylesheets (included template modifications) -->
+        <link href="../../common/css/bootstrap.css" rel="stylesheet" />
+        <!-- Main stylesheets (template main css file) -->
+        <link href="../../common/css/main.css" rel="stylesheet" />
+        <!-- Fav and touch icons -->
+    </head>
+    <body>
+        <!-- Start #content -->
+        <div id="content">
+            <!-- Start .content-wrapper -->
+            <div class="content-wrapper">
+                <!-- End .row -->
+                <div class="outlet">
+                    <!-- Start .outlet -->
+                    <!-- Page start here ( usual with .row ) -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- col-lg-12 start here -->
+                            <div class="panel panel-default plain toggle panelClose panelRefresh">
+                                <!-- Start .panel -->
+                                <div class="panel-heading white-bg">
+                                    <button class="btn btn-success" id="add">新增</button>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table display" id="datatable">
+                                    	<thead>
+											<tr>
+												<th>
+													序号
+												</th>
+												<th>
+													通道名称
+												</th>
+												<th>
+													通道ID
+												</th>
+												<th>
+													用户名
+												</th>
+												<th>
+													密码
+												</th>
+												<th>
+													长短信
+												</th>
+												<th>
+													批量发送
+												</th>
+												<th>
+													权重
+												</th>
+												<th>
+													操作
+												</th>
+											</tr>
+										</thead>
+                                        <tbody>
+                                        <#list lists as conduit>
+                                            <tr class="odd gradeX">
+                                                <td>${conduit.id}</td>
+                                                <td>${conduit.name}</td>
+                                                <td>${conduit.conduitId}</td>
+                                                <td>${conduit.account}</td>
+                                                <td>${conduit.password}</td>
+                                                <td>${conduit.longMessage}</td>
+                                                <td>${conduit.bulkMessage}</td>
+                                                <td>${conduit.priority}</td>
+                                                <td><a href="toEdit?id=${conduit.id}">修改</a>&nbsp;&nbsp;&nbsp;<a href="delete?id=${conduit.id}">删除</a></td>
+                                            </tr>
+                                        </#list>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- End .panel -->
+                        </div>
+                        <!-- col-lg-12 end here -->
+                    </div>
+                    <!-- Page End here -->
+                </div>
+                <!-- End .outlet -->
+            </div>
+            <!-- End .content-wrapper -->
+            <div class="clearfix"></div>
+        </div>
+        <!-- End #content -->
+        <script src="../../common/js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+			$('#add').click(function(){
+				document.location.href = "toAdd";
+			})
+		</script>
+    </body>
+</html>

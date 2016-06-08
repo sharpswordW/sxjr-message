@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxjr.app.conduit.mapper.ConduitMapper">
+    <insert id="save" parameterType="com.sxjr.app.conduit.mapper.ConduitMapper" useGeneratedKeys="true" keyProperty="id">  
+        insert into tb_conduit
+        (
+	        name,
+	        account,
+	        conduit_id,
+	        password,
+	        long_message,
+	        bulk_message,
+	        priority,
+	        create_date,
+	        create_by
+        ) 
+        values 
+        (
+	        #{name},
+	        #{account},
+	        #{conduitId},
+	        #{password},
+	        #{longMessage},
+	        #{bulkMessage},
+	        #{priority},
+	        #{createDate},
+	        #{createBy}
+        )  
+    </insert>
+    <select id="list" resultType="com.sxjr.app.conduit.entity.Conduit">  
+        select
+        id,
+        conduit_id as conduitId,
+        name,
+        account,
+        password,
+        long_message as longMessage,
+        bulk_message as bulkMessage,
+        priority
+        from tb_conduit  
+    </select>
+    <select id="findOne" resultType="com.sxjr.app.conduit.entity.Conduit">  
+        select
+        id,
+        conduit_id as conduitId,
+        name,
+        account,
+        password,
+        long_message as longMessage,
+        bulk_message as bulkMessage,
+        priority
+        from tb_conduit
+        where id = #{id}  
+    </select>
+    <update id="update" parameterType="com.sxjr.app.conduit.entity.Conduit">
+		 update tb_conduit
+			 <set>
+			  <if test="name!=null and name!='' ">
+			   tb_conduit.name = #{name},
+			  </if>
+			  <if test="account!=null and account!='' ">
+			   tb_conduit.account = #{account},
+			  </if>
+			  <if test="password!=null and password!='' ">
+			   tb_conduit.password = #{password},
+			  </if>
+			  <if test="longMessage!=null and longMessage!='' ">
+			   tb_conduit.long_message = #{longMessage},
+			  </if>
+			  <if test="bulkMessage!=null and bulkMessage!='' ">
+			   tb_conduit.bulk_message = #{bulkMessage},
+			  </if>
+			  <if test="priority!=null and priority!='' ">
+			   tb_conduit.priority = #{priority},
+			  </if>
+			  <if test="updateBy!=null and updateBy!='' ">
+			   tb_conduit.update_by = #{updateBy},
+			  </if>
+			  <if test="updateDate!=null and updateDate!='' ">
+			   tb_conduit.update_date = #{updateDate},
+			  </if>
+			 </set>
+		 where tb_conduit.id = #{id};
+	</update>
+	<delete id="delete" parameterType="com.sxjr.app.conduit.entity.Conduit">
+		 delete from tb_conduit
+		 where id = #{id};
+	</delete>
+	<select id="findByConduitId" resultType="com.sxjr.app.conduit.entity.Conduit">  
+        select
+        id,
+        conduit_id as conduitId
+        from tb_conduit
+        where conduit_id = #{conduitId}  
+    </select>
+</mapper>

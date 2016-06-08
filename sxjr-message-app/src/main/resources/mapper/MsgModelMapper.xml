@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxjr.app.msgmodel.mapper.MsgModelMapper">
+    <insert id="save" parameterType="com.sxjr.app.msgmodel.entity.MsgModel" useGeneratedKeys="true" keyProperty="id">  
+        insert into msg_model
+        (
+        model_id,
+        content,
+        enable,
+        create_date,
+        create_by,
+        update_date
+        ) 
+        values 
+        (
+        #{modelId},
+        #{content},
+        #{enable},
+        #{createDate},
+        #{createBy},
+        #{updateDate}
+        )  
+    </insert>
+    <select id="list" resultType="com.sxjr.app.msgmodel.entity.MsgModel">  
+        select
+        id,
+        content,
+        enable,
+        create_date as createDate,
+        update_date as updateDate,
+        create_by as createBy
+        from msg_model  
+    </select>
+    <select id="findOne" resultType="com.sxjr.app.msgmodel.entity.MsgModel">  
+        select
+        id,
+        model_id as modelId,
+        content,
+        enable
+        from msg_model
+        where id = #{id}  
+    </select> 
+    <update id="update" parameterType="com.sxjr.app.msgmodel.entity.MsgModel">
+	 update msg_model
+		 <set>
+		  <if test="content!=null and content!='' ">
+		   msg_model.content = #{content},
+		  </if>
+		  <if test="enable!=null and enable!='' ">
+		   msg_model.enable = #{enable},
+		  </if>
+		  <if test="updateBy!=null and updateBy!='' ">
+		   msg_model.update_by = #{updateBy},
+		  </if>
+		  <if test="updateDate!=null and updateDate!='' ">
+		   msg_model.update_date = #{updateDate},
+		  </if>
+		 </set>
+	 where msg_model.id = #{id};
+	</update>
+	<delete id="delete" parameterType="com.sxjr.app.msgmodel.entity.MsgModel">
+		 delete from msg_model
+		 where id = #{id};
+	</delete>
+</mapper>

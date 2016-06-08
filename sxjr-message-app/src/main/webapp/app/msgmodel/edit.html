@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Forms</title>
+        <!-- Css files -->
+        <!-- Bootstrap stylesheets (included template modifications) -->
+        <link href="../../common/css/bootstrap.css" rel="stylesheet" />
+        <!-- Main stylesheets (template main css file) -->
+        <link href="../../common/css/main.css" rel="stylesheet" />
+        <style>
+			.error{
+				color:red;
+			}
+		</style>
+    </head>
+    <body>
+        <!-- Start #content -->
+        <div id="content">
+            <!-- Start .content-wrapper -->
+            <div class="content-wrapper">
+                <!-- End .row -->
+                <div class="outlet">
+                    <!-- Start .outlet -->
+                    <!-- Page start here ( usual with .row ) -->
+                    <div class="row">
+                        <!-- Start .row -->
+                        <div class="col-lg-12">
+                            <!-- Start col-lg-12 -->
+                            <div class="panel panel-default toggle">
+                                <!-- Start .panel -->
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">短信模板编辑</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form class="form-horizontal group-border hover-stripped" name="msgForm" id="msgForm" action="update">
+                                    	<input type="hidden" name="id" id="id"/>.
+                                    	<div class="form-group">
+                                            <label class="col-lg-2 col-md-2 col-sm-12 control-label">模板ID</label>
+                                            <div class="col-lg-10 col-md-10">
+                                                <span id="modelId">${model.modelId}</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-md-2 col-sm-12 control-label">模板内容</label>
+                                            <div class="col-lg-10 col-md-10">
+                                                <textarea name="content" id="modelcontent" class="form-control" rows="3" required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-md-2 col-sm-12 control-label">是否启用</label>
+                                            <div class="col-lg-10 col-md-10">
+                                                <select class="form-control" name="enable" id="enable">
+                                                    <option value="1">启用</option>
+                                                    <option value="0">禁用</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 text-center">
+		                                    <!-- col-lg-12 start here -->
+		                                    <button class="btn btn-success" id="save">保存</button>
+		                                    <button class="btn btn-success" id="cancel">取消</button>
+		                                </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- End .panel -->
+                        </div>
+                        <!-- End col-lg-12 -->
+                    </div>
+                </div>
+                <!-- End .outlet -->
+            </div>
+            <!-- End .content-wrapper -->
+            <div class="clearfix"></div>
+        </div>
+        <!-- End #content -->
+        <!-- Javascripts -->
+    </body>
+    <script src="../../common/js/jquery.js"></script>
+    <script src="../../common/plugins/forms/validation/jquery.validate.js"></script>
+    <script src="../../common/plugins/forms/validation/localization/messages_zh.js"></script>
+    <script type="text/javascript">
+		$(function(){
+			$('#id').val("${model.id}");
+			$('#modelcontent').val("${model.content}");
+			$("#enable option[value='${model.enable}']").attr("selected",true);
+		})
+		$('#save').click(function(){
+			$("#msgForm").validate();
+			$('#msgForm').submit();
+		})
+		$('#cancel').click(function(){
+			document.location.href = "list";
+		})
+	</script>
+</html>
