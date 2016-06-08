@@ -9,11 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sxjr.app.msgmodel.entity.MsgModel;
 import com.sxjr.app.msgmodel.entity.SmsTemplate;
 import com.sxjr.app.msgmodel.service.MsgModelService;
 import com.sxjr.app.sequence.service.SequenceService;
-import com.sxjr.sso.vo.EmployeeVo;
 
 /**
  * Created by wangrq on 2016/6/2.
@@ -31,13 +29,13 @@ public class MsgModelController {
     @Autowired
     SequenceService sequenceService;
     
-    @RequestMapping(value = "toAdd")
-    public String toAdd(ModelMap modelMap){
-    	String modelId = sequenceService.getSequence("msg_model");
-    	MsgModel model = new MsgModel();
-    	modelMap.put("model", model);
-        return PAGE_ADD;
-    }
+//    @RequestMapping(value = "toAdd")
+//    public String toAdd(ModelMap modelMap){
+//    	String modelId = sequenceService.getSequence("msg_model");
+//    	MsgModel model = new MsgModel();
+//    	modelMap.put("model", model);
+//        return PAGE_ADD;
+//    }
     
 //    @RequestMapping(value = "save")
 //    public String save(HttpServletRequest request,ModelMap modelMap){

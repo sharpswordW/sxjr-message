@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sxjr.app.msgmodel.entity.MsgModel;
 import com.sxjr.app.msgmodel.entity.SmsTemplate;
 import com.sxjr.app.msgmodel.mapper.MsgModelMapper;
 import com.sxjr.app.msgmodel.service.MsgModelService;

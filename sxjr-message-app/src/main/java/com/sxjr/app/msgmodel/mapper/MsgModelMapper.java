@@ -2,7 +2,6 @@ package com.sxjr.app.msgmodel.mapper;
 
 import java.util.List;
 
-import com.sxjr.app.msgmodel.entity.MsgModel;
 import com.sxjr.app.msgmodel.entity.SmsTemplate;
 
 public interface MsgModelMapper{
