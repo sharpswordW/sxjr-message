@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sxjr.app.msgmanage.entity.SmClientInfo;
 import com.sxjr.app.msgmanage.service.SmsManageService;
-import com.sxjr.app.msgmodel.entity.MsgModel;
 import com.sxjr.app.until.TicketUtil;
 import com.sxjr.sso.vo.EmployeeVo;
 
