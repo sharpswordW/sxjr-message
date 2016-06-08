@@ -14,19 +14,35 @@ import com.sxjr.app.msgmanage.service.SmsManageService;
 import com.sxjr.app.until.TicketUtil;
 
 /**
- * Created by outh on 2016/6/2.
- */
+* 类的描述
+* @author outh
+* @Time 2016-06-06
+*
+*/
 @Controller
 @RequestMapping(value = "app/sms")
 public class SmsClientController {
 
 	@Autowired
 	private SmsManageService smsManageService;
-
+	/**
+     * 增加客户端页面
+     */
 	private String PAGE_ADD = "msgmanage/addClient";
+	/**
+     * 客户端列表
+     */
 	private String PAGE_LIST = "msgmanage/list";
+	/**
+     * 编辑客户端信息
+     */
 	private String PAGE_EDIT = "msgmanage/edit";
-
+	/**
+	 * 保存客户端信息
+	 *@param request smClientInfo
+	 *@return PAGE_LIST
+	 * 
+	 */
 	@RequestMapping(value = "save")
 	public String addClient(HttpServletRequest request,
 			SmClientInfo smClientInfo, ModelMap modelMap) {
@@ -43,12 +59,22 @@ public class SmsClientController {
 		modelMap.put("lists", smClientInfos);
 		return PAGE_LIST;
 	}
-
+	/**
+	 * 增加客户端信息
+	 *@param
+	 *@return PAGE_ADD
+	 * 
+	 */
 	@RequestMapping(value = "toAdd")
 	public String toAdd() {
 		return PAGE_ADD;
 	}
-
+	/**
+	 * 获取客户端信息
+	 *@param 
+	 *@return PAGE_LIST
+	 * 
+	 */
 	@RequestMapping(value = "qrylist")
 	public String qryClient(ModelMap modelMap) {
 		List<SmClientInfo> smClientInfos = smsManageService.list();
@@ -57,16 +83,29 @@ public class SmsClientController {
 		return PAGE_LIST;
 
 	}
-
+	/**
+	 * 删除客户端信息
+	 *@param request
+	 *@return PAGE_LIST
+	 * 
+	 */
 	@RequestMapping(value = "delete")
 	public String deleteClient(HttpServletRequest request, ModelMap modelMap) {
 		String id = request.getParameter("id");
-		smsManageService.delete(id);
+		SmClientInfo smClientInfo=smsManageService.findOne(id);
+		if (smClientInfo != null ) {
+			smsManageService.delete(smClientInfo);
+		}
 		List<SmClientInfo> smClientInfos = smsManageService.list();
 		modelMap.put("lists", smClientInfos);
 		return PAGE_LIST;
 	}
-	
+	/**
+	 * 编辑客户端信息
+	 *@param request smClientInfo
+	 *@return PAGE_EDIT
+	 * 
+	 */
 	@RequestMapping(value = "edit")
 	public String editClient(HttpServletRequest request,SmClientInfo smClientInfo, ModelMap modelMap) {
 		String id = request.getParameter("id");
@@ -74,7 +113,12 @@ public class SmsClientController {
 		modelMap.put("smClientInfo", smClientInfo);
 		return PAGE_EDIT;
 	}
-	
+	/**
+	 * 更新客户端信息
+	 *@param request smClientInfo
+	 *@return PAGE_LIST
+	 * 
+	 */
 	@RequestMapping(value = "update")
 	public String updateClient(HttpServletRequest request,SmClientInfo smClientInfo, ModelMap modelMap) {
 		smsManageService.update(smClientInfo);

@@ -19,30 +19,21 @@ public class SmsManageServiceImpl implements SmsManageService {
 	private TbSmsManageMapper tbSmsManageMapper;
 	@Autowired
 	private RedisUtil redisUtil;
+	/**
+     * 超时时间
+     */
 	private long tiemOut = 60 * 60 * 6;// 单位：s
-
+	/**
+     * 存放redis中客户端信息KEY的前缀
+     */
 	private static final String CLIENT_KEY = "smClient.info.";
 
 	@Override
 	public int addClient(SmClientInfo smClientInfo) {
-		
+		//存放客户端信息到redis
 		redisUtil.set(CLIENT_KEY + smClientInfo.getAssessToken(),
 				JSONObject.toJSONString(smClientInfo), tiemOut);
-		boolean flag=isExists(smClientInfo.getAssessToken(),smClientInfo.getAssessSecret());
-		System.out.println(flag);
 		return tbSmsManageMapper.save(smClientInfo);
-	}
-	public boolean isExists(String key,String screteID) {
-		 Object result = redisUtil.get(CLIENT_KEY+key);
-		 if(result != null ){
-	            SmClientInfo smClientInfo= JSON.parseObject(result.toString(),SmClientInfo.class);
-	            if (screteID.equals(smClientInfo.getAssessSecret()) && "0".equals(smClientInfo.getStatus())) {
-					return true;
-				}
-	        }
-		
-		return false;
-		
 	}
 	@Override
 	public List<SmClientInfo> list() {
@@ -57,13 +48,25 @@ public class SmsManageServiceImpl implements SmsManageService {
 	}
 
 	@Override
-	public void delete(String id) {
-		tbSmsManageMapper.delete(id);
+	public void delete(SmClientInfo smClientInfo) {
+		//删除redis中保存的信息
+		redisUtil.remove(CLIENT_KEY+smClientInfo.getAssessToken());
+		tbSmsManageMapper.delete(smClientInfo.getId());
 
 	}
 
 	@Override
 	public void update(SmClientInfo smClientInfo) {
+		
+		SmClientInfo oldSmClientInfo=tbSmsManageMapper.selectbyid(smClientInfo.getId());
+		if (oldSmClientInfo != null) {
+			smClientInfo.setAssessSecret(oldSmClientInfo.getAssessSecret());
+			smClientInfo.setAssessToken(oldSmClientInfo.getAssessToken());
+		}
+		//更新redis中客户端信息
+		redisUtil.remove(CLIENT_KEY+smClientInfo.getAssessToken());
+		redisUtil.set(CLIENT_KEY + smClientInfo.getAssessToken(),
+				JSONObject.toJSONString(smClientInfo), tiemOut);
 		tbSmsManageMapper.update(smClientInfo);
 
 	}
