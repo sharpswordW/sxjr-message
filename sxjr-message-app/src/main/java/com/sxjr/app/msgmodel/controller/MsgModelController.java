@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.alibaba.fastjson.JSON;
 import com.sxjr.app.msgmodel.entity.SmsTemplate;
 import com.sxjr.app.msgmodel.service.MsgModelService;
 import com.sxjr.app.sequence.service.SequenceService;
+import com.sxjr.common.util.RedisUtil;
 
 /**
  * Created by wangrq on 2016/6/2.
@@ -25,9 +27,11 @@ public class MsgModelController {
 	private String PAGE_EDIT = "msgmodel/edit";
 	
     @Autowired
-    MsgModelService msgModelService;
+    private MsgModelService msgModelService;
     @Autowired
-    SequenceService sequenceService;
+    private SequenceService sequenceService;
+    @Autowired
+    private RedisUtil redisUtil;
     
 //    @RequestMapping(value = "toAdd")
 //    public String toAdd(ModelMap modelMap){
@@ -78,6 +82,8 @@ public class MsgModelController {
     	model.setId(id);
 //    	model.setUpdateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
     	msgModelService.update(model);
+    	String obj = JSON.toJSON(model).toString();
+    	redisUtil.setHash("SmsTemplate", id, obj);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
         return PAGE_LIST;
