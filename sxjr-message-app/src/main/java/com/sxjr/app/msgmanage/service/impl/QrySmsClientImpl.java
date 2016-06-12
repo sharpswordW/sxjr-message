@@ -8,8 +8,8 @@ import com.alibaba.fastjson.JSON;
 import com.sxjr.app.msgmanage.entity.SmClientInfo;
 import com.sxjr.common.util.RedisUtil;
 
-@Service
-public class QrySmsClient implements IQrySmsClient{
+@Service("qrySmsClient")
+public class QrySmsClientImpl implements IQrySmsClient{
 
 	@Autowired
 	private static RedisUtil redisUtil;
