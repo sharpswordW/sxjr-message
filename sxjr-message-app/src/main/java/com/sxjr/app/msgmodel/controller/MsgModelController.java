@@ -16,6 +16,7 @@ import com.sxjr.app.sequence.service.SequenceService;
 import com.sxjr.common.util.RedisUtil;
 
 /**
+ * 短信模板 Controller
  * Created by wangrq on 2016/6/2.
  */
 @Controller
@@ -57,14 +58,23 @@ public class MsgModelController {
 //    	modelMap.put("lists", list);
 //        return PAGE_LIST;
 //    }
-    
+    /**
+     * 列表
+     * @param modelMap
+     * @return
+     */
     @RequestMapping(value = "list")
     public String list(ModelMap modelMap){
         List<SmsTemplate> list = msgModelService.list();
         modelMap.put("lists", list);
         return PAGE_LIST;
     }
-    
+    /**
+     * 进入编辑页面
+     * @param request
+     * @param modelMap
+     * @return
+     */
     @RequestMapping(value = "toEdit")
     public String edit(HttpServletRequest request,ModelMap modelMap){
     	String id = request.getParameter("id");
@@ -72,7 +82,12 @@ public class MsgModelController {
         modelMap.put("model", model);
         return PAGE_EDIT;
     }
-    
+    /**
+     * 更新操作
+     * @param request
+     * @param modelMap
+     * @return
+     */
     @RequestMapping(value = "update")
     public String update(HttpServletRequest request,ModelMap modelMap){
     	String id = request.getParameter("id");
@@ -88,7 +103,12 @@ public class MsgModelController {
     	modelMap.put("lists", list);
         return PAGE_LIST;
     }
-    
+    /**
+     * 删除
+     * @param request
+     * @param modelMap
+     * @return
+     */
     @RequestMapping(value = "delete")
     public String delete(HttpServletRequest request,ModelMap modelMap){
     	String id = request.getParameter("id");
@@ -97,7 +117,12 @@ public class MsgModelController {
     	modelMap.put("lists", list);
         return PAGE_LIST;
     }
-    
+    /**
+     * 启用/禁用
+     * @param request
+     * @param modelMap
+     * @return
+     */
     @RequestMapping(value = "disable")
     public String disable(HttpServletRequest request,ModelMap modelMap){
     	String id = request.getParameter("id");
