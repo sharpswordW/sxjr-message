@@ -119,5 +119,7 @@
     <bean id="parseProperties" class="com.sxjr.app.common.ParseProperties">  
         <property name="properties" ref="properties" />  
     </bean> 
+    
+    <bean id="configInitProcessor" class="com.sxjr.app.processor.service.ConfigInitProcessor"></bean>
    
 </beans>

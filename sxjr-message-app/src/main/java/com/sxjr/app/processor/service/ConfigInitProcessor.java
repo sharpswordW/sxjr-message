@@ -9,6 +9,7 @@ import com.sxjr.app.processor.mapper.SysConfigMapper;
 import com.sxjr.common.util.RedisUtil;
 
 public class ConfigInitProcessor implements ApplicationListener<ContextRefreshedEvent> {
+	@Autowired
 	private SysConfigMapper sysConfigMapper;
 	@Autowired
 	private RedisUtil redisUtil;
