@@ -177,13 +177,4 @@ public class ConduitController {
         return PAGE_LIST;
     }
     
-    private int coutnStr(String str){
-    	String targetStr = "{";
-    	int count = 0;
-    	if(str.indexOf(targetStr) > 0){
-    		count ++;
-    	}
-    	return count;
-    }
-
 }

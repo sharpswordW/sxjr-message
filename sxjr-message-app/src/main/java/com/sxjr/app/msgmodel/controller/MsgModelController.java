@@ -79,6 +79,7 @@ public class MsgModelController {
     public String edit(HttpServletRequest request,ModelMap modelMap){
     	String id = request.getParameter("id");
     	SmsTemplate model = msgModelService.findOne(id);
+    	modelMap.put("errorMsg", "yes");
         modelMap.put("model", model);
         return PAGE_EDIT;
     }
@@ -92,9 +93,16 @@ public class MsgModelController {
     public String update(HttpServletRequest request,ModelMap modelMap){
     	String id = request.getParameter("id");
     	String content = request.getParameter("content");
+    	String state = request.getParameter("state");
     	SmsTemplate model = new SmsTemplate();
     	model.setContent(content);
     	model.setId(id);
+    	model.setState(state);
+    	if(coutnStr(content) > 5 ){
+    		modelMap.put("errorMsg", "no");
+    		modelMap.put("model", model);
+    		return PAGE_EDIT;
+    	}
 //    	model.setUpdateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
     	msgModelService.update(model);
     	String obj = JSON.toJSON(model).toString();
@@ -136,6 +144,19 @@ public class MsgModelController {
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
         return PAGE_LIST;
+    }
+    
+    private int coutnStr(String str){
+    	char []array=str.toCharArray();  
+    	String targetStr = "{";
+    	int count = 0;
+    	for(int i = 0;i < array.length ;i++){
+    		String cstr=String.valueOf(array[i]);
+    		if(targetStr.equals(cstr)){  
+                count++;
+            }
+    	}
+    	return count;
     }
 
 }
