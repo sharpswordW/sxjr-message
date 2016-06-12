@@ -63,13 +63,31 @@
                                         <div class="form-group">
                                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">长短信</label>
                                             <div class="col-lg-10 col-md-10">
-                                            	<input type="text" class="form-control" name="longMessage" id="longMessage" required/>
+                                            	<input type="text" class="form-control" name="isLong" id="isLong" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">批量短信</label>
                                             <div class="col-lg-10 col-md-10">
-                                            	<input type="text" class="form-control" name="bulkMessage" id="bulkMessage" required/>
+                                            	<input type="text" class="form-control" name="isBulk" id="isBulk" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-md-2 col-sm-12 control-label">发送间隔</label>
+                                            <div class="col-lg-10 col-md-10">
+                                            	<input type="text" class="form-control" name="phoneTimeSpan" id="phoneTimeSpan" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-md-2 col-sm-12 control-label">一天内最大次数</label>
+                                            <div class="col-lg-10 col-md-10">
+                                            	<input type="text" class="form-control" name="phoneMaxCount" id="phoneMaxCount" required/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 col-md-2 col-sm-12 control-label">短信最大长度</label>
+                                            <div class="col-lg-10 col-md-10">
+                                            	<input type="text" class="form-control" name="maxLength" id="maxLength" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -110,8 +128,11 @@
 			$('#conduitId').val("${model.conduitId}");
 			$('#account').val("${model.account}");
 			$('#password').val("${model.password}");
-			$('#longMessage').val("${model.longMessage}");
-			$('#bulkMessage').val("${model.bulkMessage}");
+			$('#isLong').val("${model.isLong}");
+			$('#isBulk').val("${model.isBulk}");
+			$('#phoneTimeSpan').val("${model.phoneTimeSpan}");
+			$('#phoneMaxCount').val("${model.phoneMaxCount}");
+			$('#maxLength').val("${model.maxLength}");
 			$('#priority').val("${model.priority}");
 		})
 		$('#save').click(function(){

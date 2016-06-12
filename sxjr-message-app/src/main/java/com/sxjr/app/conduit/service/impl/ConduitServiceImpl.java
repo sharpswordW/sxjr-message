@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.sxjr.message.inerface.model.Conduit;
+import org.sxjr.message.inerface.model.SmsConduit;
 import org.sxjr.message.inerface.service.ConduitService;
 
 import com.sxjr.app.conduit.mapper.ConduitMapper;
@@ -18,22 +18,22 @@ public class ConduitServiceImpl implements ConduitService {
 	private ConduitMapper conduitMapper;
 
 	@Override
-	public void save(Conduit conduit) {
+	public void save(SmsConduit conduit) {
 		conduitMapper.save(conduit);
 	}
 
 	@Override
-	public List<Conduit> list() {
+	public List<SmsConduit> list() {
 		return conduitMapper.list();
 	}
 
 	@Override
-	public Conduit findOne(String id) {
+	public SmsConduit findOne(String id) {
 		return conduitMapper.findOne(id);
 	}
 
 	@Override
-	public void update(Conduit conduit) {
+	public void update(SmsConduit conduit) {
 		conduitMapper.update(conduit);
 		
 	}
@@ -44,16 +44,16 @@ public class ConduitServiceImpl implements ConduitService {
 	}
 
 	@Override
-	public Conduit findByConduitId(String conduitId) {
+	public SmsConduit findByConduitId(String conduitId) {
 		return conduitMapper.findByConduitId(conduitId);
 	}
 
 	@Override
-	public void updateStatusById(String id,String status) {
-		Conduit conduit = new Conduit();
+	public void updateStateById(String id,String state) {
+		SmsConduit conduit = new SmsConduit();
 		conduit.setId(id);
-		conduit.setStatus(status);
-		conduitMapper.updateStatusById(conduit);
+		conduit.setState(state);
+		conduitMapper.updateStateById(conduit);
 	}
 	
 }
