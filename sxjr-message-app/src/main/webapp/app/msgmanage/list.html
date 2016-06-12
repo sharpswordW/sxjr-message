@@ -77,7 +77,7 @@
                                                 	<#if clientInfo.state == false>
                                                 		<a href="disable?id=${clientInfo.id}">启用</a>&nbsp;&nbsp;&nbsp;
                                                 	</#if>
-                                                <a href="edit?id=${clientInfo.id}">修改</a>&nbsp;&nbsp;&nbsp;<a href="delete?id=${clientInfo.id}">删除</a></td>
+                                                <a href="edit?id=${clientInfo.id}">修改</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="del(${clientInfo.id});">删除</a></td>
                                             </tr>
                                         </#list>
                                         </tbody>
@@ -102,6 +102,12 @@
 			$(function(){
 				$('#nav').load("../../common/navigator.html");
 			})
+			
+			function del(id){
+				if(confirm("确定要删除短信模板吗？")){
+					document.location.href="delete?id=" + id;
+				}
+			}
 		</script>
     </body>
    
