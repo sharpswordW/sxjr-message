@@ -75,13 +75,13 @@
                                                 </td>
                                                 <td>
                                                 	<#if msg.state == '1'>
-                                                		<a href="disable?id=${msg.id}">禁用</a>&nbsp;&nbsp;&nbsp;
+                                                		<a href="#" onclick="disable?id=${msg.id}">禁用</a>&nbsp;&nbsp;&nbsp;
                                                 	</#if>
                                                 	<#if msg.state == '0'>
                                                 		<a href="disable?id=${msg.id}">启用</a>&nbsp;&nbsp;&nbsp;
                                                 	</#if>
                                                 	<a href="toEdit?id=${msg.id}">修改</a>&nbsp;&nbsp;&nbsp;
-                                                	<a href="delete?id=${msg.id}">删除</a>
+                                                	<a href="#" onclick="del('${msg.id}');">删除</a>
                                                 </td>
                                             </tr>
                                         </#list>
@@ -110,6 +110,11 @@
 			$(function(){
 				$('#nav').load("../../common/navigator.html");
 			})
+			function del(id){
+				if(confirm("确定要删除短信模板吗？")){
+					document.location.href="delete?id=" + id;
+				}
+			}
 		</script>
     </body>
 </html>

@@ -93,7 +93,7 @@
                                                		<a href="disable?id=${conduit.id}&state=1">启用</a>&nbsp;&nbsp;&nbsp;
                                                	</#if>
                                                 <a href="toEdit?id=${conduit.id}">修改</a>&nbsp;&nbsp;&nbsp;
-                                                <a href="delete?id=${conduit.id}">删除</a>
+                                                <a href="#" onclick="del('${msg.id}');">删除</a>
                                                 </td>
                                             </tr>
                                         </#list>
@@ -121,6 +121,11 @@
 			$(function(){
 				$('#nav').load("../../common/navigator.html");
 			})
+			function del(id){
+				if(confirm("确定要删除通道吗？")){
+					document.location.href="delete?id=" + id;
+				}
+			}
 		</script>
     </body>
 </html>
