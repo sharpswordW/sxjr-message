@@ -74,23 +74,23 @@
                                                 <td>${conduit.conduitId}</td>
                                                 <td>${conduit.account}</td>
                                                 <td>${conduit.password}</td>
-                                                <td>${conduit.longMessage}</td>
-                                                <td>${conduit.bulkMessage}</td>
+                                                <td>${conduit.isLong}</td>
+                                                <td>${conduit.isBulk}</td>
                                                 <td>${conduit.priority}</td>
                                                 <td>
-                                                	<#if conduit.status == '1'>
+                                                	<#if conduit.state == '1'>
                                                 		启用
                                                 	</#if>
-                                                	<#if conduit.status == '0'>
+                                                	<#if conduit.state == '0'>
                                                 		禁用
                                                 	</#if>
                                                 </td>
                                                 <td>
-                                               	<#if conduit.status == '1'>
-                                               		<a href="disable?id=${conduit.id}&status=0">禁用</a>&nbsp;&nbsp;&nbsp;
+                                               	<#if conduit.state == '1'>
+                                               		<a href="disable?id=${conduit.id}&state=0">禁用</a>&nbsp;&nbsp;&nbsp;
                                                	</#if>
-                                               	<#if conduit.status == '0'>
-                                               		<a href="disable?id=${conduit.id}&status=1">启用</a>&nbsp;&nbsp;&nbsp;
+                                               	<#if conduit.state == '0'>
+                                               		<a href="disable?id=${conduit.id}&state=1">启用</a>&nbsp;&nbsp;&nbsp;
                                                	</#if>
                                                 <a href="toEdit?id=${conduit.id}">修改</a>&nbsp;&nbsp;&nbsp;
                                                 <a href="delete?id=${conduit.id}">删除</a>

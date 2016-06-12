@@ -2,107 +2,128 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxjr.app.conduit.mapper.ConduitMapper">
     <insert id="save" parameterType="com.sxjr.app.conduit.mapper.ConduitMapper" useGeneratedKeys="true" keyProperty="id">  
-        insert into tb_conduit
+        insert into sms_conduit
         (
 	        name,
+	        conduitId,
 	        account,
-	        conduit_id,
 	        password,
-	        long_message,
-	        bulk_message,
+	        isLong,
+	        isBulk,
+	        PhoneTimeSpan,
+	        PhoneMaxCount,
+	        MaxLength,
 	        priority,
-	        create_date,
-	        create_by,
-	        status
+	        createDate,
+	        createBy,
+	        state
         ) 
         values 
         (
 	        #{name},
-	        #{account},
 	        #{conduitId},
+	        #{account},
 	        #{password},
-	        #{longMessage},
-	        #{bulkMessage},
+	        #{isLong},
+	        #{isBulk},
+	        #{PhoneTimeSpan},
+	        #{PhoneMaxCount},
+	        #{MaxLength},
 	        #{priority},
 	        #{createDate},
 	        #{createBy},
-	        #{status}
+	        #{state}
         )  
     </insert>
-    <select id="list" resultType="org.sxjr.message.inerface.model.Conduit">  
+    <select id="list" resultType="org.sxjr.message.inerface.model.SmsConduit">  
         select
         id,
-        conduit_id as conduitId,
+        conduitId,
         name,
         account,
         password,
-        long_message as longMessage,
-        bulk_message as bulkMessage,
+        isLong,
+        isBulk,
+        PhoneTimeSpan,
+        PhoneMaxCount,
+        MaxLength,
         priority,
-        status
-        from tb_conduit  
+        state
+        from sms_conduit  
     </select>
-    <select id="findOne" resultType="org.sxjr.message.inerface.model.Conduit">  
+    <select id="findOne" resultType="org.sxjr.message.inerface.model.SmsConduit">  
         select
         id,
-        conduit_id as conduitId,
+        conduitId,
         name,
         account,
         password,
-        long_message as longMessage,
-        bulk_message as bulkMessage,
+        isLong,
+        isBulk,
+        PhoneTimeSpan,
+        PhoneMaxCount,
+        MaxLength,
         priority
-        from tb_conduit
+        from sms_conduit
         where id = #{id}  
     </select>
-    <update id="update" parameterType="org.sxjr.message.inerface.model.Conduit">
-		 update tb_conduit
+    <update id="update" parameterType="org.sxjr.message.inerface.model.SmsConduit">
+		 update sms_conduit
 			 <set>
 			  <if test="name!=null and name!='' ">
-			   tb_conduit.name = #{name},
+			   sms_conduit.name = #{name},
 			  </if>
 			  <if test="account!=null and account!='' ">
-			   tb_conduit.account = #{account},
+			   sms_conduit.account = #{account},
 			  </if>
 			  <if test="password!=null and password!='' ">
-			   tb_conduit.password = #{password},
+			   sms_conduit.password = #{password},
 			  </if>
-			  <if test="longMessage!=null and longMessage!='' ">
-			   tb_conduit.long_message = #{longMessage},
+			  <if test="isLong!=null and isLong!='' ">
+			   sms_conduit.isLong = #{isLong},
 			  </if>
-			  <if test="bulkMessage!=null and bulkMessage!='' ">
-			   tb_conduit.bulk_message = #{bulkMessage},
+			  <if test="isBulk!=null and isBulk!='' ">
+			   sms_conduit.isBulk = #{isBulk},
+			  </if>
+			  <if test="PhoneTimeSpan!=null and PhoneTimeSpan!='' ">
+			   sms_conduit.PhoneTimeSpan = #{PhoneTimeSpan},
+			  </if>
+			  <if test="PhoneMaxCount!=null and PhoneMaxCount!='' ">
+			   sms_conduit.PhoneMaxCount = #{PhoneMaxCount},
+			  </if>
+			  <if test="MaxLength!=null and MaxLength!='' ">
+			   sms_conduit.MaxLength = #{MaxLength},
 			  </if>
 			  <if test="priority!=null and priority!='' ">
-			   tb_conduit.priority = #{priority},
+			   sms_conduit.priority = #{priority},
 			  </if>
 			  <if test="updateBy!=null and updateBy!='' ">
-			   tb_conduit.update_by = #{updateBy},
+			   sms_conduit.update_by = #{updateBy},
 			  </if>
 			  <if test="updateDate!=null and updateDate!='' ">
-			   tb_conduit.update_date = #{updateDate},
+			   sms_conduit.update_date = #{updateDate},
 			  </if>
 			 </set>
-		 where tb_conduit.id = #{id};
+		 where sms_conduit.id = #{id};
 	</update>
-	<delete id="delete" parameterType="org.sxjr.message.inerface.model.Conduit">
-		 delete from tb_conduit
+	<delete id="delete" parameterType="org.sxjr.message.inerface.model.SmsConduit">
+		 delete from sms_conduit
 		 where id = #{id};
 	</delete>
-	<select id="findByConduitId" resultType="org.sxjr.message.inerface.model.Conduit">  
+	<select id="findByConduitId" resultType="org.sxjr.message.inerface.model.SmsConduit">  
         select
         id,
-        conduit_id as conduitId
-        from tb_conduit
-        where conduit_id = #{conduitId}  
+        conduitId
+        from sms_conduit
+        where conduitId = #{conduitId}  
     </select>
-    <update id="updateStatusById" parameterType="org.sxjr.message.inerface.model.Conduit">
-		 update tb_conduit
+    <update id="updateStateById" parameterType="org.sxjr.message.inerface.model.SmsConduit">
+		 update sms_conduit
 			 <set>
-			  <if test="status!=null and status!='' ">
-			   tb_conduit.status = #{status},
+			  <if test="state!=null and state!='' ">
+			   sms_conduit.state = #{state},
 			  </if>
 			 </set>
-		 where tb_conduit.id = #{id};
+		 where sms_conduit.id = #{id};
 	</update>
 </mapper>
