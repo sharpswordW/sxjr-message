@@ -46,8 +46,8 @@ public class SmsClientController {
 	/**
 	 * 保存客户端信息
 	 *
-	 * @param request
-	 *            smClientInfo
+	 * @param request smClientInfo
+	 *            
 	 * @return PAGE_LIST
 	 * 
 	 */
