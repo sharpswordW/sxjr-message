@@ -8,7 +8,8 @@ import com.alibaba.fastjson.JSON;
 import com.sxjr.app.msgmanage.entity.SmClientInfo;
 import com.sxjr.common.util.RedisUtil;
 
-public class QrySmsClient implements IQrySmsClient{
+@Service("qrySmsClient")
+public class QrySmsClientImpl implements IQrySmsClient{
 
 	@Autowired
 	private static RedisUtil redisUtil;
@@ -28,7 +29,8 @@ public class QrySmsClient implements IQrySmsClient{
 	 */
 	@Override
 	public boolean isExists(String key, String screteID) {
-		 Object result = redisUtil.get(CLIENT_KEY+key);
+		 Object result = redisUtil.GET(CLIENT_KEY+key);
+		 
 		 if(result != null ){
 	            SmClientInfo smClientInfo= JSON.parseObject(result.toString(),SmClientInfo.class);
 	            if (screteID.equals(smClientInfo.getAssessSecret()) && smClientInfo.isState()) {

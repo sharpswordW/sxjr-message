@@ -98,7 +98,7 @@ public class MsgModelController {
 //    	model.setUpdateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
     	msgModelService.update(model);
     	String obj = JSON.toJSON(model).toString();
-    	redisUtil.setHash("SmsTemplate", id, obj);
+    	redisUtil.HSET("SmsTemplate", id, obj);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
         return PAGE_LIST;

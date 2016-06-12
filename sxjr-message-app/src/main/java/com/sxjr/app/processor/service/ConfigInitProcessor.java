@@ -31,14 +31,14 @@ public class ConfigInitProcessor implements ApplicationListener<ContextRefreshed
 		List<SysConfig> configList = sysConfigMapper.list();
 		if(configList != null){
 			SysConfig sysConfig = sysConfigMapper.list().get(0);
-			redisUtil.set("clientPhoneCount", sysConfig.getClientPhoneCount());
-			redisUtil.set("clientPhoneTemplet", sysConfig.getClientPhoneTemplet());
-			redisUtil.set("clientPhoneTimeSpan", sysConfig.getClientPhoneTimeSpan());
-			redisUtil.set("clientBulk", sysConfig.getClientBulk());
-			redisUtil.set("conduitPhoneSecond", sysConfig.getConduitPhoneSecond());
-			redisUtil.set("conduitBulkSecond", sysConfig.getConduitBulkSecond());
-			redisUtil.set("conduitPhoneCount", sysConfig.getConduitPhoneCount());
-			redisUtil.set("conduitPhoneRepeat", sysConfig.getConduitPhoneRepeat());
+			redisUtil.SET("clientPhoneCount", sysConfig.getClientPhoneCount());
+			redisUtil.SET("clientPhoneTemplet", sysConfig.getClientPhoneTemplet());
+			redisUtil.SET("clientPhoneTimeSpan", sysConfig.getClientPhoneTimeSpan());
+			redisUtil.SET("clientBulk", sysConfig.getClientBulk());
+			redisUtil.SET("conduitPhoneSecond", sysConfig.getConduitPhoneSecond());
+			redisUtil.SET("conduitBulkSecond", sysConfig.getConduitBulkSecond());
+			redisUtil.SET("conduitPhoneCount", sysConfig.getConduitPhoneCount());
+			redisUtil.SET("conduitPhoneRepeat", sysConfig.getConduitPhoneRepeat());
 		}
 		//加载短信模板
 		List<SmsTemplate> smsTemplateList = msgModelMapper.list();
