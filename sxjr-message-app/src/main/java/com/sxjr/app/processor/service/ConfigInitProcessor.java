@@ -45,7 +45,7 @@ public class ConfigInitProcessor implements ApplicationListener<ContextRefreshed
 		if(smsTemplateList != null){
 			redisUtil.remove("SmsTemplate");
 			for(SmsTemplate template : smsTemplateList){
-				redisUtil.setHash("SmsTemplate", template.getId(), JSON.toJSON(template).toString());
+				redisUtil.HSET("SmsTemplate", template.getId(), JSON.toJSON(template).toString());
 			}
 		}
 		//加载通道信息
@@ -53,7 +53,7 @@ public class ConfigInitProcessor implements ApplicationListener<ContextRefreshed
 		if(smsConduitList != null){
 			redisUtil.remove("conduit");
 			for(SmsConduit conduit : smsConduitList){
-				redisUtil.setHash("conduit", conduit.getConduitId(), JSON.toJSON(conduit).toString());
+				redisUtil.HSET("conduit", conduit.getConduitId(), JSON.toJSON(conduit).toString());
 			}
 		}
 	}
