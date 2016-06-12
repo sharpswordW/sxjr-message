@@ -100,6 +100,9 @@ public class ConduitController {
     	conduit.setPassword(request.getParameter("password"));
     	conduit.setIsLong(request.getParameter("isLong"));
     	conduit.setIsBulk(request.getParameter("isBulk"));
+    	conduit.setPhoneTimeSpan(request.getParameter("PhoneTimeSpan"));
+    	conduit.setPhoneMaxCount(request.getParameter("PhoneMaxCount"));
+    	conduit.setMaxLength(request.getParameter("MaxLength"));
     	conduit.setPriority(request.getParameter("priority"));
     	conduit.setUpdateDate(new Date());
     	conduit.setUpdateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());

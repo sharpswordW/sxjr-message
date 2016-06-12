@@ -10,9 +10,9 @@
 	        password,
 	        isLong,
 	        isBulk,
-	        PhoneTimeSpan,
-	        PhoneMaxCount,
-	        MaxLength,
+	        phoneTimeSpan,
+	        phoneMaxCount,
+	        maxLength,
 	        priority,
 	        createDate,
 	        createBy,
@@ -26,9 +26,9 @@
 	        #{password},
 	        #{isLong},
 	        #{isBulk},
-	        #{PhoneTimeSpan},
-	        #{PhoneMaxCount},
-	        #{MaxLength},
+	        #{phoneTimeSpan},
+	        #{phoneMaxCount},
+	        #{maxLength},
 	        #{priority},
 	        #{createDate},
 	        #{createBy},
@@ -44,9 +44,9 @@
         password,
         isLong,
         isBulk,
-        PhoneTimeSpan,
-        PhoneMaxCount,
-        MaxLength,
+        phoneTimeSpan,
+        phoneMaxCount,
+        maxLength,
         priority,
         state
         from sms_conduit  
@@ -60,9 +60,9 @@
         password,
         isLong,
         isBulk,
-        PhoneTimeSpan,
-        PhoneMaxCount,
-        MaxLength,
+        phoneTimeSpan,
+        phoneMaxCount,
+        maxLength,
         priority
         from sms_conduit
         where id = #{id}  
@@ -85,23 +85,23 @@
 			  <if test="isBulk!=null and isBulk!='' ">
 			   sms_conduit.isBulk = #{isBulk},
 			  </if>
-			  <if test="PhoneTimeSpan!=null and PhoneTimeSpan!='' ">
-			   sms_conduit.PhoneTimeSpan = #{PhoneTimeSpan},
+			  <if test="phoneTimeSpan!=null and phoneTimeSpan!='' ">
+			   sms_conduit.phoneTimeSpan = #{phoneTimeSpan},
 			  </if>
-			  <if test="PhoneMaxCount!=null and PhoneMaxCount!='' ">
-			   sms_conduit.PhoneMaxCount = #{PhoneMaxCount},
+			  <if test="phoneMaxCount!=null and phoneMaxCount!='' ">
+			   sms_conduit.phoneMaxCount = #{phoneMaxCount},
 			  </if>
-			  <if test="MaxLength!=null and MaxLength!='' ">
-			   sms_conduit.MaxLength = #{MaxLength},
+			  <if test="maxLength!=null and maxLength!='' ">
+			   sms_conduit.maxLength = #{maxLength},
 			  </if>
 			  <if test="priority!=null and priority!='' ">
 			   sms_conduit.priority = #{priority},
 			  </if>
 			  <if test="updateBy!=null and updateBy!='' ">
-			   sms_conduit.update_by = #{updateBy},
+			   sms_conduit.updateBy = #{updateBy},
 			  </if>
-			  <if test="updateDate!=null and updateDate!='' ">
-			   sms_conduit.update_date = #{updateDate},
+			  <if test="updateDate!=null">
+			   sms_conduit.updateDate = #{updateDate},
 			  </if>
 			 </set>
 		 where sms_conduit.id = #{id};

@@ -16,15 +16,34 @@ public class SmsConduit extends BaseEntity {
 	//批量发送
 	private String isBulk;
 	//发送间隔
-	private String PhoneTimeSpan;
+	private String phoneTimeSpan;
 	//一天内最大次数
-	private String PhoneMaxCount;
+	private String phoneMaxCount;
 	//短信最大长度
-	private String MaxLength;
+	private String maxLength;
 	//权重
 	private String priority;
 	//状态
 	private String state;
+	
+	public String getPhoneTimeSpan() {
+		return phoneTimeSpan;
+	}
+	public void setPhoneTimeSpan(String phoneTimeSpan) {
+		this.phoneTimeSpan = phoneTimeSpan;
+	}
+	public String getPhoneMaxCount() {
+		return phoneMaxCount;
+	}
+	public void setPhoneMaxCount(String phoneMaxCount) {
+		this.phoneMaxCount = phoneMaxCount;
+	}
+	public String getMaxLength() {
+		return maxLength;
+	}
+	public void setMaxLength(String maxLength) {
+		this.maxLength = maxLength;
+	}
 	public String getId() {
 		return id;
 	}
@@ -66,24 +85,6 @@ public class SmsConduit extends BaseEntity {
 	}
 	public void setIsBulk(String isBulk) {
 		this.isBulk = isBulk;
-	}
-	public String getPhoneTimeSpan() {
-		return PhoneTimeSpan;
-	}
-	public void setPhoneTimeSpan(String phoneTimeSpan) {
-		PhoneTimeSpan = phoneTimeSpan;
-	}
-	public String getPhoneMaxCount() {
-		return PhoneMaxCount;
-	}
-	public void setPhoneMaxCount(String phoneMaxCount) {
-		PhoneMaxCount = phoneMaxCount;
-	}
-	public String getMaxLength() {
-		return MaxLength;
-	}
-	public void setMaxLength(String maxLength) {
-		MaxLength = maxLength;
 	}
 	public String getPriority() {
 		return priority;

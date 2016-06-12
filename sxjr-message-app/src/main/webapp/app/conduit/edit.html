@@ -75,19 +75,19 @@
                                         <div class="form-group">
                                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">发送间隔</label>
                                             <div class="col-lg-10 col-md-10">
-                                            	<input type="text" class="form-control" name="PhoneTimeSpan" id="PhoneTimeSpan" required/>
+                                            	<input type="text" class="form-control" name="phoneTimeSpan" id="phoneTimeSpan" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">一天内最大次数</label>
                                             <div class="col-lg-10 col-md-10">
-                                            	<input type="text" class="form-control" name="PhoneMaxCount" id="PhoneMaxCount" required/>
+                                            	<input type="text" class="form-control" name="phoneMaxCount" id="phoneMaxCount" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-2 col-md-2 col-sm-12 control-label">短信最大长度</label>
                                             <div class="col-lg-10 col-md-10">
-                                            	<input type="text" class="form-control" name="MaxLength" id="MaxLength" required/>
+                                            	<input type="text" class="form-control" name="maxLength" id="maxLength" required/>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -130,6 +130,9 @@
 			$('#password').val("${model.password}");
 			$('#isLong').val("${model.isLong}");
 			$('#isBulk').val("${model.isBulk}");
+			$('#phoneTimeSpan').val("${model.phoneTimeSpan}");
+			$('#phoneMaxCount').val("${model.phoneMaxCount}");
+			$('#maxLength').val("${model.maxLength}");
 			$('#priority').val("${model.priority}");
 		})
 		$('#save').click(function(){
