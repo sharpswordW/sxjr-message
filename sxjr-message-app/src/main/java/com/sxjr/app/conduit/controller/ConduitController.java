@@ -78,7 +78,7 @@ public class ConduitController {
     	String key = redisKey;
     	String hashKey = request.getParameter("conduitId");
     	String obj = JSON.toJSON(conduit).toString(); 
-    	redisUtil.setHash(key, hashKey, obj);
+    	redisUtil.HSET(key, hashKey, obj);
     	List<SmsConduit> list = conduitService.list();
     	modelMap.put("lists", list);
         return PAGE_LIST;
@@ -133,7 +133,7 @@ public class ConduitController {
     	String key = redisKey;
     	String hashKey = request.getParameter("conduitId");
     	String obj = JSON.toJSON(conduit).toString(); 
-    	redisUtil.setHash(key, hashKey, obj);
+    	redisUtil.HSET(key, hashKey, obj);
     	List list = conduitService.list();
     	modelMap.put("lists", list);
         return PAGE_LIST;

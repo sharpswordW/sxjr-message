@@ -29,7 +29,7 @@ public class QrySmsClientImpl implements IQrySmsClient{
 	 */
 	@Override
 	public boolean isExists(String key, String screteID) {
-		 Object result = redisUtil.get(CLIENT_KEY+key);
+		 Object result = redisUtil.GET(CLIENT_KEY+key);
 		 
 		 if(result != null ){
 	            SmClientInfo smClientInfo= JSON.parseObject(result.toString(),SmClientInfo.class);
