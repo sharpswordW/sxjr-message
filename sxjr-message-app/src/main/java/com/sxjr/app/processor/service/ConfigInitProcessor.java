@@ -1,5 +1,7 @@
 package com.sxjr.app.processor.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -16,15 +18,18 @@ public class ConfigInitProcessor implements ApplicationListener<ContextRefreshed
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-		SysConfig sysConfig = sysConfigMapper.list().get(0);
-		redisUtil.set("clientPhoneCount", sysConfig.getClientPhoneCount());
-		redisUtil.set("clientPhoneTemplet", sysConfig.getClientPhoneTemplet());
-		redisUtil.set("clientPhoneTimeSpan", sysConfig.getClientPhoneTimeSpan());
-		redisUtil.set("clientBulk", sysConfig.getClientBulk());
-		redisUtil.set("conduitPhoneSecond", sysConfig.getConduitPhoneSecond());
-		redisUtil.set("conduitBulkSecond", sysConfig.getConduitBulkSecond());
-		redisUtil.set("conduitPhoneCount", sysConfig.getConduitPhoneCount());
-		redisUtil.set("conduitPhoneRepeat", sysConfig.getConduitPhoneRepeat());
+		List<SysConfig> configList = sysConfigMapper.list();
+		if(configList != null){
+			SysConfig sysConfig = sysConfigMapper.list().get(0);
+			redisUtil.set("clientPhoneCount", sysConfig.getClientPhoneCount());
+			redisUtil.set("clientPhoneTemplet", sysConfig.getClientPhoneTemplet());
+			redisUtil.set("clientPhoneTimeSpan", sysConfig.getClientPhoneTimeSpan());
+			redisUtil.set("clientBulk", sysConfig.getClientBulk());
+			redisUtil.set("conduitPhoneSecond", sysConfig.getConduitPhoneSecond());
+			redisUtil.set("conduitBulkSecond", sysConfig.getConduitBulkSecond());
+			redisUtil.set("conduitPhoneCount", sysConfig.getConduitPhoneCount());
+			redisUtil.set("conduitPhoneRepeat", sysConfig.getConduitPhoneRepeat());
+		}
 	}
 
 }
