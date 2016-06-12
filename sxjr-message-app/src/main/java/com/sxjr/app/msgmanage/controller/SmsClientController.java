@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,6 +27,7 @@ import com.sxjr.sso.vo.EmployeeVo;
 @RequestMapping(value = "app/sms")
 public class SmsClientController {
 
+	private static  Logger logger=LoggerFactory.getLogger(SmClientInfo.class);
 	@Autowired
 	private SmsManageService smsManageService;
 	/**
