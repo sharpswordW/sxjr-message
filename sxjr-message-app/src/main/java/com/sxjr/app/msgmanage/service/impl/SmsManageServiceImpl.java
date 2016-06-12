@@ -32,7 +32,7 @@ public class SmsManageServiceImpl implements SmsManageService {
 	@Override
 	public int addClient(SmClientInfo smClientInfo) {
 		//存放客户端信息到redis
-		redisUtil.set(CLIENT_KEY + smClientInfo.getAssessToken(),
+		redisUtil.SET(CLIENT_KEY + smClientInfo.getAssessToken(),
 				JSONObject.toJSONString(smClientInfo), tiemOut);
 		return tbSmsManageMapper.save(smClientInfo);
 	}
@@ -66,7 +66,7 @@ public class SmsManageServiceImpl implements SmsManageService {
 		}
 		//更新redis中客户端信息
 		redisUtil.remove(CLIENT_KEY+smClientInfo.getAssessToken());
-		redisUtil.set(CLIENT_KEY + smClientInfo.getAssessToken(),
+		redisUtil.HSET(CLIENT_KEY + smClientInfo.getAssessToken(),
 				JSONObject.toJSONString(smClientInfo), tiemOut);
 		tbSmsManageMapper.update(smClientInfo);
 
