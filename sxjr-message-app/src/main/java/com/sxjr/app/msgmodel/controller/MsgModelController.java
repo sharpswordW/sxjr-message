@@ -101,7 +101,6 @@ public class MsgModelController {
     	}else{
     		model.setState("1");
     	}
-//    	model.setUpdateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
     	msgModelService.update(model);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
