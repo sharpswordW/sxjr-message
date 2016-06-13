@@ -2,7 +2,7 @@ package com.sxjr.app.msgmodel.mapper;
 
 import java.util.List;
 
-import org.sxjr.message.inerface.model.SmsTemplate;
+import com.sxjr.app.model.SmsTemplate;
 
 public interface MsgModelMapper{
     int save(SmsTemplate msgmodel);

@@ -1,4 +1,4 @@
-package org.sxjr.message.inerface.service;
+package com.sxjr.app.service;
 
 public interface IQrySmsClient {
 

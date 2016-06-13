@@ -2,7 +2,7 @@ package com.sxjr.app.msgmodel.service;
 
 import java.util.List;
 
-import org.sxjr.message.inerface.model.SmsTemplate;
+import com.sxjr.app.model.SmsTemplate;
 
 /**
  * Created by wangrq on 2016/6/2.

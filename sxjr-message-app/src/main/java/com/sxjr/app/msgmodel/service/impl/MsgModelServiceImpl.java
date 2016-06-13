@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.sxjr.message.inerface.model.SmsTemplate;
 
+import com.sxjr.app.model.SmsTemplate;
 import com.sxjr.app.msgmodel.mapper.MsgModelMapper;
 import com.sxjr.app.msgmodel.service.MsgModelService;
 

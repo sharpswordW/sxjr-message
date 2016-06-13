@@ -35,7 +35,7 @@
 	        #{state}
         )  
     </insert>
-    <select id="list" resultType="org.sxjr.message.inerface.model.SmsConduit">  
+    <select id="list" resultType="com.sxjr.app.model.SmsConduit">  
         select
         id,
         conduitId,
@@ -51,7 +51,7 @@
         state
         from sms_conduit  
     </select>
-    <select id="findOne" resultType="org.sxjr.message.inerface.model.SmsConduit">  
+    <select id="findOne" resultType="com.sxjr.app.model.SmsConduit">  
         select
         id,
         conduitId,
@@ -67,7 +67,7 @@
         from sms_conduit
         where id = #{id}  
     </select>
-    <update id="update" parameterType="org.sxjr.message.inerface.model.SmsConduit">
+    <update id="update" parameterType="com.sxjr.app.model.SmsConduit">
 		 update sms_conduit
 			 <set>
 			  <if test="name!=null and name!='' ">
@@ -106,18 +106,18 @@
 			 </set>
 		 where sms_conduit.id = #{id};
 	</update>
-	<delete id="delete" parameterType="org.sxjr.message.inerface.model.SmsConduit">
+	<delete id="delete" parameterType="com.sxjr.app.model.SmsConduit">
 		 delete from sms_conduit
 		 where id = #{id};
 	</delete>
-	<select id="findByConduitId" resultType="org.sxjr.message.inerface.model.SmsConduit">  
+	<select id="findByConduitId" resultType="com.sxjr.app.model.SmsConduit">  
         select
         id,
         conduitId
         from sms_conduit
         where conduitId = #{conduitId}  
     </select>
-    <update id="updateStateById" parameterType="org.sxjr.message.inerface.model.SmsConduit">
+    <update id="updateStateById" parameterType="com.sxjr.app.model.SmsConduit">
 		 update sms_conduit
 			 <set>
 			  <if test="state!=null and state!='' ">

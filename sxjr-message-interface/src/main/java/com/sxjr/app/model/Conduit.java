@@ -1,4 +1,4 @@
-package org.sxjr.message.inerface.model;
+package com.sxjr.app.model;
 
 /**
  * Created by wangrq on 2016/6/6.

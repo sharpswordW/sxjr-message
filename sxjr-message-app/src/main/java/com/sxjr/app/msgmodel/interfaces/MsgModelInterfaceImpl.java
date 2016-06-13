@@ -2,10 +2,10 @@ package com.sxjr.app.msgmodel.interfaces;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.sxjr.message.inerface.model.SmsTemplate;
-import org.sxjr.message.inerface.service.MsgModelInterface;
 
+import com.sxjr.app.model.SmsTemplate;
 import com.sxjr.app.msgmodel.mapper.MsgModelMapper;
+import com.sxjr.app.service.MsgModelInterface;
 @Service("msgModelInterface")
 public class MsgModelInterfaceImpl implements MsgModelInterface{
 	

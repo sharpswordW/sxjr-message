@@ -1,4 +1,4 @@
-package org.sxjr.message.inerface.model;
+package com.sxjr.app.model;
 
 import java.util.Date;
 

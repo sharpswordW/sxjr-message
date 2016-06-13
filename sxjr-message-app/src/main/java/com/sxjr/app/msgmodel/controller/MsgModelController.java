@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.sxjr.message.inerface.model.SmsTemplate;
 
 import com.alibaba.fastjson.JSON;
+import com.sxjr.app.model.SmsTemplate;
 import com.sxjr.app.msgmodel.service.MsgModelService;
 import com.sxjr.app.sequence.service.SequenceService;
 import com.sxjr.common.util.RedisUtil;

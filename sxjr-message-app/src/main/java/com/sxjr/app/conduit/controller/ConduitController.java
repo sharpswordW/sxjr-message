@@ -11,10 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.sxjr.message.inerface.model.SmsConduit;
-import org.sxjr.message.inerface.service.ConduitService;
 
 import com.alibaba.fastjson.JSON;
+import com.sxjr.app.model.SmsConduit;
+import com.sxjr.app.service.ConduitService;
 import com.sxjr.common.util.RedisUtil;
 import com.sxjr.sso.vo.EmployeeVo;
 
