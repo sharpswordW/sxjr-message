@@ -34,6 +34,7 @@ public class SmsManageServiceImpl implements SmsManageService {
 		//存放客户端信息到redis
 		redisUtil.SET(CLIENT_KEY + smClientInfo.getAssessToken(),
 				JSONObject.toJSONString(smClientInfo), tiemOut);
+
 		return tbSmsManageMapper.save(smClientInfo);
 	}
 	@Override
@@ -66,7 +67,7 @@ public class SmsManageServiceImpl implements SmsManageService {
 		}
 		//更新redis中客户端信息
 		redisUtil.remove(CLIENT_KEY+smClientInfo.getAssessToken());
-		redisUtil.HSET(CLIENT_KEY + smClientInfo.getAssessToken(),
+		redisUtil.SET(CLIENT_KEY + smClientInfo.getAssessToken(),
 				JSONObject.toJSONString(smClientInfo), tiemOut);
 		tbSmsManageMapper.update(smClientInfo);
 
