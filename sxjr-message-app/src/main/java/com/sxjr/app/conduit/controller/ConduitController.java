@@ -53,31 +53,22 @@ public class ConduitController {
      * @return
      */
     @RequestMapping(value = "save")
-    public String save(HttpServletRequest request,ModelMap modelMap){
-    	String conduitId = request.getParameter("conduitId");
-    	SmsConduit model = conduitService.findByConduitId(conduitId);
+    public String save(HttpServletRequest request,SmsConduit conduit,ModelMap modelMap){
+    	//检查通道ID是否已经存在
+    	SmsConduit model = conduitService.findByConduitId(conduit.getConduitId());
         if(model != null){
         	modelMap.put("errorMsg", "no");
         	return PAGE_ADD;
         }
-        SmsConduit conduit = new SmsConduit();
-    	conduit.setName(request.getParameter("name"));
-    	conduit.setConduitId(request.getParameter("conduitId"));
-    	conduit.setAccount(request.getParameter("name"));
-    	conduit.setPassword(request.getParameter("password"));
-    	conduit.setIsLong(request.getParameter("isLong"));
-    	conduit.setIsBulk(request.getParameter("isBulk"));
-    	conduit.setPhoneTimeSpan(request.getParameter("PhoneTimeSpan"));
-    	conduit.setPhoneMaxCount(request.getParameter("PhoneMaxCount"));
-    	conduit.setMaxLength(request.getParameter("MaxLength"));
-    	conduit.setPriority(request.getParameter("priority"));
     	conduit.setCreateDate(new Date());
     	conduit.setCreateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
     	conduit.setState("1");
+    	//保存
     	conduitService.save(conduit);
     	String key = redisKey;
     	String hashKey = request.getParameter("conduitId");
     	String obj = JSON.toJSON(conduit).toString(); 
+    	//通道信息存redis
     	redisUtil.HSET(key, hashKey, obj);
     	List<SmsConduit> list = conduitService.list();
     	modelMap.put("lists", list);
@@ -114,19 +105,7 @@ public class ConduitController {
      * @return
      */
     @RequestMapping(value = "update")
-    public String update(HttpServletRequest request,ModelMap modelMap){
-    	SmsConduit conduit = new SmsConduit();
-    	conduit.setId(request.getParameter("id"));
-    	conduit.setName(request.getParameter("name"));
-//    	conduit.setConduitId(request.getParameter("conduitId")); //通道ID不可以修改
-    	conduit.setAccount(request.getParameter("name"));
-    	conduit.setPassword(request.getParameter("password"));
-    	conduit.setIsLong(request.getParameter("isLong"));
-    	conduit.setIsBulk(request.getParameter("isBulk"));
-    	conduit.setPhoneTimeSpan(request.getParameter("PhoneTimeSpan"));
-    	conduit.setPhoneMaxCount(request.getParameter("PhoneMaxCount"));
-    	conduit.setMaxLength(request.getParameter("MaxLength"));
-    	conduit.setPriority(request.getParameter("priority"));
+    public String update(HttpServletRequest request,SmsConduit conduit,ModelMap modelMap){
     	conduit.setUpdateDate(new Date());
     	conduit.setUpdateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
     	conduitService.update(conduit);
