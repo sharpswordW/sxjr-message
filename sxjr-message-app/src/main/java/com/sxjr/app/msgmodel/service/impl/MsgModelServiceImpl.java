@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sxjr.app.msgmodel.entity.SmsTemplate;
 import com.sxjr.app.msgmodel.mapper.MsgModelMapper;
@@ -13,6 +14,7 @@ import com.sxjr.app.msgmodel.service.MsgModelService;
  * Created by wangrq on 2016/6/2.
  */
 @Service
+@Transactional
 public class MsgModelServiceImpl implements MsgModelService {
 
     @Autowired

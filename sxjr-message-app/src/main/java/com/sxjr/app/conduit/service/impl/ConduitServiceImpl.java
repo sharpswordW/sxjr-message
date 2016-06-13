@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.sxjr.message.inerface.model.SmsConduit;
 import org.sxjr.message.inerface.service.ConduitService;
 
@@ -13,6 +14,7 @@ import com.sxjr.app.conduit.mapper.ConduitMapper;
  * Created by wangrq on 2016/6/2.
  */
 @Service
+@Transactional
 public class ConduitServiceImpl implements ConduitService {
 	@Autowired
 	private ConduitMapper conduitMapper;
