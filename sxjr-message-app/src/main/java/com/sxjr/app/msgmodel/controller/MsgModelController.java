@@ -90,15 +90,8 @@ public class MsgModelController {
      * @return
      */
     @RequestMapping(value = "update")
-    public String update(HttpServletRequest request,ModelMap modelMap){
-    	String id = request.getParameter("id");
-    	String content = request.getParameter("content");
-    	String state = request.getParameter("state");
-    	SmsTemplate model = new SmsTemplate();
-    	model.setContent(content);
-    	model.setId(id);
-    	model.setState(state);
-    	if(coutnStr(content) > 5 ){
+    public String update(SmsTemplate model,ModelMap modelMap){
+    	if(coutnStr(model.getContent()) > 5 ){
     		modelMap.put("errorMsg", "no");
     		modelMap.put("model", model);
     		return PAGE_EDIT;
@@ -106,7 +99,7 @@ public class MsgModelController {
 //    	model.setUpdateBy(((EmployeeVo)request.getSession().getAttribute("loginUser")).getLoginName());
     	msgModelService.update(model);
     	String obj = JSON.toJSON(model).toString();
-    	redisUtil.HSET("SmsTemplate", id, obj);
+    	redisUtil.HSET("SmsTemplate", model.getId(), obj);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
         return PAGE_LIST;
