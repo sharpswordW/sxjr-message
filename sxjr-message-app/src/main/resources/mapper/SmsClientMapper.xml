@@ -42,8 +42,7 @@
     	UPDATE sms_client
     		<set>
     			<if test="name!=null">name=#{name},</if>
-    			<if test="state!=null">state=#{state},</if>
-    			<if test="ipList!=null">ipList=#{ipList}</if>
+    			<if test="state!=null">state=#{state},ipList=#{ipList}</if>
     		</set>
     		WHERE id=#{id}
     </update>
