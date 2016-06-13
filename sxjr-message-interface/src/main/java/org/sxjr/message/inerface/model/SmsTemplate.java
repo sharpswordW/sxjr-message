@@ -1,6 +1,4 @@
-package com.sxjr.app.msgmodel.entity;
-
-import com.sxjr.app.common.BaseEntity;
+package org.sxjr.message.inerface.model;
 
 public class SmsTemplate extends BaseEntity{
 	

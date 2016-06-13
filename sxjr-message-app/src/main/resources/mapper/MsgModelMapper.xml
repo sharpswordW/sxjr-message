@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxjr.app.msgmodel.mapper.MsgModelMapper">
-    <insert id="save" parameterType="com.sxjr.app.msgmodel.entity.SmsTemplate" useGeneratedKeys="true" keyProperty="id">  
+    <insert id="save" parameterType="org.sxjr.message.inerface.model.SmsTemplate" useGeneratedKeys="true" keyProperty="id">  
         insert into msg_model
         (
         model_id,
@@ -21,7 +21,7 @@
         #{updateDate}
         )  
     </insert>
-    <select id="list" resultType="com.sxjr.app.msgmodel.entity.SmsTemplate">  
+    <select id="list" resultType="org.sxjr.message.inerface.model.SmsTemplate">  
         select
         id,
         content,
@@ -31,7 +31,7 @@
         createBy
         from sms_template  
     </select>
-    <select id="findOne" resultType="com.sxjr.app.msgmodel.entity.SmsTemplate">  
+    <select id="findOne" resultType="org.sxjr.message.inerface.model.SmsTemplate">  
         select
         id,
         content,
@@ -39,7 +39,7 @@
         from sms_template
         where id = #{id}  
     </select> 
-    <update id="update" parameterType="com.sxjr.app.msgmodel.entity.SmsTemplate">
+    <update id="update" parameterType="org.sxjr.message.inerface.model.SmsTemplate">
 	 update sms_template
 		 <set>
 		  <if test="content!=null and content!='' ">
@@ -54,7 +54,7 @@
 		 </set>
 	 where sms_template.id = #{id};
 	</update>
-	<delete id="delete" parameterType="com.sxjr.app.msgmodel.entity.SmsTemplate">
+	<delete id="delete" parameterType="org.sxjr.message.inerface.model.SmsTemplate">
 		 delete from sms_template
 		 where id = #{id};
 	</delete>

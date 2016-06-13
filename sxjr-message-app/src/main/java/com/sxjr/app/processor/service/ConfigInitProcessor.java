@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.sxjr.message.inerface.model.SmsConduit;
+import org.sxjr.message.inerface.model.SmsTemplate;
 
 import com.alibaba.fastjson.JSON;
 import com.sxjr.app.conduit.mapper.ConduitMapper;
-import com.sxjr.app.msgmodel.entity.SmsTemplate;
 import com.sxjr.app.msgmodel.mapper.MsgModelMapper;
 import com.sxjr.app.processor.entity.SysConfig;
 import com.sxjr.app.processor.mapper.SysConfigMapper;

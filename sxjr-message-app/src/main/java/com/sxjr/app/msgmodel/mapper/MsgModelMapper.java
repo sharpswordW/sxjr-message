@@ -2,10 +2,10 @@ package com.sxjr.app.msgmodel.mapper;
 
 import java.util.List;
 
-import com.sxjr.app.msgmodel.entity.SmsTemplate;
+import org.sxjr.message.inerface.model.SmsTemplate;
 
 public interface MsgModelMapper{
-    void save(SmsTemplate msgModel);
+    int save(SmsTemplate msgmodel);
     List<SmsTemplate> list();
     SmsTemplate findOne(String id);
     void update(SmsTemplate msgModel);
