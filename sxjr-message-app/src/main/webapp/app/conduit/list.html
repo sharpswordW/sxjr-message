@@ -56,6 +56,15 @@
 													批量发送
 												</th>
 												<th>
+													短信发送间隔
+												</th>
+												<th>
+													一天内最大次数
+												</th>
+												<th>
+													短信最大长度
+												</th>
+												<th>
 													权重
 												</th>
 												<th>
@@ -76,6 +85,9 @@
                                                 <td>${conduit.password}</td>
                                                 <td>${conduit.isLong}</td>
                                                 <td>${conduit.isBulk}</td>
+                                                <td>${conduit.phoneTimeSpan}</td>
+                                                <td>${conduit.phoneMaxCount}</td>
+                                                <td>${conduit.maxLength}</td>
                                                 <td>${conduit.priority}</td>
                                                 <td>
                                                 	<#if conduit.state == '1'>
