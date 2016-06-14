@@ -30,20 +30,20 @@ public class QrySmsClientImpl implements IQrySmsClient {
 	 * 
 	 */
 	@Override
-	public boolean isExists(String key, String screteID) {
-		Object result = redisUtil.GET(CLIENT_KEY + key);
+	public boolean isExists(String assessToken, String assessSecret) {
+		Object result = redisUtil.GET(CLIENT_KEY + assessToken);
 		if (result != null) {
 			SmClientInfo smClientInfo = JSON.parseObject(result.toString(),
 					SmClientInfo.class);
-			if (screteID.equals(smClientInfo.getAssessSecret())
+			if (assessSecret.equals(smClientInfo.getAssessSecret())
 					&& smClientInfo.isState()) {
-				logger.info("the " + key + " is available");
+				logger.info("the " + assessToken + " is available");
 				return true;
 			}
 		}
-		logger.info("the accessToken:" + key
-				+ " is unavailable,please make sure accessToken:" + key
-				+ "and assessSecret:" + screteID
+		logger.info("the accessToken:" + assessToken
+				+ " is unavailable,please make sure accessToken:" + assessToken
+				+ "and assessSecret:" + assessSecret
 				+ "are exists in redis and state is true ");
 		return false;
 	}
