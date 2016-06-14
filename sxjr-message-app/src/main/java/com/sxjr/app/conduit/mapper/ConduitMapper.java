@@ -14,5 +14,5 @@ public interface ConduitMapper{
     void update(SmsConduit conduit);
     void delete(String id);
     SmsConduit findByConduitId(String conduitId);
-    void updateStateById(SmsConduit conduit);
+    int updateStateById(SmsConduit conduit);
 }

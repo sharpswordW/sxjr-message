@@ -51,11 +51,16 @@ public class ConduitServiceImpl implements ConduitService {
 	}
 
 	@Override
-	public void updateStateById(String id,String state) {
+	public boolean updateStateById(String id,String state) {
+		boolean result = false;
 		SmsConduit conduit = new SmsConduit();
 		conduit.setId(id);
 		conduit.setState(state);
-		conduitMapper.updateStateById(conduit);
+		if(conduitMapper.updateStateById(conduit) > 0){
+			result = true;
+		}
+		return result;
+		
 	}
 	
 }

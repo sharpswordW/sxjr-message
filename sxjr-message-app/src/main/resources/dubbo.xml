@@ -19,6 +19,8 @@
   <dubbo:reference  interface="com.sxjr.sso.service.IEmployeeService" id="employeeService" />
   <!-- 启用/禁用通道状态接口 -->
   <dubbo:service interface="com.sxjr.app.service.ConduitService" ref="conduitServiceImpl" />
+  <!-- 短信模板注册接口 -->
+  <dubbo:service interface="com.sxjr.app.service.MsgModelInterface" ref="msgModelInterface" />
   
 
 </beans>
