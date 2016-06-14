@@ -13,6 +13,7 @@ import com.alibaba.fastjson.JSON;
 import com.sxjr.app.model.SmsTemplate;
 import com.sxjr.app.msgmodel.service.MsgModelService;
 import com.sxjr.app.sequence.service.SequenceService;
+import com.sxjr.app.service.MsgModelInterface;
 import com.sxjr.common.util.RedisUtil;
 
 /**
@@ -33,6 +34,8 @@ public class MsgModelController {
     private SequenceService sequenceService;
     @Autowired
     private RedisUtil redisUtil;
+    @Autowired
+    private MsgModelInterface msgModelInterface;
     
 //    @RequestMapping(value = "toAdd")
 //    public String toAdd(ModelMap modelMap){
@@ -103,6 +106,17 @@ public class MsgModelController {
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
         return PAGE_LIST;
+        
+//        SmsTemplate template = new SmsTemplate();
+//        template.setContent("aaaaaa");
+//        template.setState("1");
+//        template.setCreateDate(new Date());
+////        template.setUpdateDate(new Date());
+//        template.setCreateBy("wrq");
+//        msgModelInterface.save(template);
+//    	List list = msgModelService.list();
+//    	modelMap.put("lists", list);
+//        return PAGE_LIST;
     }
     /**
      * 删除
