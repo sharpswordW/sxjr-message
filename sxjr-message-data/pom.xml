@@ -267,6 +267,6 @@
   
   
   <build>
-    <finalName>sxjr-message-app</finalName>
+    <finalName>sxjr-message-data</finalName>
   </build>
 </project>
