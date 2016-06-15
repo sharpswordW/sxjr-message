@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.sxjr.app.msgmanage.entity.SmClientInfo;
+import com.sxjr.app.model.SmClientInfo;
 import com.sxjr.app.msgmanage.mapper.TbSmsManageMapper;
 import com.sxjr.app.msgmanage.service.SmsManageService;
+import com.sxjr.app.service.IQrySmsClient;
 import com.sxjr.common.util.RedisUtil;
 
 @Service
@@ -30,10 +31,12 @@ public class SmsManageServiceImpl implements SmsManageService {
 	@Override
 	public int addClient(SmClientInfo smClientInfo) {
 		//存放客户端信息到redis
+		int result = tbSmsManageMapper.save(smClientInfo);
+		//smClientInfo = tbSmsManageMapper.selectbyName(smClientInfo.getName());
 		redisUtil.SET(CLIENT_KEY + smClientInfo.getAssessToken(),
 				JSONObject.toJSONString(smClientInfo), tiemOut);
 
-		return tbSmsManageMapper.save(smClientInfo);
+		return result;
 	}
 	@Override
 	public List<SmClientInfo> list() {
@@ -77,6 +80,10 @@ public class SmsManageServiceImpl implements SmsManageService {
 
 	public void setRedisUtil(RedisUtil redisUtil) {
 		this.redisUtil = redisUtil;
+	}
+	@Override
+	public SmClientInfo selectbyName(String name) {
+		return tbSmsManageMapper.selectbyName(name);
 	}
 
 }

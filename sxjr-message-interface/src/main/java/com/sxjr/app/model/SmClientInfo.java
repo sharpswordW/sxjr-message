@@ -1,34 +1,33 @@
 package com.sxjr.app.model;
 
-
 public class SmClientInfo extends BaseEntity {
 
 	 /**
-     * 员工ID
-     */
-    private String id;
-    /**
-     * 终端名称
-     */
-    private String name;
-    /**
-     * 接入账号
-     */
-    private String assessToken;
-    /**
-     * 接入凭证
-     */
-    private String assessSecret;
+    * ID
+    */
+   private String id;
+   /**
+    * 终端名称
+    */
+   private String name;
+   /**
+    * 接入账号
+    */
+   private String assessToken;
+   /**
+    * 接入凭证
+    */
+   private String assessSecret;
 
-    /**
-     * 状态
-     */
-    private String status;
-    
-    /**
-     * 状态
-     */
-    private String IPList;
+   /**
+    * 状态
+    */
+   private boolean state;
+   
+   /**
+    * 状态
+    */
+   private String ipList;
 
 	public String getId() {
 		return id;
@@ -62,28 +61,30 @@ public class SmClientInfo extends BaseEntity {
 		this.assessSecret = assessSecret;
 	}
 
-
-	public String getStatus() {
-		return status;
+	public boolean isState() {
+		return state;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setState(boolean state) {
+		this.state = state;
 	}
 
-	public String getIPList() {
-		return IPList;
+	public String getIpList() {
+		return ipList;
 	}
 
-	public void setIPList(String iPList) {
-		IPList = iPList;
+	public void setIpList(String ipList) {
+		this.ipList = ipList;
 	}
 
 	@Override
 	public String toString() {
 		return "SmClientInfo [id=" + id + ", name=" + name + ", assessToken="
-				+ assessToken + ", assessSecret=" + assessSecret + ", status="
-				+ status + ", IPList=" + IPList + "]";
+				+ assessToken + ", assessSecret=" + assessSecret + ", state="
+				+ state + ", ipList=" + ipList + "]";
 	}
-  
+
+
+
+ 
 }

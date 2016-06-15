@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxjr.app.msgmanage.mapper.TbSmsManageMapper">
 	
-    <insert id="save" parameterType="com.sxjr.app.msgmanage.entity.SmClientInfo" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.sxjr.app.model.SmClientInfo" useGeneratedKeys="true" keyProperty="id">
     	INSERT INTO sms_client(name,
     								 assessToken,
     								 assessSecret,
@@ -16,7 +16,7 @@
     						  		 #{ipList}
     						  		)
     </insert>
-    <select id="list" resultType="com.sxjr.app.msgmanage.entity.SmClientInfo">
+    <select id="list" resultType="com.sxjr.app.model.SmClientInfo">
     	SELECT id,
     		   name,
     		   assessToken,
@@ -27,7 +27,7 @@
     		   updateDate
 		FROM sms_client
     </select>
-     <select id="selectbyid" resultType="com.sxjr.app.msgmanage.entity.SmClientInfo">
+     <select id="selectbyid" resultType="com.sxjr.app.model.SmClientInfo">
     	SELECT id,
     		   name,
     		   assessToken,
@@ -38,7 +38,18 @@
     		   updateDate
 		FROM sms_client WHERE id=#{id}
     </select>
-    <update id="update" parameterType="com.sxjr.app.msgmanage.entity.SmClientInfo">
+    <select id="selectbyName" resultType="com.sxjr.app.model.SmClientInfo">
+    	SELECT id,
+    		   name,
+    		   assessToken,
+    		   assessSecret,
+    		   state,
+    		   ipList,
+    		   createDate,
+    		   updateDate
+		FROM sms_client WHERE name=#{name}
+    </select>
+    <update id="update" parameterType="com.sxjr.app.model.SmClientInfo">
     	UPDATE sms_client
     		<set>
     			<if test="name!=null">name=#{name},</if>
@@ -46,7 +57,7 @@
     		</set>
     		WHERE id=#{id}
     </update>
-    <delete id="delete" parameterType="com.sxjr.app.msgmanage.entity.SmClientInfo">
+    <delete id="delete" parameterType="com.sxjr.app.model.SmClientInfo">
     	DELETE FROM sms_client WHERE id=#{id}
     </delete>
 </mapper>

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.sxjr.app.msgmanage.entity.SmClientInfo;
+import com.sxjr.app.model.SmClientInfo;
 import com.sxjr.app.service.IQrySmsClient;
 import com.sxjr.common.util.RedisUtil;
 
@@ -30,22 +30,23 @@ public class QrySmsClientImpl implements IQrySmsClient {
 	 * 
 	 */
 	@Override
-	public boolean isExists(String assessToken, String assessSecret) {
+	public SmClientInfo isExists(String assessToken, String assessSecret) {
 		Object result = redisUtil.GET(CLIENT_KEY + assessToken);
+		SmClientInfo smClientInfo = null;
 		if (result != null) {
-			SmClientInfo smClientInfo = JSON.parseObject(result.toString(),
+			smClientInfo = JSON.parseObject(result.toString(),
 					SmClientInfo.class);
 			if (assessSecret.equals(smClientInfo.getAssessSecret())
 					&& smClientInfo.isState()) {
-				logger.info("the " + assessToken + " is available");
-				return true;
+				logger.info("the " + smClientInfo.getName() + " is available");
+				return smClientInfo;
 			}
 		}
 		logger.info("the accessToken:" + assessToken
 				+ " is unavailable,please make sure accessToken:" + assessToken
 				+ "and assessSecret:" + assessSecret
 				+ "are exists in redis and state is true ");
-		return false;
+		return smClientInfo;
 	}
 
 }

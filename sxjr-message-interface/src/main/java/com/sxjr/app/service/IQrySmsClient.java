@@ -1,6 +1,8 @@
 package com.sxjr.app.service;
 
+import com.sxjr.app.model.SmClientInfo;
+
 public interface IQrySmsClient {
 
-	boolean isExists(String key,String screteID); 
+	SmClientInfo isExists(String key,String screteID); 
 }

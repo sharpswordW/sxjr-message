@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sxjr.app.msgmanage.entity.SmClientInfo;
+import com.sxjr.app.model.SmClientInfo;
 import com.sxjr.app.msgmanage.service.SmsManageService;
 import com.sxjr.app.until.TicketUtil;
 import com.sxjr.sso.vo.EmployeeVo;
@@ -54,9 +54,18 @@ public class SmsClientController {
 	@RequestMapping(value = "save")
 	public String addClient(HttpServletRequest request,
 			SmClientInfo smClientInfo, ModelMap modelMap) {
+//		SmClientInfo clientInfo=smsManageService.selectbyName(smClientInfo.getName());
+//		if (clientInfo != null) {
+//			logger.error("smsClinet "+smClientInfo.getName()+" is already existed");
+//			modelMap.put("result", "1");
+//			List<SmClientInfo> smClientInfos = smsManageService.list();
+//			modelMap.put("lists", smClientInfos);
+//			return PAGE_LIST;
+//		}
 		smClientInfo.setAssessToken(TicketUtil.UUID());
 		smClientInfo.setAssessSecret(TicketUtil.UUID());
 		if (smClientInfo.getName() == null) {
+			logger.error("smsclient name can not null");
 			modelMap.put("result", "0");
 			List<SmClientInfo> smClientInfos = smsManageService.list();
 			modelMap.put("lists", smClientInfos);

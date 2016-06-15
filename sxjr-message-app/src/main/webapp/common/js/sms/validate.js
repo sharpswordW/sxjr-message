@@ -26,7 +26,7 @@ var isIp = function (){
 	
 	jQuery.validator.addMethod("clientname", function(value, element) { 
 		var length = value.length;  
-		var namerule=/^[\u0391-\uFFE5\w!$@#&]+$/;
+		var namerule=/^[\u0391-\uFFE5\w!$@#]+$/;
         return this.optional(element) || (length <= 45 && namerule.test(value));       
      }, "只能包括中文字、英文字母、数字和下划线以及!@#$特殊字符且长度不能超过45");
     jQuery.validator.addMethod("ipList", function (value, element) {
