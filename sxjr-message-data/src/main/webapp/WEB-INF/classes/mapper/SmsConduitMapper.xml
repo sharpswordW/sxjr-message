@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sxjr.message.dao.SmsConduitMapper" >
+  <resultMap id="BaseResultMap" type="com.sxjr.message.model.SmsConduit" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="conduitId" property="conduitid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="serialNo" property="serialno" jdbcType="VARCHAR" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="isLong" property="islong" jdbcType="CHAR" />
+    <result column="isBulk" property="isbulk" jdbcType="CHAR" />
+    <result column="phoneTimeSpan" property="phonetimespan" jdbcType="INTEGER" />
+    <result column="phoneMaxCount" property="phonemaxcount" jdbcType="INTEGER" />
+    <result column="maxLength" property="maxlength" jdbcType="INTEGER" />
+    <result column="priority" property="priority" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="CHAR" />
+    <result column="createBy" property="createby" jdbcType="VARCHAR" />
+    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
+    <result column="updateDate" property="updatedate" jdbcType="TIMESTAMP" />
+    <result column="create" property="create" jdbcType="VARCHAR" />
+    <result column="regText" property="regtext" jdbcType="VARCHAR" />
+    <result column="updateBy" property="updateby" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, conduitId, name, serialNo, account, password, isLong, isBulk, phoneTimeSpan, 
+    phoneMaxCount, maxLength, priority, state, createBy, createDate, updateDate, create, 
+    regText, updateBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sms_conduit
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sms_conduit
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sxjr.message.model.SmsConduit" >
+    insert into sms_conduit (id, conduitId, name, 
+      serialNo, account, password, 
+      isLong, isBulk, phoneTimeSpan, 
+      phoneMaxCount, maxLength, priority, 
+      state, createBy, createDate, 
+      updateDate, create, regText, 
+      updateBy)
+    values (#{id,jdbcType=INTEGER}, #{conduitid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{serialno,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{islong,jdbcType=CHAR}, #{isbulk,jdbcType=CHAR}, #{phonetimespan,jdbcType=INTEGER}, 
+      #{phonemaxcount,jdbcType=INTEGER}, #{maxlength,jdbcType=INTEGER}, #{priority,jdbcType=INTEGER}, 
+      #{state,jdbcType=CHAR}, #{createby,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, 
+      #{updatedate,jdbcType=TIMESTAMP}, #{create,jdbcType=VARCHAR}, #{regtext,jdbcType=VARCHAR}, 
+      #{updateby,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sxjr.message.model.SmsConduit" >
+    insert into sms_conduit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="conduitid != null" >
+        conduitId,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="serialno != null" >
+        serialNo,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="islong != null" >
+        isLong,
+      </if>
+      <if test="isbulk != null" >
+        isBulk,
+      </if>
+      <if test="phonetimespan != null" >
+        phoneTimeSpan,
+      </if>
+      <if test="phonemaxcount != null" >
+        phoneMaxCount,
+      </if>
+      <if test="maxlength != null" >
+        maxLength,
+      </if>
+      <if test="priority != null" >
+        priority,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="createby != null" >
+        createBy,
+      </if>
+      <if test="createdate != null" >
+        createDate,
+      </if>
+      <if test="updatedate != null" >
+        updateDate,
+      </if>
+      <if test="create != null" >
+        create,
+      </if>
+      <if test="regtext != null" >
+        regText,
+      </if>
+      <if test="updateby != null" >
+        updateBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="conduitid != null" >
+        #{conduitid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="serialno != null" >
+        #{serialno,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="islong != null" >
+        #{islong,jdbcType=CHAR},
+      </if>
+      <if test="isbulk != null" >
+        #{isbulk,jdbcType=CHAR},
+      </if>
+      <if test="phonetimespan != null" >
+        #{phonetimespan,jdbcType=INTEGER},
+      </if>
+      <if test="phonemaxcount != null" >
+        #{phonemaxcount,jdbcType=INTEGER},
+      </if>
+      <if test="maxlength != null" >
+        #{maxlength,jdbcType=INTEGER},
+      </if>
+      <if test="priority != null" >
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="createby != null" >
+        #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create != null" >
+        #{create,jdbcType=VARCHAR},
+      </if>
+      <if test="regtext != null" >
+        #{regtext,jdbcType=VARCHAR},
+      </if>
+      <if test="updateby != null" >
+        #{updateby,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxjr.message.model.SmsConduit" >
+    update sms_conduit
+    <set >
+      <if test="conduitid != null" >
+        conduitId = #{conduitid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="serialno != null" >
+        serialNo = #{serialno,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="islong != null" >
+        isLong = #{islong,jdbcType=CHAR},
+      </if>
+      <if test="isbulk != null" >
+        isBulk = #{isbulk,jdbcType=CHAR},
+      </if>
+      <if test="phonetimespan != null" >
+        phoneTimeSpan = #{phonetimespan,jdbcType=INTEGER},
+      </if>
+      <if test="phonemaxcount != null" >
+        phoneMaxCount = #{phonemaxcount,jdbcType=INTEGER},
+      </if>
+      <if test="maxlength != null" >
+        maxLength = #{maxlength,jdbcType=INTEGER},
+      </if>
+      <if test="priority != null" >
+        priority = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=CHAR},
+      </if>
+      <if test="createby != null" >
+        createBy = #{createby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        createDate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedate != null" >
+        updateDate = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="create != null" >
+        create = #{create,jdbcType=VARCHAR},
+      </if>
+      <if test="regtext != null" >
+        regText = #{regtext,jdbcType=VARCHAR},
+      </if>
+      <if test="updateby != null" >
+        updateBy = #{updateby,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sxjr.message.model.SmsConduit" >
+    update sms_conduit
+    set conduitId = #{conduitid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      serialNo = #{serialno,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      isLong = #{islong,jdbcType=CHAR},
+      isBulk = #{isbulk,jdbcType=CHAR},
+      phoneTimeSpan = #{phonetimespan,jdbcType=INTEGER},
+      phoneMaxCount = #{phonemaxcount,jdbcType=INTEGER},
+      maxLength = #{maxlength,jdbcType=INTEGER},
+      priority = #{priority,jdbcType=INTEGER},
+      state = #{state,jdbcType=CHAR},
+      createBy = #{createby,jdbcType=VARCHAR},
+      createDate = #{createdate,jdbcType=TIMESTAMP},
+      updateDate = #{updatedate,jdbcType=TIMESTAMP},
+      create = #{create,jdbcType=VARCHAR},
+      regText = #{regtext,jdbcType=VARCHAR},
+      updateBy = #{updateby,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

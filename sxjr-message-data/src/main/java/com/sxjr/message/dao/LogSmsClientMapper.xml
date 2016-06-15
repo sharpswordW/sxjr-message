@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxjr.message.dao.LogSmsClientMapper">
+  <resultMap id="BaseResultMap" type="com.sxjr.message.model.LogSmsClient">
+    <id column="smsId" jdbcType="VARCHAR" property="smsid" />
+    <result column="phoneNumber" jdbcType="VARCHAR" property="phonenumber" />
+    <result column="templetId" jdbcType="VARCHAR" property="templetid" />
+    <result column="smsPara" jdbcType="VARCHAR" property="smspara" />
+    <result column="clientId" jdbcType="VARCHAR" property="clientid" />
+    <result column="conduitId" jdbcType="VARCHAR" property="conduitid" />
+    <result column="sendDate" jdbcType="TIMESTAMP" property="senddate" />
+    <result column="state" jdbcType="BIT" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    smsId, phoneNumber, templetId, smsPara, clientId, conduitId, sendDate, state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from log_smsclient
+    where smsId = #{smsid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from log_smsclient
+    where smsId = #{smsid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sxjr.message.model.LogSmsClient">
+    insert into log_smsclient (smsId, phoneNumber, templetId, 
+      smsPara, clientId, conduitId, 
+      sendDate, state)
+    values (#{smsid,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, #{templetid,jdbcType=VARCHAR}, 
+      #{smspara,jdbcType=VARCHAR}, #{clientid,jdbcType=VARCHAR}, #{conduitid,jdbcType=VARCHAR}, 
+      #{senddate,jdbcType=TIMESTAMP}, #{state,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sxjr.message.model.LogSmsClient">
+    insert into log_smsclient
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="smsid != null">
+        smsId,
+      </if>
+      <if test="phonenumber != null">
+        phoneNumber,
+      </if>
+      <if test="templetid != null">
+        templetId,
+      </if>
+      <if test="smspara != null">
+        smsPara,
+      </if>
+      <if test="clientid != null">
+        clientId,
+      </if>
+      <if test="conduitid != null">
+        conduitId,
+      </if>
+      <if test="senddate != null">
+        sendDate,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="smsid != null">
+        #{smsid,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null">
+        #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="templetid != null">
+        #{templetid,jdbcType=VARCHAR},
+      </if>
+      <if test="smspara != null">
+        #{smspara,jdbcType=VARCHAR},
+      </if>
+      <if test="clientid != null">
+        #{clientid,jdbcType=VARCHAR},
+      </if>
+      <if test="conduitid != null">
+        #{conduitid,jdbcType=VARCHAR},
+      </if>
+      <if test="senddate != null">
+        #{senddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxjr.message.model.LogSmsClient">
+    update log_smsclient
+    <set>
+      <if test="phonenumber != null">
+        phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="templetid != null">
+        templetId = #{templetid,jdbcType=VARCHAR},
+      </if>
+      <if test="smspara != null">
+        smsPara = #{smspara,jdbcType=VARCHAR},
+      </if>
+      <if test="clientid != null">
+        clientId = #{clientid,jdbcType=VARCHAR},
+      </if>
+      <if test="conduitid != null">
+        conduitId = #{conduitid,jdbcType=VARCHAR},
+      </if>
+      <if test="senddate != null">
+        sendDate = #{senddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=BIT},
+      </if>
+    </set>
+    where smsId = #{smsid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sxjr.message.model.LogSmsClient">
+    update log_smsclient
+    set phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      templetId = #{templetid,jdbcType=VARCHAR},
+      smsPara = #{smspara,jdbcType=VARCHAR},
+      clientId = #{clientid,jdbcType=VARCHAR},
+      conduitId = #{conduitid,jdbcType=VARCHAR},
+      sendDate = #{senddate,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=BIT}
+    where smsId = #{smsid,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.sxjr.message.model.LogSmsClient">
+    <id column="smsId" jdbcType="VARCHAR" property="smsid" />
+    <result column="phoneNumber" jdbcType="VARCHAR" property="phonenumber" />
+    <result column="templetId" jdbcType="VARCHAR" property="templetid" />
+    <result column="smsPara" jdbcType="VARCHAR" property="smspara" />
+    <result column="clientId" jdbcType="VARCHAR" property="clientid" />
+    <result column="conduitId" jdbcType="VARCHAR" property="conduitid" />
+    <result column="sendDate" jdbcType="TIMESTAMP" property="senddate" />
+    <result column="state" jdbcType="BIT" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    smsId, phoneNumber, templetId, smsPara, clientId, conduitId, sendDate, state
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from log_smsclient
+    where smsId = #{smsid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from log_smsclient
+    where smsId = #{smsid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sxjr.message.model.LogSmsClient">
+    insert into log_smsclient (smsId, phoneNumber, templetId, 
+      smsPara, clientId, conduitId, 
+      sendDate, state)
+    values (#{smsid,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, #{templetid,jdbcType=VARCHAR}, 
+      #{smspara,jdbcType=VARCHAR}, #{clientid,jdbcType=VARCHAR}, #{conduitid,jdbcType=VARCHAR}, 
+      #{senddate,jdbcType=TIMESTAMP}, #{state,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sxjr.message.model.LogSmsClient">
+    insert into log_smsclient
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="smsid != null">
+        smsId,
+      </if>
+      <if test="phonenumber != null">
+        phoneNumber,
+      </if>
+      <if test="templetid != null">
+        templetId,
+      </if>
+      <if test="smspara != null">
+        smsPara,
+      </if>
+      <if test="clientid != null">
+        clientId,
+      </if>
+      <if test="conduitid != null">
+        conduitId,
+      </if>
+      <if test="senddate != null">
+        sendDate,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="smsid != null">
+        #{smsid,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null">
+        #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="templetid != null">
+        #{templetid,jdbcType=VARCHAR},
+      </if>
+      <if test="smspara != null">
+        #{smspara,jdbcType=VARCHAR},
+      </if>
+      <if test="clientid != null">
+        #{clientid,jdbcType=VARCHAR},
+      </if>
+      <if test="conduitid != null">
+        #{conduitid,jdbcType=VARCHAR},
+      </if>
+      <if test="senddate != null">
+        #{senddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxjr.message.model.LogSmsClient">
+    update log_smsclient
+    <set>
+      <if test="phonenumber != null">
+        phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="templetid != null">
+        templetId = #{templetid,jdbcType=VARCHAR},
+      </if>
+      <if test="smspara != null">
+        smsPara = #{smspara,jdbcType=VARCHAR},
+      </if>
+      <if test="clientid != null">
+        clientId = #{clientid,jdbcType=VARCHAR},
+      </if>
+      <if test="conduitid != null">
+        conduitId = #{conduitid,jdbcType=VARCHAR},
+      </if>
+      <if test="senddate != null">
+        sendDate = #{senddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=BIT},
+      </if>
+    </set>
+    where smsId = #{smsid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sxjr.message.model.LogSmsClient">
+    update log_smsclient
+    set phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      templetId = #{templetid,jdbcType=VARCHAR},
+      smsPara = #{smspara,jdbcType=VARCHAR},
+      clientId = #{clientid,jdbcType=VARCHAR},
+      conduitId = #{conduitid,jdbcType=VARCHAR},
+      sendDate = #{senddate,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=BIT}
+    where smsId = #{smsid,jdbcType=VARCHAR}
+  </update>
+</mapper>
