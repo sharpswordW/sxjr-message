@@ -1,5 +1,7 @@
 package com.sxjr.app.msgmodel.interfaces;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +15,16 @@ public class MsgModelInterfaceImpl implements MsgModelInterface{
     private MsgModelMapper msgModelMapper;
 
 	@Override
-	public boolean save(SmsTemplate msgmodel) {
-		boolean result = false;
+	public int save(SmsTemplate msgmodel) {
+//		msgmodel.setCreateBy("system");
+//		msgmodel.setCreateDate(new Date());
+//		msgmodel.setState("1");
+		int result = 0;
 		if(coutnStr(msgmodel.getContent()) > 5 ){
-    		result = false;
+    		result = 0;
     	}else{
-    		if(msgModelMapper.save(msgmodel) > 0){
-    			result = true;
+    		if(msgModelMapper.save(msgmodel) > 0);{
+    			result =  Integer.parseInt(msgmodel.getId());
     		}
     	}
 		return result;

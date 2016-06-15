@@ -2,23 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sxjr.app.msgmodel.mapper.MsgModelMapper">
     <insert id="save" parameterType="com.sxjr.app.model.SmsTemplate" useGeneratedKeys="true" keyProperty="id">  
-        insert into msg_model
+        insert into sms_template
         (
-        model_id,
         content,
-        enable,
-        create_date,
-        create_by,
-        update_date
+        state,
+        createDate,
+        createBy
         ) 
         values 
         (
-        #{modelId},
         #{content},
-        #{enable},
+        #{state},
         #{createDate},
-        #{createBy},
-        #{updateDate}
+        #{createBy}
         )  
     </insert>
     <select id="list" resultType="com.sxjr.app.model.SmsTemplate">  
