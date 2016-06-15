@@ -131,5 +131,6 @@
   <modules>
     <module>sxjr-message-interface</module>
     <module>sxjr-message-app</module>
+    <module>sxjr-message-data</module>
   </modules>
 </project>
