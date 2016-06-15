@@ -32,8 +32,14 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 	public List<RedisSms> getClientSms(String id) {
 
 		Object obj = redisUtil.HGET(COLL_CLIENT, id);
-    	RedisSmsList list = (RedisSmsList)obj;
-		return list.getSmsList();
+		
+		RedisSmsList list = null;
+		if(!StringUtils.isEmpty(obj))
+		{
+			list = (RedisSmsList)obj;
+		}
+    	
+		return list == null ? null : list.getSmsList();
 	}
 
 	
@@ -71,8 +77,13 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 	public List<RedisSms> getConduitSms(String id) {
 		
 		Object obj = redisUtil.HGET(COLL_CONDUIT, id);
-    	RedisSmsList list = (RedisSmsList)obj;
-		return list.getSmsList();
+		RedisSmsList list = null;
+		if(!StringUtils.isEmpty(obj))
+		{
+			list = (RedisSmsList)obj;
+		}
+		return list == null ? null : list.getSmsList();
+						
 	}
 
 	@Override
