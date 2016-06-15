@@ -13,32 +13,32 @@ public class RedisSms extends RedisBaseEntity {
 	
 	
 	//渠道id      业务端id/路由通道id
-	private int channelId;		
+	private String channelId;		
 		
 	//短信内容
 	private String smsContent;
 	
 	//模板id
-	private int TempId;
+	private String TempId;
 	
 	//发送时间
 	private long createTime;
 	
 		
-	public int getChannelId() {
+	public String getChannelId() {
 		return channelId;
 	}
 
-	public void setChannelId(int channelId) {
+	public void setChannelId(String channelId) {
 		
 		this.channelId = channelId;
 	}
 	
-	public int getTempId() {
+	public String getTempId() {
 		return TempId;
 	}
 
-	public void setTempId(int TempId) {		
+	public void setTempId(String TempId) {		
 		this.TempId = TempId;
 	}
 	

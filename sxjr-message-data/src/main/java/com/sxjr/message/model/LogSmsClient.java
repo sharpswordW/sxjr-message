@@ -17,6 +17,8 @@ public class LogSmsClient {
 
     private Date senddate;
 
+    private Boolean state;
+
     public String getSmsid() {
         return smsid;
     }
@@ -71,5 +73,13 @@ public class LogSmsClient {
 
     public void setSenddate(Date senddate) {
         this.senddate = senddate;
+    }
+
+    public Boolean getState() {
+        return state;
+    }
+
+    public void setState(Boolean state) {
+        this.state = state;
     }
 }
