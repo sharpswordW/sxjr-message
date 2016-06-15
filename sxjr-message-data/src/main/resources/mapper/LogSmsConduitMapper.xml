@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sxjr.message.dao.LogSmsConduitMapper" >
+  <resultMap id="BaseResultMap" type="com.sxjr.message.model.LogSmsConduit" >
+    <result column="smsId" property="smsid" jdbcType="VARCHAR" />
+    <result column="phoneNumber" property="phonenumber" jdbcType="VARCHAR" />
+    <result column="templetId" property="templetid" jdbcType="VARCHAR" />
+    <result column="smsPara" property="smspara" jdbcType="VARCHAR" />
+    <result column="clientId" property="clientid" jdbcType="VARCHAR" />
+    <result column="conduitId" property="conduitid" jdbcType="VARCHAR" />
+    <result column="sendDate" property="senddate" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="BIT" />
+    <result column="errorMsg" property="errormsg" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.sxjr.message.model.LogSmsConduit" >
+    insert into log_smsconduit (smsId, phoneNumber, templetId, 
+      smsPara, clientId, conduitId, 
+      sendDate, state, errorMsg
+      )
+    values (#{smsid,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, #{templetid,jdbcType=VARCHAR}, 
+      #{smspara,jdbcType=VARCHAR}, #{clientid,jdbcType=VARCHAR}, #{conduitid,jdbcType=VARCHAR}, 
+      #{senddate,jdbcType=TIMESTAMP}, #{state,jdbcType=BIT}, #{errormsg,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sxjr.message.model.LogSmsConduit" >
+    insert into log_smsconduit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="smsid != null" >
+        smsId,
+      </if>
+      <if test="phonenumber != null" >
+        phoneNumber,
+      </if>
+      <if test="templetid != null" >
+        templetId,
+      </if>
+      <if test="smspara != null" >
+        smsPara,
+      </if>
+      <if test="clientid != null" >
+        clientId,
+      </if>
+      <if test="conduitid != null" >
+        conduitId,
+      </if>
+      <if test="senddate != null" >
+        sendDate,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="errormsg != null" >
+        errorMsg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="smsid != null" >
+        #{smsid,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="templetid != null" >
+        #{templetid,jdbcType=VARCHAR},
+      </if>
+      <if test="smspara != null" >
+        #{smspara,jdbcType=VARCHAR},
+      </if>
+      <if test="clientid != null" >
+        #{clientid,jdbcType=VARCHAR},
+      </if>
+      <if test="conduitid != null" >
+        #{conduitid,jdbcType=VARCHAR},
+      </if>
+      <if test="senddate != null" >
+        #{senddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=BIT},
+      </if>
+      <if test="errormsg != null" >
+        #{errormsg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
