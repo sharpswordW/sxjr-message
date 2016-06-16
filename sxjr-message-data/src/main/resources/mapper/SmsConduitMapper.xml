@@ -3,7 +3,7 @@
 <mapper namespace="com.sxjr.message.dao.SmsConduitMapper" >
   <resultMap id="BaseResultMap" type="com.sxjr.message.model.SmsConduit" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="conduitId" property="conduitid" jdbcType="INTEGER" />
+    <result column="conduitId" property="conduitid" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="serialNo" property="serialno" jdbcType="VARCHAR" />
     <result column="account" property="account" jdbcType="VARCHAR" />
@@ -45,7 +45,7 @@
       state, createBy, createDate, 
       updateDate, create, regText, 
       updateBy)
-    values (#{id,jdbcType=INTEGER}, #{conduitid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{conduitid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{serialno,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{islong,jdbcType=CHAR}, #{isbulk,jdbcType=CHAR}, #{phonetimespan,jdbcType=INTEGER}, 
       #{phonemaxcount,jdbcType=INTEGER}, #{maxlength,jdbcType=INTEGER}, #{priority,jdbcType=INTEGER}, 
@@ -119,7 +119,7 @@
         #{id,jdbcType=INTEGER},
       </if>
       <if test="conduitid != null" >
-        #{conduitid,jdbcType=INTEGER},
+        #{conduitid,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
@@ -178,7 +178,7 @@
     update sms_conduit
     <set >
       <if test="conduitid != null" >
-        conduitId = #{conduitid,jdbcType=INTEGER},
+        conduitId = #{conduitid,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -236,7 +236,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.sxjr.message.model.SmsConduit" >
     update sms_conduit
-    set conduitId = #{conduitid,jdbcType=INTEGER},
+    set conduitId = #{conduitid,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       serialNo = #{serialno,jdbcType=VARCHAR},
       account = #{account,jdbcType=VARCHAR},
