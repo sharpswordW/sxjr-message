@@ -15,4 +15,5 @@ public interface ConduitService{
     void delete(String id);
     SmsConduit findByConduitId(String conduitId);
     boolean updateStateById(String id,String state);
+    boolean updateConduit(String conduitId,String state);
 }

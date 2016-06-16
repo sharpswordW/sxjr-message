@@ -62,5 +62,10 @@ public class ConduitServiceImpl implements ConduitService {
 		return result;
 		
 	}
-	
+
+	@Override
+	public boolean updateConduit(String conduitId, String state) {
+		return false;
+	}
+
 }
