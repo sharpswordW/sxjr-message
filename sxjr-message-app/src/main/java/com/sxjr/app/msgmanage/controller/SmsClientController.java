@@ -1,5 +1,6 @@
 package com.sxjr.app.msgmanage.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -64,6 +65,7 @@ public class SmsClientController {
 //		}
 		smClientInfo.setAssessToken(TicketUtil.UUID());
 		smClientInfo.setAssessSecret(TicketUtil.UUID());
+		smClientInfo.setCreateDate(new Date());
 		if (smClientInfo.getName() == null) {
 			logger.error("smsclient name can not null");
 			modelMap.put("result", "0");

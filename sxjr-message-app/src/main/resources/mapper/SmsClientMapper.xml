@@ -7,13 +7,15 @@
     								 assessToken,
     								 assessSecret,
     								 state,
-    								 ipList
+    								 ipList,
+    								 createDate
     								)
     						  values(#{name},
     						  		 #{assessToken},
     						  		 #{assessSecret},
     						  		 #{state},
-    						  		 #{ipList}
+    						  		 #{ipList},
+    						  		 #{createDate,jdbcType=TIMESTAMP}
     						  		)
     </insert>
     <select id="list" resultType="com.sxjr.app.model.SmClientInfo">
@@ -53,7 +55,10 @@
     	UPDATE sms_client
     		<set>
     			<if test="name!=null">name=#{name},</if>
-    			<if test="state!=null">state=#{state},ipList=#{ipList}</if>
+    			<if test="state!=null">state=#{state},ipList=#{ipList},</if>
+    			<if test="updateDate != null" >
+        		updateDate = #{updateDate,jdbcType=TIMESTAMP}
+      			</if>
     		</set>
     		WHERE id=#{id}
     </update>
