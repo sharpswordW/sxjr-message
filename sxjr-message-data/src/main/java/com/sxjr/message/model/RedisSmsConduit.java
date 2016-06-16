@@ -2,7 +2,7 @@ package com.sxjr.message.model;
 
 
 
-public class RedisSmsTemplate extends RedisBaseEntity {
+public class RedisSmsConduit extends RedisBaseEntity {
 
 
 	/**
@@ -16,7 +16,7 @@ public class RedisSmsTemplate extends RedisBaseEntity {
 
     private String content;
 
-//    private String clientid;
+    private String clientid;
 	
 		
     public Integer getId() {
@@ -35,13 +35,13 @@ public class RedisSmsTemplate extends RedisBaseEntity {
         this.content = content == null ? null : content.trim();
     }
 
-//    public String getClientid() {
-//        return clientid;
-//    }
-//
-//    public void setClientid(String clientid) {
-//        this.clientid = clientid == null ? null : clientid.trim();
-//    }
+    public String getClientid() {
+        return clientid;
+    }
+
+    public void setClientid(String clientid) {
+        this.clientid = clientid == null ? null : clientid.trim();
+    }
 	
 	
 	
