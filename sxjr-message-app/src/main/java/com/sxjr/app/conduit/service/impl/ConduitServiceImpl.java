@@ -65,7 +65,14 @@ public class ConduitServiceImpl implements ConduitService {
 
 	@Override
 	public boolean updateConduit(String conduitId, String state) {
-		return false;
+		boolean result = false;
+		SmsConduit conduit = new SmsConduit();
+		conduit.setConduitId(conduitId);
+		conduit.setState(state);
+		if(conduitMapper.updateConduit(conduit) > 0){
+			result = true;
+		}
+		return result;
 	}
 
 }

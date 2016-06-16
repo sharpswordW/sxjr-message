@@ -15,16 +15,19 @@ public class MsgModelInterfaceImpl implements MsgModelInterface{
     private MsgModelMapper msgModelMapper;
 
 	@Override
-	public int save(SmsTemplate msgmodel) {
-//		msgmodel.setCreateBy("system");
-//		msgmodel.setCreateDate(new Date());
-//		msgmodel.setState("1");
+	public int save(String content) {
+		SmsTemplate template = new SmsTemplate();
+		template.setContent(content);
+		template.setCreateBy("system");
+		template.setCreateDate(new Date());
+		template.setUpdateDate(new Date());
+		template.setState("1");
 		int result = 0;
-		if(coutnStr(msgmodel.getContent()) > 5 ){
+		if(coutnStr(template.getContent()) > 5 ){
     		result = 0;
     	}else{
-    		if(msgModelMapper.save(msgmodel) > 0);{
-    			result =  Integer.parseInt(msgmodel.getId());
+    		if(msgModelMapper.save(template) > 0);{
+    			result =  Integer.parseInt(template.getId());
     		}
     	}
 		return result;

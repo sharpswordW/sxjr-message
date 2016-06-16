@@ -4,6 +4,6 @@ import com.sxjr.app.model.SmsTemplate;
 
 public interface MsgModelInterface {
 	
-	int save(SmsTemplate msgmodel);
+	int save(String content);
 
 }

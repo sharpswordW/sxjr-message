@@ -7,14 +7,16 @@
         content,
         state,
         createDate,
-        createBy
+        createBy,
+        updateDate
         ) 
         values 
         (
         #{content},
         #{state},
         #{createDate},
-        #{createBy}
+        #{createBy},
+       	#{updateDate}
         )  
     </insert>
     <select id="list" resultType="com.sxjr.app.model.SmsTemplate">  

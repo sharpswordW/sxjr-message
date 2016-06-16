@@ -126,4 +126,13 @@
 			 </set>
 		 where sms_conduit.id = #{id};
 	</update>
+	<update id="updateConduit" parameterType="com.sxjr.app.model.SmsConduit">
+		 update sms_conduit
+			 <set>
+			  <if test="state!=null and state!='' ">
+			   sms_conduit.state = #{state},
+			  </if>
+			 </set>
+		 where sms_conduit.conduitId = #{conduitId};
+	</update>
 </mapper>
