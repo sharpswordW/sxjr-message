@@ -10,6 +10,7 @@ import org.springframework.util.StringUtils;
 import com.sxjr.message.model.RedisSms;
 import com.sxjr.message.model.RedisSmsList;
 import com.sxjr.message.model.RedisSmsStatistics;
+import com.sxjr.message.model.RedisSmsTemplate;
 import com.sxjr.message.service.SmsRedisService;
 import com.alibaba.fastjson.JSON;
 import com.sxjr.common.util.RedisUtil;
@@ -26,6 +27,28 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 	RedisUtil redisUtil;
 	 
 
+	
+	
+	@Override
+	public RedisSmsTemplate getSmsTemplate(String id) {
+		
+		Object obj = redisUtil.HGET(SMS_TEMPLATE, id);
+		
+		RedisSmsTemplate temp = null;
+		if(!StringUtils.isEmpty(obj))		
+			temp = (RedisSmsTemplate)obj;
+		    	
+		return temp;		
+	}
+
+
+	@Override
+	public boolean addSmsTemplate(RedisSmsTemplate smsTemplate) {
+				
+		String result = JSON.toJSON(smsTemplate).toString();
+    	return redisUtil.HSET(SMS_TEMPLATE, smsTemplate.getId().toString(), result);        	
+	}
+	
 	
 	
 	@Override
@@ -239,6 +262,9 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 	{
 		return String.format("%s_%s_%s", type, id, field);
 	}
+
+
+	
     
     
 
