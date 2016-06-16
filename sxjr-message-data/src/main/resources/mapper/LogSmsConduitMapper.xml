@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sxjr.message.dao.LogSmsConduitMapper" >
   <resultMap id="BaseResultMap" type="com.sxjr.message.model.LogSmsConduit" >
+    <id column="id" property="id" jdbcType="INTEGER" />
     <result column="smsId" property="smsid" jdbcType="VARCHAR" />
     <result column="phoneNumber" property="phonenumber" jdbcType="VARCHAR" />
     <result column="templetId" property="templetid" jdbcType="VARCHAR" />
@@ -10,21 +11,42 @@
     <result column="conduitId" property="conduitid" jdbcType="VARCHAR" />
     <result column="sendDate" property="senddate" jdbcType="TIMESTAMP" />
     <result column="state" property="state" jdbcType="BIT" />
+    <result column="sendState" property="sendstate" jdbcType="BIT" />
     <result column="errorMsg" property="errormsg" jdbcType="VARCHAR" />
+    <result column="taskId" property="taskid" jdbcType="VARCHAR" />
   </resultMap>
+  <sql id="Base_Column_List" >
+    id, smsId, phoneNumber, templetId, smsPara, clientId, conduitId, sendDate, state, 
+    sendState, errorMsg, taskId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from log_smsconduit
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from log_smsconduit
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
   <insert id="insert" parameterType="com.sxjr.message.model.LogSmsConduit" >
-    insert into log_smsconduit (smsId, phoneNumber, templetId, 
-      smsPara, clientId, conduitId, 
-      sendDate, state, errorMsg
+    insert into log_smsconduit (id, smsId, phoneNumber, 
+      templetId, smsPara, clientId, 
+      conduitId, sendDate, state, 
+      sendState, errorMsg, taskId
       )
-    values (#{smsid,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, #{templetid,jdbcType=VARCHAR}, 
-      #{smspara,jdbcType=VARCHAR}, #{clientid,jdbcType=VARCHAR}, #{conduitid,jdbcType=VARCHAR}, 
-      #{senddate,jdbcType=TIMESTAMP}, #{state,jdbcType=BIT}, #{errormsg,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{smsid,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, 
+      #{templetid,jdbcType=VARCHAR}, #{smspara,jdbcType=VARCHAR}, #{clientid,jdbcType=VARCHAR}, 
+      #{conduitid,jdbcType=VARCHAR}, #{senddate,jdbcType=TIMESTAMP}, #{state,jdbcType=BIT}, 
+      #{sendstate,jdbcType=BIT}, #{errormsg,jdbcType=VARCHAR}, #{taskid,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.sxjr.message.model.LogSmsConduit" >
     insert into log_smsconduit
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
       <if test="smsid != null" >
         smsId,
       </if>
@@ -49,11 +71,20 @@
       <if test="state != null" >
         state,
       </if>
+      <if test="sendstate != null" >
+        sendState,
+      </if>
       <if test="errormsg != null" >
         errorMsg,
       </if>
+      <if test="taskid != null" >
+        taskId,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
       <if test="smsid != null" >
         #{smsid,jdbcType=VARCHAR},
       </if>
@@ -78,9 +109,69 @@
       <if test="state != null" >
         #{state,jdbcType=BIT},
       </if>
+      <if test="sendstate != null" >
+        #{sendstate,jdbcType=BIT},
+      </if>
       <if test="errormsg != null" >
         #{errormsg,jdbcType=VARCHAR},
       </if>
+      <if test="taskid != null" >
+        #{taskid,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sxjr.message.model.LogSmsConduit" >
+    update log_smsconduit
+    <set >
+      <if test="smsid != null" >
+        smsId = #{smsid,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenumber != null" >
+        phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="templetid != null" >
+        templetId = #{templetid,jdbcType=VARCHAR},
+      </if>
+      <if test="smspara != null" >
+        smsPara = #{smspara,jdbcType=VARCHAR},
+      </if>
+      <if test="clientid != null" >
+        clientId = #{clientid,jdbcType=VARCHAR},
+      </if>
+      <if test="conduitid != null" >
+        conduitId = #{conduitid,jdbcType=VARCHAR},
+      </if>
+      <if test="senddate != null" >
+        sendDate = #{senddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=BIT},
+      </if>
+      <if test="sendstate != null" >
+        sendState = #{sendstate,jdbcType=BIT},
+      </if>
+      <if test="errormsg != null" >
+        errorMsg = #{errormsg,jdbcType=VARCHAR},
+      </if>
+      <if test="taskid != null" >
+        taskId = #{taskid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sxjr.message.model.LogSmsConduit" >
+    update log_smsconduit
+    set smsId = #{smsid,jdbcType=VARCHAR},
+      phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+      templetId = #{templetid,jdbcType=VARCHAR},
+      smsPara = #{smspara,jdbcType=VARCHAR},
+      clientId = #{clientid,jdbcType=VARCHAR},
+      conduitId = #{conduitid,jdbcType=VARCHAR},
+      sendDate = #{senddate,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=BIT},
+      sendState = #{sendstate,jdbcType=BIT},
+      errorMsg = #{errormsg,jdbcType=VARCHAR},
+      taskId = #{taskid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

@@ -24,7 +24,8 @@
  
     <!-- 获取properties配置文件 --> 
     <!-- <context:property-placeholder location="classpath:config.properties"/> -->
-    <context:property-placeholder location="classpath:config.properties" ignore-unresolvable="true" /> 
+    <context:property-placeholder location="classpath:conf_db.properties" ignore-unresolvable="true" /> 
+     <context:property-placeholder location="classpath:conf_redis.properties" ignore-unresolvable="true" /> 
     
     <!-- 获取数据源 -->  
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">  
@@ -80,14 +81,6 @@
         <property name="redisTemplate" ref="redisTemplate" />
     </bean >
  
-    <!-- rocketMQ -->
-    <bean id="producer" class="com.sxjr.sms.producer.Producer" init-method="init" destroy-method="destroy" scope="singleton">
-        <property name="producerGroup" value="MyProducerGroup"></property>
-        <property name="namesrvAddr" value="192.168.188.49:9876"></property>
-    </bean>
-    
-    <import resource="dubbo.xml"/>
-    <import resource="task.xml"/>
     <!--AOP 设置-->
     <aop:aspectj-autoproxy/>
 
