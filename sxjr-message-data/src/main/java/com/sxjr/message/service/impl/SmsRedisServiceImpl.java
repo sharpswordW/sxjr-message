@@ -5,12 +5,18 @@ package com.sxjr.message.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import com.sxjr.message.model.RedisSms;
+import com.sxjr.message.model.RedisSmsClient;
+import com.sxjr.message.model.RedisSmsConduit;
 import com.sxjr.message.model.RedisSmsList;
 import com.sxjr.message.model.RedisSmsStatistics;
 import com.sxjr.message.model.RedisSmsTemplate;
+import com.sxjr.message.model.SmsClient;
+import com.sxjr.message.model.SmsConduit;
+import com.sxjr.message.model.SysConfig;
 import com.sxjr.message.service.SmsRedisService;
 import com.alibaba.fastjson.JSON;
 import com.sxjr.common.util.RedisUtil;
@@ -18,6 +24,7 @@ import com.sxjr.common.util.RedisUtil;
 /**
  * Created by wangrq on 2016/6/6.
  */
+@Repository("smsRedisServiceImpl")
 public class SmsRedisServiceImpl implements SmsRedisService{
 	
 	
@@ -28,6 +35,60 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 	 
 
 	
+	
+	@Override
+	public SmsClient getSmsClient(String id) {
+
+		Object obj = redisUtil.HGET(SMS_CLIENT, id);
+		
+		SmsClient temp = null;
+		if(!StringUtils.isEmpty(obj))		
+			temp = (SmsClient)obj;
+		    	
+		return temp;	
+	}
+
+	@Override
+	public boolean addSmsClient(SmsClient smsClient) {
+		String result = JSON.toJSON(smsClient).toString();
+    	return redisUtil.HSET(SMS_CLIENT, smsClient.getId().toString(), result);        
+	}
+
+	@Override
+	public SmsConduit getSmsConduit(String id) {
+
+		Object obj = redisUtil.HGET(SMS_CONDUIT, id);
+		
+		SmsConduit temp = null;
+		if(!StringUtils.isEmpty(obj))		
+			temp = (SmsConduit)obj;
+		    	
+		return temp;	
+	}
+
+	@Override
+	public boolean addSmsConduit(SmsConduit smsConduit) {
+		String result = JSON.toJSON(smsConduit).toString();
+    	return redisUtil.HSET(SMS_CLIENT, smsConduit.getId().toString(), result);        
+	}
+	
+	@Override
+	public SysConfig getSmsSysConfig() {
+
+		Object obj = redisUtil.HGET(SMS_SYSCONFIG, "0");
+		
+		SysConfig temp = null;
+		if(!StringUtils.isEmpty(obj))		
+			temp = (SysConfig)obj;
+		    	
+		return temp;	
+	}
+
+	@Override
+	public boolean setSmsSysConfig(SysConfig sysConfig) {
+		String result = JSON.toJSON(sysConfig).toString();
+    	return redisUtil.HSET(SMS_CLIENT, "0", result);      
+	}
 	
 	@Override
 	public RedisSmsTemplate getSmsTemplate(String id) {
@@ -41,13 +102,20 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 		return temp;		
 	}
 
-
 	@Override
 	public boolean addSmsTemplate(RedisSmsTemplate smsTemplate) {
 				
 		String result = JSON.toJSON(smsTemplate).toString();
     	return redisUtil.HSET(SMS_TEMPLATE, smsTemplate.getId().toString(), result);        	
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -262,6 +330,14 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 	{
 		return String.format("%s_%s_%s", type, id, field);
 	}
+
+	
+
+
+	
+
+
+	
 
 
 	
