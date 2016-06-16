@@ -1,6 +1,8 @@
 package com.sxjr.app.model;
 
-public class SmClientInfo extends BaseEntity {
+import java.io.Serializable;
+
+public class SmClientInfo extends BaseEntity implements Serializable{
 
 	 /**
     * ID
