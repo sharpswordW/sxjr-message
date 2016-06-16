@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.sxjr.message.model.RedisSms;
 import com.sxjr.message.model.RedisSmsStatistics;
+import com.sxjr.message.model.RedisSmsTemplate;
 
 /**
  * Created by wangrq on 2016/6/6.
@@ -12,7 +13,11 @@ import com.sxjr.message.model.RedisSmsStatistics;
 public interface SmsRedisService{
 	
 	
-	
+	//模板
+	public static String SMS_TEMPLATE = "sms_template";
+		
+		
+	//短信
 	public static String COLL_CLIENT = "coll_client";
 	public static String COLL_CONDUIT = "coll_conduit";
 	
@@ -24,6 +29,23 @@ public interface SmsRedisService{
 	public static String STATISTICS_SMSCOUNT = "EndDate";
 	public static String STATISTICS_SUCCESSCOUNT = "SuccessCount";
 	public static String STATISTICS_ERRORCOUNT = "ErrorCount";
+	
+	
+	
+	
+	/**
+	 * 根据id获取短信模板
+	 * @param id 手机号码
+	 * @throws 
+	 */
+	RedisSmsTemplate getSmsTemplate(String id);
+	
+	/**
+	 * 保存短信模板 
+	 * @param id 手机号码
+	 * @throws 
+	 */
+	boolean addSmsTemplate(RedisSmsTemplate id);
 	
 	
 	
