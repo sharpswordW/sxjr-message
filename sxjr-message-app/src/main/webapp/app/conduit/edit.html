@@ -120,6 +120,7 @@
     <script src="../../common/js/jquery.js"></script>
     <script src="../../common/plugins/forms/validation/jquery.validate.js"></script>
     <script src="../../common/plugins/forms/validation/localization/messages_zh.js"></script>
+    <script src="../../common/js/sms/validate.js"></script>
     <script type="text/javascript">
 	    $(function(){
 			$('#nav').load("../../common/navigator.html");
@@ -136,7 +137,11 @@
 			$('#priority').val("${model.priority}");
 		})
 		$('#save').click(function(){
-			$("#conduitForm").validate();
+			$("#conduitForm").validate({
+				rules: {
+	      	      name: "specialStr"
+	      	    }
+			});
 			$('#conduitForm').submit();
 		})
 		$('#cancel').click(function(){

@@ -35,3 +35,13 @@ var isIp = function (){
     		});
 	    return this.optional(element) || isTrue;
 	}, "请输入正确的IP格式,多个IP用逗号分隔，格式如：127.0.0.1,10.10.10.1");
+    //校验输入非空字符
+    jQuery.validator.addMethod("notBlank", function (value, element) {
+    	var regex=/^[\S]*$/;
+	    return regex.test(value);
+	}, "输入内容不能包含空格!");
+    //特殊字符
+    jQuery.validator.addMethod("specialStr", function (value, element) {
+    	var regex=/^[\u0391-\uFFE5\w!$@#]+$/;
+	    return regex.test(value);
+	}, "输入内容不能包含特殊字符!");

@@ -86,6 +86,7 @@
     <script src="../../common/js/jquery.js"></script>
     <script src="../../common/plugins/forms/validation/jquery.validate.js"></script>
     <script src="../../common/plugins/forms/validation/localization/messages_zh.js"></script>
+    <script src="../../common/js/sms/validate.js"></script>
     <script type="text/javascript">
 		$(function(){
 			$('#nav').load("../../common/navigator.html");
@@ -94,7 +95,11 @@
 			$("#state option[value='${model.state}']").attr("selected",true);
 		})
 		$('#save').click(function(){
-			$("#msgForm").validate();
+			$("#msgForm").validate({
+				rules: {
+	      	      content: "specialStr"
+	      	    }
+			});
 			$('#msgForm').submit();
 		})
 		$('#cancel').click(function(){
