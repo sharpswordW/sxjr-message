@@ -46,7 +46,7 @@ public class QrySmsClientImpl implements IQrySmsClient {
 				+ " is unavailable,please make sure accessToken:" + assessToken
 				+ "and assessSecret:" + assessSecret
 				+ "are exists in redis and state is true ");
-		return smClientInfo;
+		return null;
 	}
 
 }
