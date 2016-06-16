@@ -61,7 +61,7 @@
                                         <#list lists as msg>
                                             <tr class="odd gradeX">
                                                 <td>${msg.id}</td>
-                                                <td>${msg.content}</td>
+                                                <td style="word-break:break-all;" width="25%">${msg.content}</td>
                                                 <td>${msg.createDate?string("yyyy-MM-dd")}</td>
                                                 <td>${msg.updateDate?string("yyyy-MM-dd")}</td>
                                                 <td>${msg.createBy}</td>
