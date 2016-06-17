@@ -321,7 +321,11 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 		
 	private void addRedisValue(String type, String id, String field, int value)
 	{
-//		redisUtil.INCRBYFLOAT(getRedisCollName(type, id, field), value);
+		Object val = redisUtil.GET(getRedisCollName(type, id, field));
+		if(!StringUtils.isEmpty(val))
+			redisUtil.SET(getRedisCollName(type, id, field), value);
+		else
+		    redisUtil.INCRBYFLOAT(getRedisCollName(type, id, field), value);
 	}
 	
 	
