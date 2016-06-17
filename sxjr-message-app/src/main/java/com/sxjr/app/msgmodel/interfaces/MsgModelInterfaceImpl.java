@@ -7,9 +7,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSON;
 import com.sxjr.app.model.SmsTemplate;
 import com.sxjr.app.msgmodel.mapper.MsgModelMapper;
 import com.sxjr.app.service.MsgModelInterface;
+import com.sxjr.common.util.RedisUtil;
 @Service("msgModelInterface")
 public class MsgModelInterfaceImpl implements MsgModelInterface{
 	
@@ -17,6 +19,8 @@ public class MsgModelInterfaceImpl implements MsgModelInterface{
 	
 	@Autowired
     private MsgModelMapper msgModelMapper;
+	@Autowired
+    private RedisUtil redisUtil;
 
 	@Override
 	public int save(String content) {
@@ -33,6 +37,8 @@ public class MsgModelInterfaceImpl implements MsgModelInterface{
     		if(msgModelMapper.save(template) > 0);{
     			result =  Integer.parseInt(template.getId());
     			logger.info("新注册模板,id="+ template.getId() + "模板内容:" + content);
+    			String obj = JSON.toJSON(template).toString();
+    	    	redisUtil.HSET("SmsTemplate", template.getId(), obj);
     		}
     	}
 		return result;

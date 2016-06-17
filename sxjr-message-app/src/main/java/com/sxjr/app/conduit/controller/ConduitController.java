@@ -151,6 +151,11 @@ public class ConduitController {
     	String id = request.getParameter("id");
     	String state = request.getParameter("state");
     	conduitService.updateStateById(id, state);
+    	//更新redis信息
+    	SmsConduit model = conduitService.findOne(id);
+    	String hashKey = model.getConduitId();
+    	String obj = JSON.toJSON(model).toString();
+    	redisUtil.HSET(redisKey, hashKey, obj);
     	List list = conduitService.list();
     	modelMap.put("lists", list);
     	return "redirect:list";

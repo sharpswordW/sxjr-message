@@ -63,7 +63,8 @@
         phoneTimeSpan,
         phoneMaxCount,
         maxLength,
-        priority
+        priority,
+        state
         from sms_conduit
         where id = #{id}  
     </select>

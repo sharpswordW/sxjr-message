@@ -142,6 +142,8 @@ public class MsgModelController {
     		model.setState("1");
     	}
     	msgModelService.update(model);
+    	String obj = JSON.toJSON(model).toString();
+    	redisUtil.HSET("SmsTemplate", model.getId(), obj);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
     	return "redirect:list";
