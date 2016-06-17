@@ -4,17 +4,20 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 import com.sxjr.app.model.SmsTemplate;
 import com.sxjr.app.msgmodel.service.MsgModelService;
 import com.sxjr.app.sequence.service.SequenceService;
 import com.sxjr.app.service.MsgModelInterface;
-import com.sxjr.common.util.RedisUtil;
+import com.sxjr.common.util.RedisUtil;  
 
 /**
  * 短信模板 Controller
@@ -23,6 +26,8 @@ import com.sxjr.common.util.RedisUtil;
 @Controller
 @RequestMapping(value = "app/msgmodel")
 public class MsgModelController {
+	
+	private static Logger logger = LoggerFactory.getLogger(MsgModelController.class);
 	
 	private String PAGE_ADD = "msgmodel/add";
 	private String PAGE_LIST = "msgmodel/list";
@@ -105,18 +110,7 @@ public class MsgModelController {
     	redisUtil.HSET("SmsTemplate", model.getId(), obj);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
-        return PAGE_LIST;
-        
-//        SmsTemplate template = new SmsTemplate();
-//        template.setContent("aaaaaa");
-//        template.setState("1");
-//        template.setCreateDate(new Date());
-////        template.setUpdateDate(new Date());
-//        template.setCreateBy("wrq");
-//        msgModelInterface.save(template);
-//    	List list = msgModelService.list();
-//    	modelMap.put("lists", list);
-//        return PAGE_LIST;
+        return "redirect:list";
     }
     /**
      * 删除
@@ -130,7 +124,7 @@ public class MsgModelController {
     	msgModelService.delete(id);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
-        return PAGE_LIST;
+    	return "redirect:list";
     }
     /**
      * 启用/禁用
@@ -150,7 +144,7 @@ public class MsgModelController {
     	msgModelService.update(model);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
-        return PAGE_LIST;
+    	return "redirect:list";
     }
     
     private int coutnStr(String str){

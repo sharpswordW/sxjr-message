@@ -10,6 +10,7 @@
         <link href="../../common/css/bootstrap.css" rel="stylesheet" />
         <!-- Main stylesheets (template main css file) -->
         <link href="../../common/css/main.css" rel="stylesheet" />
+        <link href="../../common/DataTables-1.10.12/media/css/jquery.dataTables.css" rel="stylesheet" />
         <!-- Fav and touch icons -->
     </head>
     <body>
@@ -103,12 +104,16 @@
         <!-- End #content -->
         <!-- Important javascript libs(put in all pages) -->
         <script src="../../common/js/jquery-1.8.3.min.js"></script>
+        <script src="../../common/DataTables-1.10.12/media/js/jquery.dataTables.js"></script>
         <script type="text/javascript">
 			/* $('#add').click(function(){
 				document.location.href = "toAdd";
 			}) */
 			$(function(){
 				$('#nav').load("../../common/navigator.html");
+				$('#datatable').dataTable({
+					"searching":false
+				});
 			})
 			function del(id){
 				if(confirm("确定要删除短信模板吗？")){
