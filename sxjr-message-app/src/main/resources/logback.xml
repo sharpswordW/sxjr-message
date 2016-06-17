@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="30 seconds">
 	<!--定义日志文件的存储地址 勿在 LogBack的配置中使用相对路径 -->
-	<property name="LOG_DIR" value="D:/logs" />
+	<property name="LOG_DIR" value="/home/product/logs" />
 	<!--定义监控日志路径 -->
-	<property name="MONITORLOG_DIR" value="D:/logs/monitor" />
+	<property name="MONITORLOG_DIR" value="/home/product/logs/fsof_monitor/" />
 	<!--项目名称 -->
 	<property name="PROJECT_NAME" value="juooo_server_java" />
 	<!--STDOUT 只用于开发环境  -->
