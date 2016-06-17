@@ -72,7 +72,7 @@ public class ConduitController {
     	redisUtil.HSET(key, hashKey, obj);
     	List<SmsConduit> list = conduitService.list();
     	modelMap.put("lists", list);
-        return PAGE_LIST;
+    	return "redirect:list";
     }
     /**
      * 列表
@@ -115,7 +115,7 @@ public class ConduitController {
     	redisUtil.HSET(key, hashKey, obj);
     	List list = conduitService.list();
     	modelMap.put("lists", list);
-        return PAGE_LIST;
+    	return "redirect:list";
     }
     /**
      * 删除操作
@@ -129,7 +129,7 @@ public class ConduitController {
     	conduitService.delete(id);
     	List list = conduitService.list();
     	modelMap.put("lists", list);
-        return PAGE_LIST;
+    	return "redirect:list";
     }
     
     @RequestMapping(value = "checkConduit")
@@ -153,7 +153,7 @@ public class ConduitController {
     	conduitService.updateStateById(id, state);
     	List list = conduitService.list();
     	modelMap.put("lists", list);
-        return PAGE_LIST;
+    	return "redirect:list";
     }
     
 }

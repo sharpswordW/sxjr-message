@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 import com.sxjr.app.model.SmsTemplate;
@@ -109,18 +110,7 @@ public class MsgModelController {
     	redisUtil.HSET("SmsTemplate", model.getId(), obj);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
-        return PAGE_LIST;
-        
-//        SmsTemplate template = new SmsTemplate();
-//        template.setContent("aaaaaa");
-//        template.setState("1");
-//        template.setCreateDate(new Date());
-////        template.setUpdateDate(new Date());
-//        template.setCreateBy("wrq");
-//        msgModelInterface.save(template);
-//    	List list = msgModelService.list();
-//    	modelMap.put("lists", list);
-//        return PAGE_LIST;
+        return "redirect:list";
     }
     /**
      * 删除
@@ -134,7 +124,7 @@ public class MsgModelController {
     	msgModelService.delete(id);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
-        return PAGE_LIST;
+    	return "redirect:list";
     }
     /**
      * 启用/禁用
@@ -154,7 +144,7 @@ public class MsgModelController {
     	msgModelService.update(model);
     	List list = msgModelService.list();
     	modelMap.put("lists", list);
-        return PAGE_LIST;
+    	return "redirect:list";
     }
     
     private int coutnStr(String str){
