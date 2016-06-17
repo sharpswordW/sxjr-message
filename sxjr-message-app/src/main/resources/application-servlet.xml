@@ -16,7 +16,7 @@
        http://www.springframework.org/schema/tx   
        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 	<context:component-scan base-package="com.sxjr.app" />
-	   <import resource="dubbo.xml"/>
+	<import resource="dubbo.xml"/>
 	<context:property-placeholder location="classpath:conf_*.properties"/>
 	  
 	<mvc:annotation-driven />
