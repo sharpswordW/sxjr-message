@@ -72,10 +72,10 @@
 												</td>
                                                 <td>
                                                 	<#if clientInfo.state == true>
-                                                		<a href="disable?id=${clientInfo.id}">禁用</a>&nbsp;&nbsp;&nbsp;
+                                                		<a href="disable?id=${clientInfo.id}&state=0">禁用</a>&nbsp;&nbsp;&nbsp;
                                                 	</#if>
                                                 	<#if clientInfo.state == false>
-                                                		<a href="disable?id=${clientInfo.id}">启用</a>&nbsp;&nbsp;&nbsp;
+                                                		<a href="disable?id=${clientInfo.id}&state=1">启用</a>&nbsp;&nbsp;&nbsp;
                                                 	</#if>
                                                 <a href="edit?id=${clientInfo.id}">修改</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="del(${clientInfo.id});">删除</a></td>
                                             </tr>

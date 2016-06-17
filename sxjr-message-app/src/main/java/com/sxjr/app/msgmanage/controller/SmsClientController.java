@@ -157,8 +157,9 @@ public class SmsClientController {
 	@RequestMapping(value = "disable")
 	public String disable(HttpServletRequest request, ModelMap modelMap) {
 		String id = request.getParameter("id");
+		String state = request.getParameter("state");
 		SmClientInfo smClientInfo = smsManageService.findOne(id);
-		if (smClientInfo.isState()) {
+		if ("0".equals(state)) {
 			smClientInfo.setState(false);
 		} else {
 			smClientInfo.setState(true);
