@@ -2,12 +2,15 @@ package com.sxjr.app.conduit.service.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sxjr.app.conduit.mapper.ConduitMapper;
 import com.sxjr.app.model.SmsConduit;
+import com.sxjr.app.msgmodel.controller.MsgModelController;
 import com.sxjr.app.service.ConduitService;
 
 /**
@@ -16,6 +19,9 @@ import com.sxjr.app.service.ConduitService;
 @Service
 @Transactional
 public class ConduitServiceImpl implements ConduitService {
+	
+	private static Logger logger = LoggerFactory.getLogger(ConduitServiceImpl.class);
+	
 	@Autowired
 	private ConduitMapper conduitMapper;
 
@@ -69,6 +75,7 @@ public class ConduitServiceImpl implements ConduitService {
 		SmsConduit conduit = new SmsConduit();
 		conduit.setConduitId(conduitId);
 		conduit.setState(state);
+		logger.info("禁用通道,conduitId=" + conduitId);
 		if(conduitMapper.updateConduit(conduit) > 0){
 			result = true;
 		}

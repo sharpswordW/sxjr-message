@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,7 +16,7 @@ import com.sxjr.app.model.SmsTemplate;
 import com.sxjr.app.msgmodel.service.MsgModelService;
 import com.sxjr.app.sequence.service.SequenceService;
 import com.sxjr.app.service.MsgModelInterface;
-import com.sxjr.common.util.RedisUtil;
+import com.sxjr.common.util.RedisUtil;  
 
 /**
  * 短信模板 Controller
@@ -23,6 +25,8 @@ import com.sxjr.common.util.RedisUtil;
 @Controller
 @RequestMapping(value = "app/msgmodel")
 public class MsgModelController {
+	
+	private static Logger logger = LoggerFactory.getLogger(MsgModelController.class);
 	
 	private String PAGE_ADD = "msgmodel/add";
 	private String PAGE_LIST = "msgmodel/list";

@@ -2,6 +2,8 @@ package com.sxjr.app.msgmodel.interfaces;
 
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,8 @@ import com.sxjr.app.msgmodel.mapper.MsgModelMapper;
 import com.sxjr.app.service.MsgModelInterface;
 @Service("msgModelInterface")
 public class MsgModelInterfaceImpl implements MsgModelInterface{
+	
+	private static Logger logger = LoggerFactory.getLogger(MsgModelInterfaceImpl.class);
 	
 	@Autowired
     private MsgModelMapper msgModelMapper;
@@ -28,6 +32,7 @@ public class MsgModelInterfaceImpl implements MsgModelInterface{
     	}else{
     		if(msgModelMapper.save(template) > 0);{
     			result =  Integer.parseInt(template.getId());
+    			logger.info("新注册模板,id="+ template.getId() + "模板内容:" + content);
     		}
     	}
 		return result;
