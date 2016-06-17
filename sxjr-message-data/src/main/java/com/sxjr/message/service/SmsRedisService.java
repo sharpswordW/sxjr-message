@@ -35,9 +35,9 @@ public interface SmsRedisService{
 	
 	
 	//统计字段
-	public static String STATISTICS_STARTDATE = "ChannelId";
-	public static String STATISTICS_ENDDATE = "StartDate";
-	public static String STATISTICS_SMSCOUNT = "EndDate";
+	public static String STATISTICS_STARTDATE = "StartDate";
+	public static String STATISTICS_ENDDATE = "EndDate";
+	public static String STATISTICS_SMSCOUNT = "SmsCount";
 	public static String STATISTICS_SUCCESSCOUNT = "SuccessCount";
 	public static String STATISTICS_ERRORCOUNT = "ErrorCount";
 	
