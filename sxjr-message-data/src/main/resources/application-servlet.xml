@@ -24,7 +24,8 @@
  
     <!-- 获取properties配置文件 --> 
     <!-- <context:property-placeholder location="classpath:config.properties"/> -->
-    <context:property-placeholder location="classpath:config.properties" ignore-unresolvable="true" /> 
+    <context:property-placeholder location="classpath:conf_db.properties" ignore-unresolvable="true" /> 
+     <context:property-placeholder location="classpath:conf_redis.properties" ignore-unresolvable="true" /> 
     
     <!-- 获取数据源 -->  
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">  
@@ -46,14 +47,14 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- 自动扫描mapping.xml文件 -->
-		<property name="mapperLocations" value="classpath:mapper/LogConduitStatisicsMapper.xml"></property>
+		<property name="mapperLocations" value="classpath*:mapper/*.xml"></property>
 	</bean>
-	
+		
 	 <!-- DAO接口所在包名，Spring会自动查找其下的类 -->  
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
         <property name="basePackage" value="com.sxjr.sms.dao" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>   
-    </bean>  
+    </bean>
     
     <!--redis-->
     <bean id="jedisPoolConfig"  class="redis.clients.jedis.JedisPoolConfig"  >
@@ -80,14 +81,6 @@
         <property name="redisTemplate" ref="redisTemplate" />
     </bean >
  
-    <!-- rocketMQ -->
-    <bean id="producer" class="com.sxjr.sms.producer.Producer" init-method="init" destroy-method="destroy" scope="singleton">
-        <property name="producerGroup" value="MyProducerGroup"></property>
-        <property name="namesrvAddr" value="192.168.188.49:9876"></property>
-    </bean>
-    
-    <import resource="dubbo.xml"/>
-    <import resource="task.xml"/>
     <!--AOP 设置-->
     <aop:aspectj-autoproxy/>
 

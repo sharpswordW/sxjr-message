@@ -42,8 +42,8 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 		Object obj = redisUtil.HGET(SMS_CLIENT, id);
 		
 		SmsClient temp = null;
-		if(!StringUtils.isEmpty(obj))		
-			temp = (SmsClient)obj;
+		if(!StringUtils.isEmpty(obj))	
+			temp = JSON.parseObject(obj.toString(), SmsClient.class);
 		    	
 		return temp;	
 	}
@@ -61,7 +61,7 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 		
 		SmsConduit temp = null;
 		if(!StringUtils.isEmpty(obj))		
-			temp = (SmsConduit)obj;
+			temp = JSON.parseObject(obj.toString(), SmsConduit.class);
 		    	
 		return temp;	
 	}
@@ -79,7 +79,7 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 		
 		SysConfig temp = null;
 		if(!StringUtils.isEmpty(obj))		
-			temp = (SysConfig)obj;
+			temp = JSON.parseObject(obj.toString(), SysConfig.class);
 		    	
 		return temp;	
 	}
@@ -97,7 +97,7 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 		
 		RedisSmsTemplate temp = null;
 		if(!StringUtils.isEmpty(obj))		
-			temp = (RedisSmsTemplate)obj;
+			temp = JSON.parseObject(obj.toString(), RedisSmsTemplate.class);
 		    	
 		return temp;		
 	}
@@ -127,7 +127,7 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 		RedisSmsList list = null;
 		if(!StringUtils.isEmpty(obj))
 		{
-			list = (RedisSmsList)obj;
+			list = JSON.parseObject(obj.toString(), RedisSmsList.class);
 		}
     	
 		return list == null ? null : list.getSmsList();
@@ -142,7 +142,7 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 		String result;
 		if(!StringUtils.isEmpty(obj))
 		{
-			RedisSmsList list = (RedisSmsList)obj;
+			RedisSmsList list = JSON.parseObject(obj.toString(), RedisSmsList.class);
 	    	list.getSmsList().add(smsList);
 	    	list.setCount(list.getSmsList().size());
 	    	result = JSON.toJSON(list).toString();
@@ -171,7 +171,7 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 		RedisSmsList list = null;
 		if(!StringUtils.isEmpty(obj))
 		{
-			list = (RedisSmsList)obj;
+			list = JSON.parseObject(obj.toString(), RedisSmsList.class);
 		}
 		return list == null ? null : list.getSmsList();
 						
@@ -184,7 +184,7 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 		String result;
 		if(!StringUtils.isEmpty(obj))
 		{
-			RedisSmsList list = (RedisSmsList)obj;
+			RedisSmsList list = JSON.parseObject(obj.toString(), RedisSmsList.class);
 	    	list.getSmsList().add(smsList);
 	    	list.setCount(list.getSmsList().size());
 	    	result = JSON.toJSON(list).toString();	    	
@@ -321,7 +321,11 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 		
 	private void addRedisValue(String type, String id, String field, int value)
 	{
-//		redisUtil.INCRBYFLOAT(getRedisCollName(type, id, field), value);
+		Object val = redisUtil.GET(getRedisCollName(type, id, field));
+		if(!StringUtils.isEmpty(val))
+			redisUtil.SET(getRedisCollName(type, id, field), value);
+		else
+		    redisUtil.INCRBYFLOAT(getRedisCollName(type, id, field), value);
 	}
 	
 	

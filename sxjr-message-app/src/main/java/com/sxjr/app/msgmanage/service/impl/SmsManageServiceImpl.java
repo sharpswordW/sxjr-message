@@ -1,5 +1,6 @@
 package com.sxjr.app.msgmanage.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,6 @@ public class SmsManageServiceImpl implements SmsManageService {
 	@Autowired
 	private RedisUtil redisUtil;
 	/**
-     * 超时时间
-     */
-	private long tiemOut = 60 * 60 * 6;// 单位：s
-	/**
      * 存放redis中客户端信息KEY的前缀
      */
 	private static final String CLIENT_KEY = "smClient.info.";
@@ -34,7 +31,7 @@ public class SmsManageServiceImpl implements SmsManageService {
 		int result = tbSmsManageMapper.save(smClientInfo);
 		//smClientInfo = tbSmsManageMapper.selectbyName(smClientInfo.getName());
 		redisUtil.SET(CLIENT_KEY + smClientInfo.getAssessToken(),
-				JSONObject.toJSONString(smClientInfo), tiemOut);
+				JSONObject.toJSONString(smClientInfo));
 
 		return result;
 	}
@@ -66,11 +63,13 @@ public class SmsManageServiceImpl implements SmsManageService {
 			smClientInfo.setAssessSecret(oldSmClientInfo.getAssessSecret());
 			smClientInfo.setAssessToken(oldSmClientInfo.getAssessToken());
 		}
+		smClientInfo.setUpdateDate(new Date());
+		tbSmsManageMapper.update(smClientInfo);
 		//更新redis中客户端信息
 		redisUtil.remove(CLIENT_KEY+smClientInfo.getAssessToken());
 		redisUtil.SET(CLIENT_KEY + smClientInfo.getAssessToken(),
-				JSONObject.toJSONString(smClientInfo), tiemOut);
-		tbSmsManageMapper.update(smClientInfo);
+				JSONObject.toJSONString(smClientInfo));
+		
 
 	}
 
