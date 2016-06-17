@@ -9,8 +9,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import com.sxjr.message.model.RedisSms;
-import com.sxjr.message.model.RedisSmsClient;
-import com.sxjr.message.model.RedisSmsConduit;
 import com.sxjr.message.model.RedisSmsList;
 import com.sxjr.message.model.RedisSmsStatistics;
 import com.sxjr.message.model.RedisSmsTemplate;
@@ -321,10 +319,10 @@ public class SmsRedisServiceImpl implements SmsRedisService{
 		
 	private void addRedisValue(String type, String id, String field, int value)
 	{
-		Object val = redisUtil.GET(getRedisCollName(type, id, field));
-		if(!StringUtils.isEmpty(val))
-			redisUtil.SET(getRedisCollName(type, id, field), value);
-		else
+//		Object val = redisUtil.GET(getRedisCollName(type, id, field));
+//		if(!StringUtils.isEmpty(val))
+//			redisUtil.SET(getRedisCollName(type, id, field), value);
+//		else
 		    redisUtil.INCRBYFLOAT(getRedisCollName(type, id, field), value);
 	}
 	
